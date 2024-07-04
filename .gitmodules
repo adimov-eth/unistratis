@@ -1,0 +1,9 @@
+[submodule "packages/v3-sdk"]
+	path = packages/v3-sdk
+	url = https://github.com/adimov-eth/v3-sdk.git
+[submodule "packages/universal-router-sdk"]
+	path = packages/universal-router-sdk
+	url = https://github.com/adimov-eth/universal-router-sdk.git
+[submodule "packages/permit2-sdk"]
+	path = packages/permit2-sdk
+	url = https://github.com/adimov-eth/permit2-sdk.git
