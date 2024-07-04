@@ -1,51 +1,80 @@
-
 {
   "name": "Auroria Token List",
-  "timestamp": "2022-07-10T18:08:00.164591Z",
+  "logoURI": "https://static.coingecko.com/s/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
   "keywords": [
-    "null"
+      "defi"
   ],
-  "logoURI": "ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx",
-  "version": {
-    "major": 5,
-    "minor": 0,
-    "patch": 0
-  },
+  "timestamp": "2024-07-02T21:03:20.579+00:00",
   "tokens": [
-    {
-      "chainId": 205205,
-      "name": "DAI",
-      "address": "0x6F9cBc51c7E22BBE7e5DD517925fB9bAbd1d9a05",
-      "decimals": 18,
-      "symbol": "DAI",
-      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
-    },
-    {
-      "chainId": 205205,
-      "name": "TestGBPT",
-      "address": "0x796D5852D54055094Ac177dE792164BCa625a28e",
-      "decimals": 18,
-      "symbol": "TGBPT",
-      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
-    },
-    {
-      "chainId": 205205,
-      "name": "Pupa token",
-      "address": "0xB84b0F343c04a31939bA97e2CfEc4639cc413D66",
-      "decimals": 18,
-      "symbol": "PUPA",
-      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
-    },
-    {
-      "chainId": 205205,
-      "name": "Lupa token",
-      "address": "0x0F14C19B5a28975B549E037DBC7188FFA63FFeAe",
-      "decimals": 18,
-      "symbol": "LUPA",
-      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
-    },
-
-  ]
+      {
+          "chainId": 1,
+          "address": "0xd2877702675e6ceb975b4a1dff9fb7baf4c91ea9",
+          "name": "Wrapped Terra Classic",
+          "symbol": "LUNC",
+          "decimals": 18,
+          "logoURI": "https://assets.coingecko.com/coins/images/13628/thumb/wluna.png?1696513376"
+      },
+      {
+          "chainId": 205205,
+          "name": "WRAPPED STRAX",
+          "address": "0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D",
+          "decimals": 18,
+          "symbol": "WSTRAX",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "DAI",
+          "address": "0x6F9cBc51c7E22BBE7e5DD517925fB9bAbd1d9a05",
+          "decimals": 18,
+          "symbol": "DAI",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "TestGBPT",
+          "address": "0x796D5852D54055094Ac177dE792164BCa625a28e",
+          "decimals": 18,
+          "symbol": "TGBPT",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "Pupa token",
+          "address": "0xb84b0f343c04a31939ba97e2cfec4639cc413d66",
+          "decimals": 18,
+          "symbol": "PUPA",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "Lupa token",
+          "address": "0x0f14c19b5a28975b549e037dbc7188ffa63ffeae",
+          "decimals": 18,
+          "symbol": "LUPA",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "AGI",
+          "address": "0x83c5DcEcc4a0b1909d4ADe1BB16edDba5e145fCf",
+          "decimals": 18,
+          "symbol": "AGI",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        },
+        {
+          "chainId": 205205,
+          "name": "SSI",
+          "address": "0x2d9fb245627cFBb14666E0A99Cd26e33f3a3D7E7",
+          "decimals": 18,
+          "symbol": "SSI",
+          "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+        }
+     
+  ],
+  "version": {
+      "major": 424,
+      "minor": 2,
+      "patch": 1
+  }
 }
-
-
