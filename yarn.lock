@@ -6898,9 +6898,9 @@ __metadata:
   linkType: hard
 
 "@uniswap/default-token-list@npm:^2.0.0":
-  version: 2.2.0
-  resolution: "@uniswap/default-token-list@npm:2.2.0"
-  checksum: 10c0/e01acf8cac09bf97af9ebda7602913cc655fdd7e1dfe4b17be5b8ce1802c12477b1ac9f2bb054191cf0be260d86a27c8355fcd41566226cae2dfe76dba3f3162
+  version: 2.3.0
+  resolution: "@uniswap/default-token-list@npm:2.3.0"
+  checksum: 10c0/28c12d67db5b913288d97687802337879924b776f35edc96b29ff20ce5927ebcb7eb8907a2a25a575b363670e41266770853a2993b3a68eb7aac0f0194132a06
   languageName: node
   linkType: hard
 
