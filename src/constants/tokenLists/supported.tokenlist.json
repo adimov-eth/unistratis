@@ -1,0 +1,51 @@
+
+{
+  "name": "Auroria Token List",
+  "timestamp": "2022-07-10T18:08:00.164591Z",
+  "keywords": [
+    "null"
+  ],
+  "logoURI": "ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx",
+  "version": {
+    "major": 5,
+    "minor": 0,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 205205,
+      "name": "DAI",
+      "address": "0x6F9cBc51c7E22BBE7e5DD517925fB9bAbd1d9a05",
+      "decimals": 18,
+      "symbol": "DAI",
+      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+    },
+    {
+      "chainId": 205205,
+      "name": "TestGBPT",
+      "address": "0x796D5852D54055094Ac177dE792164BCa625a28e",
+      "decimals": 18,
+      "symbol": "TGBPT",
+      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+    },
+    {
+      "chainId": 205205,
+      "name": "Pupa token",
+      "address": "0xB84b0F343c04a31939bA97e2CfEc4639cc413D66",
+      "decimals": 18,
+      "symbol": "PUPA",
+      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+    },
+    {
+      "chainId": 205205,
+      "name": "Lupa token",
+      "address": "0x0F14C19B5a28975B549E037DBC7188FFA63FFeAe",
+      "decimals": 18,
+      "symbol": "LUPA",
+      "logoURI": "https://explorer.waterfall.network/favicon-72-precomposed.png"
+    },
+
+  ]
+}
+
+

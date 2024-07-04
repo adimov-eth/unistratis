@@ -5,6 +5,8 @@ const EXPLORER_HOSTNAMES: { [hostname: string]: true } = {
   'optimistic.etherscan.io': true,
   'goerli-optimism.etherscan.io': true,
   'arbiscan.io': true,
+  'sepolia.etherscan.io': true,
+  'auroria.explorer.stratisevm.com': true,
 }
 
 /**

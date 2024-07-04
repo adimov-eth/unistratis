@@ -4,7 +4,9 @@ import { SupportedChainId } from 'constants/chains'
 import store from '../../state/index'
 
 const CHAIN_SUBGRAPH_URL: Record<number, string> = {
-  [SupportedChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+  [SupportedChainId.MAINNET]: 'http://127.0.0.1:8000/subgraphs/name/ianlapham/uniswap-v3',
+
+  [SupportedChainId.AURORIA]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 
   [SupportedChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
 
@@ -17,7 +19,7 @@ const CHAIN_SUBGRAPH_URL: Record<number, string> = {
   [SupportedChainId.BNB]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-bsc',
 }
 
-const httpLink = new HttpLink({ uri: CHAIN_SUBGRAPH_URL[SupportedChainId.MAINNET] })
+const httpLink = new HttpLink({ uri: CHAIN_SUBGRAPH_URL[SupportedChainId.AURORIA] })
 
 // This middleware will allow us to dynamically update the uri for the requests based off chainId
 // For more information: https://www.apollographql.com/docs/react/networking/advanced-http-networking/

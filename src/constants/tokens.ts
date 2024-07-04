@@ -368,6 +368,20 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'WETH',
     'Wrapped Ether'
   ),
+  [SupportedChainId.AURORIA]: new Token(
+    SupportedChainId.AURORIA,
+    '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D',
+    18,
+    'WSTRAX',
+    'Wrapped STRAX'
+  ),
+  [SupportedChainId.SEPOLIA]: new Token(
+    SupportedChainId.SEPOLIA,
+    '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
   [SupportedChainId.OPTIMISM_GOERLI]: new Token(
     SupportedChainId.OPTIMISM_GOERLI,
     '0x4200000000000000000000000000000000000006',

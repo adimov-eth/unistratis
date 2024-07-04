@@ -62,14 +62,34 @@ type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & 
 } & { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
-  [SupportedChainId.MAINNET]: {
+  [SupportedChainId.AURORIA]: {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://auroria.explorer.stratisevm.com/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Auroria',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'STRAX', symbol: 'STRAX', decimals: 18 },
+    color: darkTheme.chain_1,
+  },
+  [SupportedChainId.SEPOLIA]: {
     networkType: NetworkType.L1,
     docs: 'https://docs.uniswap.org/',
     explorer: 'https://etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/',
-    label: 'Ethereum',
+    label: 'Sepolia',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    color: darkTheme.chain_1,
+  },
+  [SupportedChainId.MAINNET]: {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://sepolia.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Sepolia',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'Sepolia Ether', symbol: 'SETH', decimals: 18 },
     color: darkTheme.chain_1,
   },
   [SupportedChainId.GOERLI]: {

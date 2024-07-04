@@ -10,7 +10,7 @@ const thegraphConfig = require('../graphql_thegraph.config')
 const exec = promisify(child_process.exec)
 
 function fetchSchema(url, outputFile) {
-  exec(`npx get-graphql-schema --h Origin=https://app.uniswap.org ${url}`)
+  exec(`npx get-graphql-schema ${url}`)
     .then(({ stderr, stdout }) => {
       if (stderr) {
         throw new Error(stderr)
@@ -24,5 +24,5 @@ function fetchSchema(url, outputFile) {
     })
 }
 
-fetchSchema(process.env.THE_GRAPH_SCHEMA_ENDPOINT, thegraphConfig.schema)
-fetchSchema(process.env.REACT_APP_AWS_API_ENDPOINT, dataConfig.schema)
+// fetchSchema(process.env.THE_GRAPH_SCHEMA_ENDPOINT, thegraphConfig.schema)
+// fetchSchema(process.env.REACT_APP_AWS_API_ENDPOINT, dataConfig.schema)

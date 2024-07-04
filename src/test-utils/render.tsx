@@ -5,7 +5,7 @@ import { render, renderHook } from '@testing-library/react'
 import Web3Provider from 'components/Web3Provider'
 import { DEFAULT_LOCALE } from 'constants/locales'
 import { BlockNumberProvider } from 'lib/hooks/useBlockNumber'
-import catalog from 'locales/en-US'
+// import catalog from 'locales/en-US'
 import { en } from 'make-plural/plurals'
 import { ReactElement, ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -15,7 +15,7 @@ import store from 'state'
 import ThemeProvider from 'theme'
 
 i18n.load({
-  [DEFAULT_LOCALE]: catalog.messages,
+  [DEFAULT_LOCALE]: 'en' as any,
 })
 i18n.loadLocaleData({
   [DEFAULT_LOCALE]: { plurals: en },

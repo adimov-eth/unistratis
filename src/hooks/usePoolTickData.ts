@@ -158,6 +158,7 @@ function useTicksFromSubgraph(
       : undefined
 
   return useAllV3TicksQuery({
+    // @ts-ignore
     variables: { poolAddress: poolAddress?.toLowerCase(), skip },
     skip: !poolAddress,
     pollInterval: ms`30s`,
