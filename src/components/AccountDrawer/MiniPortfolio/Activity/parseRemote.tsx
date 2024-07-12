@@ -46,6 +46,12 @@ const COMMON_CONTRACTS: { [key: string]: Partial<Activity> | undefined } = {
     descriptor: t`Uniswap Protocol`,
     logos: [UNI_IMG],
   },
+  // TODO(cartcrom): Add permit2-specific logo
+  '0xd6A77B342771c3fcc0CF40B441533B94D6596C7c': {
+    title: t`Permit2`,
+    descriptor: t`Uniswap Protocol`,
+    logos: [UNI_IMG],
+  },
   '0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41': {
     title: t`Ethereum Name Service`,
     descriptor: t`Public Resolver`,
