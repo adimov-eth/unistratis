@@ -14,7 +14,7 @@ const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 
 const SEPOLIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/1009067770841dc401a35f45d7103e54/raw/0a8418e4ae237c23b3c7a05537a14800b066ea76/sepoliatokenlist.json'
 
-const AURORIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/e3aadcd7328890a0898aa23dd5aec4c9/raw/4e9637696733f3e03005cfae12573bfe2c69ce7d/tokenlist.json'
+const AURORIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/e3aadcd7328890a0898aa23dd5aec4c9/raw/76e70ff4b4747545267ed1337db9c0ca3eaea8ab/tokenlist.json'
 
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
