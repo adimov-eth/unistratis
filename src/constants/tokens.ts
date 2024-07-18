@@ -360,7 +360,7 @@ export const UNI: { [chainId: number]: Token } = {
 }
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
-  // ...(WETH9 as Record<SupportedChainId, Token>),
+  ...(WETH9 as Record<SupportedChainId, Token>),
   // [SupportedChainId.OPTIMISM]: new Token(
   //   SupportedChainId.OPTIMISM,
   //   '0x4200000000000000000000000000000000000006',
@@ -503,7 +503,8 @@ class ExtendedEther extends Ether {
   public get wrapped(): Token {
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     if (wrapped) return wrapped
-    throw new Error(`Unsupported chain ID: ${this.chainId}`)
+    return WRAPPED_NATIVE_CURRENCY[SupportedChainId.AURORIA] as Token
+    // throw new Error(`Unsupported chain ID: ${this.chainId}`)
   }
 
   private static _cachedExtendedEther: { [chainId: number]: NativeCurrency } = {}
