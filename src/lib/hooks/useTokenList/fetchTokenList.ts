@@ -4,7 +4,7 @@ import contenthashToUri from 'lib/utils/contenthashToUri'
 import parseENSAddress from 'lib/utils/parseENSAddress'
 import uriToHttp from 'lib/utils/uriToHttp'
 
-export const DEFAULT_TOKEN_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
+// export const DEFAULT_TOKEN_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
 
 const listCache = new Map<string, TokenList>()
 
@@ -15,7 +15,7 @@ const listCache = new Map<string, TokenList>()
  */
 export default async function fetchTokenList(
   listUrl: string,
-  resolveENSContentHash: (ensName: string) => Promise<string>,
+  // resolveENSContentHash: (ensName: string) => Promise<string>,
   skipValidation?: boolean
 ): Promise<TokenList> {
   const cached = listCache?.get(listUrl) // avoid spurious re-fetches
@@ -24,28 +24,9 @@ export default async function fetchTokenList(
   }
 
   let urls: string[]
-  const parsedENS = parseENSAddress(listUrl)
-  if (parsedENS) {
-    let contentHashUri
-    try {
-      contentHashUri = await resolveENSContentHash(parsedENS.ensName)
-    } catch (error) {
-      const message = `failed to resolve ENS name: ${parsedENS.ensName}`
-      console.debug(message, error)
-      throw new Error(message)
-    }
-    let translatedUri
-    try {
-      translatedUri = contenthashToUri(contentHashUri)
-    } catch (error) {
-      const message = `failed to translate contenthash to URI: ${contentHashUri}`
-      console.debug(message, error)
-      throw new Error(message)
-    }
-    urls = uriToHttp(`${translatedUri}${parsedENS.ensPath ?? ''}`)
-  } else {
-    urls = uriToHttp(listUrl)
-  }
+  
+  urls = uriToHttp(listUrl)
+  
 
   if (urls.length === 0) {
     throw new Error('Unrecognized list URL protocol.')

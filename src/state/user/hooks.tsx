@@ -9,7 +9,7 @@ import { useCallback, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
 import { UserAddedToken } from 'types/tokens'
 
-import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
+// import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from '../../constants/routing'
 import { useDefaultActiveTokens } from '../../hooks/Tokens'
 import { AppState } from '../types'
@@ -175,7 +175,7 @@ export function useUserTransactionTTL(): [number, (slippage: number) => void] {
   const { chainId } = useWeb3React()
   const dispatch = useAppDispatch()
   const userDeadline = useAppSelector((state) => state.user.userDeadline)
-  const onL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  const onL2 = false //Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
   const deadline = onL2 ? L2_DEADLINE_FROM_NOW : userDeadline
 
   const setUserDeadline = useCallback(
@@ -255,15 +255,15 @@ export function useHideUniswapWalletBanner(): [boolean, () => void] {
 export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
   if (tokenA.chainId !== tokenB.chainId) throw new Error('Not matching chain IDs')
   if (tokenA.equals(tokenB)) throw new Error('Tokens cannot be equal')
-  if (!V2_FACTORY_ADDRESSES[tokenA.chainId]) throw new Error('No V2 factory address on this chain')
+  throw new Error('No V2 factory address on this chain')
 
-  return new Token(
-    tokenA.chainId,
-    computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId], tokenA, tokenB }),
-    18,
-    'UNI-V2',
-    'Uniswap V2'
-  )
+  // return new Token(
+  //   tokenA.chainId,
+  //   computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId], tokenA, tokenB }),
+  //   18,
+  //   'UNI-V2',
+  //   'Uniswap V2'
+  // )
 }
 
 /**

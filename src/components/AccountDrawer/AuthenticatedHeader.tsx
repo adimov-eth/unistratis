@@ -264,7 +264,7 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
         </IconContainer>
       </HeaderWrapper>
       <PortfolioDrawerContainer>
-        {totalBalance !== undefined ? (
+        {/* {totalBalance !== undefined ? (
           <FadeInColumn gap="xs">
             <ThemedText.HeadlineLarge fontWeight={500}>
               {formatNumber(totalBalance, NumberType.PortfolioBalance)}
@@ -287,8 +287,8 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
             <LoadingBubble height="44px" width="170px" />
             <LoadingBubble height="16px" width="100px" margin="4px 0 20px 0" />
           </Column>
-        )}
-        {!shouldDisableNFTRoutes && (
+        )} */}
+        {/* {!shouldDisableNFTRoutes && (
           <HeaderButton
             data-testid="nft-view-self-nfts"
             onClick={navigateToProfile}
@@ -297,8 +297,8 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
           >
             <Trans>View and sell NFTs</Trans>
           </HeaderButton>
-        )}
-        <HeaderButton
+        )} */}
+        {/* <HeaderButton
           size={ButtonSize.medium}
           emphasis={ButtonEmphasis.medium}
           onClick={handleBuyCryptoClick}
@@ -317,8 +317,8 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
               <Trans>Buy crypto</Trans>
             </>
           )}
-        </HeaderButton>
-        {Boolean(!fiatOnrampAvailable && fiatOnrampAvailabilityChecked) && (
+        </HeaderButton> */}
+        {/* {Boolean(!fiatOnrampAvailable && fiatOnrampAvailabilityChecked) && (
           <FiatOnrampNotAvailableText marginTop="8px">
             <Trans>Not available in your region</Trans>
             <Tooltip
@@ -335,9 +335,9 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
               </FiatOnrampAvailabilityExternalLink>
             </Tooltip>
           </FiatOnrampNotAvailableText>
-        )}
+        )} */}
         <MiniPortfolio account={account} />
-        {isUnclaimed && (
+        {/* {isUnclaimed && (
           <UNIButton onClick={openClaimModal} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
             <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} <Trans>reward</Trans>
           </UNIButton>
@@ -346,7 +346,7 @@ export default function AuthenticatedHeader({ account, openSettings }: { account
           <UNIButton size={ButtonSize.medium} emphasis={ButtonEmphasis.medium} onClick={openNftModal}>
             <Trans>Claim Uniswap NFT Airdrop</Trans>
           </UNIButton>
-        )}
+        )} */}
       </PortfolioDrawerContainer>
     </AuthenticatedHeaderWrapper>
   )

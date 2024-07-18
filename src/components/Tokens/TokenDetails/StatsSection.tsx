@@ -8,7 +8,7 @@ import styled from 'styled-components/macro'
 import { ExternalLink, ThemedText } from 'theme'
 import { textFadeIn } from 'theme/styles'
 
-import { UNSUPPORTED_METADATA_CHAINS } from '../constants'
+// import { UNSUPPORTED_METADATA_CHAINS } from '../constants'
 import { TokenSortMethod } from '../state'
 import { HEADER_DESCRIPTIONS } from '../TokenTable/TokenRow'
 
@@ -112,21 +112,23 @@ export default function StatsSection(props: StatsSectionProps) {
       </StatsWrapper>
     )
   } else {
-    return UNSUPPORTED_METADATA_CHAINS.includes(chainId) ? (
-      <>
-        <Header>
-          <Trans>Stats</Trans>
-        </Header>
-        <ThemedText.BodySecondary paddingTop="12px">
-          <Trans>
-            Token stats and charts for {label} are available on{' '}
-            <ExternalLink color="currentColor" href={`${infoLink}tokens/${address}`}>
-              info.uniswap.org
-            </ExternalLink>
-          </Trans>
-        </ThemedText.BodySecondary>
-      </>
-    ) : (
+    // return 
+    // UNSUPPORTED_METADATA_CHAINS.includes(chainId) ? (
+    //   <>
+    //     <Header>
+    //       <Trans>Stats</Trans>
+    //     </Header>
+    //     <ThemedText.BodySecondary paddingTop="12px">
+    //       <Trans>
+    //         Token stats and charts for {label} are available on{' '}
+    //         <ExternalLink color="currentColor" href={`${infoLink}tokens/${address}`}>
+    //           info.uniswap.org
+    //         </ExternalLink>
+    //       </Trans>
+    //     </ThemedText.BodySecondary>
+    //   </>
+    // ) :
+     return (
       <NoData>No stats available</NoData>
     )
   }

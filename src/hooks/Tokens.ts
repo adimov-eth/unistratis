@@ -80,6 +80,10 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
 
     const listUrl = getChainInfo(chainId).defaultListUrl
 
+    if (!listUrl) {
+      return {}
+    }    
+
     const { current: list } = listsByUrl[listUrl]
     if (!list) {
       return {}
@@ -91,13 +95,13 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
       const bridgeInfo = tokenInfo.extensions?.bridgeInfo as unknown as BridgeInfo
       if (
         bridgeInfo &&
-        bridgeInfo[SupportedChainId.MAINNET] &&
-        bridgeInfo[SupportedChainId.MAINNET].tokenAddress &&
-        unsupportedSet.has(bridgeInfo[SupportedChainId.MAINNET].tokenAddress)
+        bridgeInfo[SupportedChainId.AURORIA] &&
+        bridgeInfo[SupportedChainId.AURORIA].tokenAddress &&
+        unsupportedSet.has(bridgeInfo[SupportedChainId.AURORIA].tokenAddress)
       ) {
-        const address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress
+        const address = bridgeInfo[SupportedChainId.AURORIA].tokenAddress
         // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
-        return { ...acc, [address]: new Token(SupportedChainId.MAINNET, address, tokenInfo.decimals) }
+        return { ...acc, [address]: new Token(SupportedChainId.AURORIA, address, tokenInfo.decimals) }
       }
       return acc
     }, {})

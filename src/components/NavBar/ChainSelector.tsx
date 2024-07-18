@@ -21,8 +21,8 @@ import ChainSelectorRow from './ChainSelectorRow'
 import { NavDropdown } from './NavDropdown'
 
 const NETWORK_SELECTOR_CHAINS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.SEPOLIA,
+  // SupportedChainId.MAINNET,
+  // SupportedChainId.SEPOLIA,
   SupportedChainId.AURORIA,
 ]
 
@@ -73,7 +73,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
       <Column paddingX="8">
         {NETWORK_SELECTOR_CHAINS.map((chainId: SupportedChainId) => (
           <ChainSelectorRow
-            disabled={isUniWallet && chainId === SupportedChainId.CELO}
+            // disabled={isUniWallet && chainId === SupportedChainId.CELO}
             onSelectChain={onSelectChain}
             targetChain={chainId}
             key={chainId}

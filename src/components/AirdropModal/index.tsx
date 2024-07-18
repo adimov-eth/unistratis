@@ -6,7 +6,7 @@ import airdropBackgroundv2 from 'assets/images/airdopBackground.png'
 import { ButtonEmphasis, ButtonSize, ThemeButton } from 'components/Button'
 import { OpacityHoverState } from 'components/Common'
 import Loader from 'components/Icons/LoadingSpinner'
-import { UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS } from 'constants/addresses'
+// import { UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS } from 'constants/addresses'
 import { useContract } from 'hooks/useContract'
 import { ChevronRightIcon } from 'nft/components/icons'
 import { useIsNftClaimAvailable } from 'nft/hooks/useIsNftClaimAvailable'
@@ -181,155 +181,155 @@ enum RewardAmounts {
 }
 
 const AirdropModal = () => {
-  const { account, provider } = useWeb3React()
-  const [claim, setClaim] = useState<Rewards>()
-  const [isClaimed, setIsClaimed] = useState(false)
-  const [hash, setHash] = useState('')
-  const [error, setError] = useState(false)
-  const setIsClaimAvailable = useIsNftClaimAvailable((state) => state.setIsClaimAvailable)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [totalAmount, setTotalAmount] = useState(0)
-  const isOpen = useModalIsOpen(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
-  const usdcAirdropToggle = useToggleModal(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
-  const contract = useContract(UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS, uniswapNftAirdropClaim)
+  // const { account, provider } = useWeb3React()
+  // const [claim, setClaim] = useState<Rewards>()
+  // const [isClaimed, setIsClaimed] = useState(false)
+  // const [hash, setHash] = useState('')
+  // const [error, setError] = useState(false)
+  // const setIsClaimAvailable = useIsNftClaimAvailable((state) => state.setIsClaimAvailable)
+  // const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [totalAmount, setTotalAmount] = useState(0)
+  // const isOpen = useModalIsOpen(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
+  // const usdcAirdropToggle = useToggleModal(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
+  // const contract = undefined //useContract(UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS, uniswapNftAirdropClaim)
 
-  const displayError = () => {
-    setIsSubmitting(false)
-    setError(true)
-    setTimeout(() => {
-      setError(false)
-    }, 5000)
-  }
+  // const displayError = () => {
+  //   setIsSubmitting(false)
+  //   setError(true)
+  //   setTimeout(() => {
+  //     setError(false)
+  //   }, 5000)
+  // }
 
-  useEffect(() => {
-    if (account && provider && contract) {
-      ;(async () => {
-        try {
-          const { data } = await CollectionRewardsFetcher(account)
-          const claim = data.find((claim) => claim?.rewardType === Airdrop.GENIE_UNISWAP_USDC_AIRDROP)
+  // useEffect(() => {
+  //   if (account && provider && contract) {
+  //     ;(async () => {
+  //       try {
+  //         const { data } = await CollectionRewardsFetcher(account)
+  //         const claim = data.find((claim) => claim?.rewardType === Airdrop.GENIE_UNISWAP_USDC_AIRDROP)
 
-          if (!claim) return
+  //         if (!claim) return
 
-          const [isClaimed] = await contract.connect(provider).functions.isClaimed(claim?.index)
+  //         const [isClaimed] = await contract.connect(provider).functions.isClaimed(claim?.index)
 
-          if (claim && isClaimed === false) {
-            const usdAmount = BigNumber.from(claim.amount).div(10 ** 6)
-            setClaim(claim)
-            setTotalAmount(usdAmount.toNumber())
-            setIsClaimAvailable(true)
-          }
-        } catch (err) {
-          displayError()
-        }
-      })()
-    }
-  }, [account, contract, provider, setIsClaimAvailable])
+  //         if (claim && isClaimed === false) {
+  //           const usdAmount = BigNumber.from(claim.amount).div(10 ** 6)
+  //           setClaim(claim)
+  //           setTotalAmount(usdAmount.toNumber())
+  //           setIsClaimAvailable(true)
+  //         }
+  //       } catch (err) {
+  //         displayError()
+  //       }
+  //     })()
+  //   }
+  // }, [account, contract, provider, setIsClaimAvailable])
 
-  const makeClaim = async () => {
-    try {
-      if (contract && claim && claim.amount && claim.merkleProof && provider) {
-        setIsSubmitting(true)
+  // const makeClaim = async () => {
+  //   try {
+  //     if (contract && claim && claim.amount && claim.merkleProof && provider) {
+  //       setIsSubmitting(true)
 
-        const response: TransactionResponse = await contract
-          .connect(provider?.getSigner())
-          .functions.claim(claim.index, account, claim?.amount, claim?.merkleProof)
+  //       const response: TransactionResponse = await contract
+  //         .connect(provider?.getSigner())
+  //         .functions.claim(claim.index, account, claim?.amount, claim?.merkleProof)
 
-        await response.wait()
+  //       await response.wait()
 
-        setHash(response.hash)
-        setIsSubmitting(false)
-        setIsClaimed(true)
-        setIsClaimAvailable(false)
-      }
-    } catch (err) {
-      setIsSubmitting(false)
-      displayError()
-    }
-  }
+  //       setHash(response.hash)
+  //       setIsSubmitting(false)
+  //       setIsClaimed(true)
+  //       setIsClaimAvailable(false)
+  //     }
+  //   } catch (err) {
+  //     setIsSubmitting(false)
+  //     displayError()
+  //   }
+  // }
 
-  return (
-    <>
-      <Modal hideBorder isOpen={isOpen} onDismiss={usdcAirdropToggle} maxHeight={90} maxWidth={400}>
-        <ModalWrap>
-          {isClaimed ? (
-            <ClaimContainer>
-              <ThemedText.HeadlineSmall>Congratulations!</ThemedText.HeadlineSmall>
-              <SuccessText>
-                You have successfully claimed {totalAmount} USDC. Thank you for supporting Genie.xyz.
-              </SuccessText>
-              <EtherscanLink href={`https://etherscan.io/tx/${hash}`} target="_blank">
-                <ThemedText.Link>
-                  <EtherscanLinkWrap>
-                    <span>Etherscan</span>
-                    <ChevronRightIcon />
-                  </EtherscanLinkWrap>
-                </ThemedText.Link>
-              </EtherscanLink>
+  // return (
+  //   <>
+  //     <Modal hideBorder isOpen={isOpen} onDismiss={usdcAirdropToggle} maxHeight={90} maxWidth={400}>
+  //       <ModalWrap>
+  //         {isClaimed ? (
+  //           <ClaimContainer>
+  //             <ThemedText.HeadlineSmall>Congratulations!</ThemedText.HeadlineSmall>
+  //             <SuccessText>
+  //               You have successfully claimed {totalAmount} USDC. Thank you for supporting Genie.xyz.
+  //             </SuccessText>
+  //             <EtherscanLink href={`https://etherscan.io/tx/${hash}`} target="_blank">
+  //               <ThemedText.Link>
+  //                 <EtherscanLinkWrap>
+  //                   <span>Etherscan</span>
+  //                   <ChevronRightIcon />
+  //                 </EtherscanLinkWrap>
+  //               </ThemedText.Link>
+  //             </EtherscanLink>
 
-              <CloseButton size={ButtonSize.medium} emphasis={ButtonEmphasis.medium} onClick={usdcAirdropToggle}>
-                Close
-              </CloseButton>
-            </ClaimContainer>
-          ) : (
-            <>
-              <ImageContainer>
-                <TextContainer>
-                  <SyledCloseIcon onClick={usdcAirdropToggle} stroke="white" />
-                  <MainHeader>Uniswap NFT Airdrop</MainHeader>
-                  <USDCLabel>{totalAmount} USDC</USDCLabel>
-                  <Line />
-                  <RewardsDetailsContainer>
-                    <RewardsText>Trading rewards</RewardsText>{' '}
-                    <CurrencyText>
-                      {totalAmount === RewardAmounts.tradingRewardAmount || totalAmount === RewardAmounts.combinedAmount
-                        ? `${RewardAmounts.tradingRewardAmount} USDC`
-                        : '0'}
-                    </CurrencyText>
-                  </RewardsDetailsContainer>
-                  <RewardsDetailsContainer>
-                    <RewardsText>Genie NFT holder rewards</RewardsText>{' '}
-                    <CurrencyText>
-                      {totalAmount !== RewardAmounts.tradingRewardAmount
-                        ? `${RewardAmounts.holderRewardAmount} USDC`
-                        : '0'}
-                    </CurrencyText>
-                  </RewardsDetailsContainer>
-                </TextContainer>
-                <StyledImage src={airdropBackgroundv2} />
-              </ImageContainer>
-              <Body>
-                <RewardsInformationText>
-                  As a long time supporter of Genie, you’ve been awarded {totalAmount} USDC tokens.
-                </RewardsInformationText>
-                <ReactLinkWrap>
-                  <LinkWrap href="https://uniswap.org/blog/uniswap-nft-aggregator-announcement" target="_blank">
-                    <ThemedText.Link>Read more about Uniswap NFT.</ThemedText.Link>
-                  </LinkWrap>
-                </ReactLinkWrap>
+  //             <CloseButton size={ButtonSize.medium} emphasis={ButtonEmphasis.medium} onClick={usdcAirdropToggle}>
+  //               Close
+  //             </CloseButton>
+  //           </ClaimContainer>
+  //         ) : (
+  //           <>
+  //             <ImageContainer>
+  //               <TextContainer>
+  //                 <SyledCloseIcon onClick={usdcAirdropToggle} stroke="white" />
+  //                 <MainHeader>Uniswap NFT Airdrop</MainHeader>
+  //                 <USDCLabel>{totalAmount} USDC</USDCLabel>
+  //                 <Line />
+  //                 <RewardsDetailsContainer>
+  //                   <RewardsText>Trading rewards</RewardsText>{' '}
+  //                   <CurrencyText>
+  //                     {totalAmount === RewardAmounts.tradingRewardAmount || totalAmount === RewardAmounts.combinedAmount
+  //                       ? `${RewardAmounts.tradingRewardAmount} USDC`
+  //                       : '0'}
+  //                   </CurrencyText>
+  //                 </RewardsDetailsContainer>
+  //                 <RewardsDetailsContainer>
+  //                   <RewardsText>Genie NFT holder rewards</RewardsText>{' '}
+  //                   <CurrencyText>
+  //                     {totalAmount !== RewardAmounts.tradingRewardAmount
+  //                       ? `${RewardAmounts.holderRewardAmount} USDC`
+  //                       : '0'}
+  //                   </CurrencyText>
+  //                 </RewardsDetailsContainer>
+  //               </TextContainer>
+  //               <StyledImage src={airdropBackgroundv2} />
+  //             </ImageContainer>
+  //             <Body>
+  //               <RewardsInformationText>
+  //                 As a long time supporter of Genie, you’ve been awarded {totalAmount} USDC tokens.
+  //               </RewardsInformationText>
+  //               <ReactLinkWrap>
+  //                 <LinkWrap href="https://uniswap.org/blog/uniswap-nft-aggregator-announcement" target="_blank">
+  //                   <ThemedText.Link>Read more about Uniswap NFT.</ThemedText.Link>
+  //                 </LinkWrap>
+  //               </ReactLinkWrap>
 
-                {error && (
-                  <Error>
-                    <AlertTriangle />
-                    Claim USDC failed. Please try again later
-                  </Error>
-                )}
+  //               {error && (
+  //                 <Error>
+  //                   <AlertTriangle />
+  //                   Claim USDC failed. Please try again later
+  //                 </Error>
+  //               )}
 
-                <ClaimButton
-                  onClick={makeClaim}
-                  size={ButtonSize.medium}
-                  emphasis={ButtonEmphasis.medium}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting && <Loader stroke="white" />}
-                  <span>Claim{isSubmitting && 'ing'} USDC</span>
-                </ClaimButton>
-              </Body>
-            </>
-          )}
-        </ModalWrap>
-      </Modal>
-    </>
-  )
+  //               <ClaimButton
+  //                 onClick={makeClaim}
+  //                 size={ButtonSize.medium}
+  //                 emphasis={ButtonEmphasis.medium}
+  //                 disabled={isSubmitting}
+  //               >
+  //                 {isSubmitting && <Loader stroke="white" />}
+  //                 <span>Claim{isSubmitting && 'ing'} USDC</span>
+  //               </ClaimButton>
+  //             </Body>
+  //           </>
+  //         )}
+  //       </ModalWrap>
+  //     </Modal>
+  //   </>
+  // )
 }
 
 export default AirdropModal

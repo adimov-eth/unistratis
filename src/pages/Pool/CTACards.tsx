@@ -65,7 +65,8 @@ const ResponsiveColumn = styled(AutoColumn)`
 
 export default function CTACards() {
   const { chainId } = useWeb3React()
-  const { infoLink } = getChainInfoOrDefault(chainId)
+  const i = getChainInfoOrDefault(chainId)
+  const infoLink = i?.infoLink
 
   return (
     <CTASection>

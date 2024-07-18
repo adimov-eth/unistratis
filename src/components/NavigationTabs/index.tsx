@@ -118,10 +118,10 @@ export function CreateProposalTabs() {
   return (
     <Tabs>
       <Row style={{ padding: '1rem 1rem 0 1rem' }}>
-        <HistoryLink to="/vote">
+        {/* <HistoryLink to="/vote">
           <StyledArrowLeft />
-        </HistoryLink>
-        <ActiveText style={{ marginLeft: 'auto', marginRight: 'auto' }}>Create Proposal</ActiveText>
+        </HistoryLink> */}
+        {/* <ActiveText style={{ marginLeft: 'auto', marginRight: 'auto' }}>Create Proposal</ActiveText> */}
       </Row>
     </Tabs>
   )

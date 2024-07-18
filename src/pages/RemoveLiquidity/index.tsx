@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import type { TransactionResponse } from '@ethersproject/providers'
@@ -32,7 +33,7 @@ import TransactionConfirmationModal, { ConfirmationModalContent } from '../../co
 import { WRAPPED_NATIVE_CURRENCY } from '../../constants/tokens'
 import { useCurrency } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
-import { usePairContract, useV2RouterContract } from '../../hooks/useContract'
+import { usePairContract } from '../../hooks/useContract'
 import useDebouncedChangeHandler from '../../hooks/useDebouncedChangeHandler'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import { Field } from '../../state/burn/actions'
@@ -105,7 +106,7 @@ function RemoveLiquidity() {
   // pair contract
   const pairContract: Contract | null = usePairContract(pair?.liquidityToken?.address)
 
-  const router = useV2RouterContract()
+  const router = undefined // useV2RouterContract()
 
   // allowance handling
   const { gatherPermitSignature, signatureData } = useV2LiquidityTokenPermit(

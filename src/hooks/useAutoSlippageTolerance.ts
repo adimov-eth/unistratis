@@ -76,7 +76,7 @@ export default function useAutoSlippageTolerance(
   trade: InterfaceTrade<Currency, Currency, TradeType> | undefined
 ): Percent {
   const { chainId } = useWeb3React()
-  const onL2 = chainId && L2_CHAIN_IDS.includes(chainId)
+  const onL2 = false // chainId && L2_CHAIN_IDS.includes(chainId)
   const outputDollarValue = useStablecoinValue(trade?.outputAmount)
   const nativeGasPrice = useGasPrice()
 

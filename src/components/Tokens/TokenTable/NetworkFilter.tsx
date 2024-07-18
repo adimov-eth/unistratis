@@ -166,13 +166,13 @@ export default function NetworkFilter() {
               </InternalLinkMenuItem>
             )
           })}
-          <InternalLinkMenuItem data-testid="tokens-network-filter-option-bnb-chain" disabled>
+          {/* <InternalLinkMenuItem data-testid="tokens-network-filter-option-bnb-chain" disabled>
             <NetworkLabel>
-              <Logo src={BNBChainInfo.logoUrl} />
+              <Logo src={BNBChainInfo.logoUrl} /> 
               {BNBChainInfo.label}
             </NetworkLabel>
             <Tag>Coming soon</Tag>
-          </InternalLinkMenuItem>
+          </InternalLinkMenuItem> */}
         </MenuTimeFlyout>
       )}
     </StyledMenu>

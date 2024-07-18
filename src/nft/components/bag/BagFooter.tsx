@@ -317,7 +317,7 @@ export const BagFooter = ({ setModalIsOpen, eventProperties }: BagFooterProps) =
   const [tokenSelectorOpen, setTokenSelectorOpen] = useState(false)
   const isPending = PENDING_BAG_STATUSES.includes(bagStatus)
   const activeCurrency = inputCurrency ?? defaultCurrency
-  const usingPayWithAnyToken = !!inputCurrency && shouldUsePayWithAnyToken && chainId === SupportedChainId.MAINNET
+  const usingPayWithAnyToken = !!inputCurrency && shouldUsePayWithAnyToken && chainId === SupportedChainId.AURORIA
 
   useSubscribeTransactionState(setModalIsOpen)
   const fetchAssets = useFetchAssets()
@@ -346,7 +346,7 @@ export const BagFooter = ({ setModalIsOpen, eventProperties }: BagFooterProps) =
 
   const { balance: balanceInEth } = useWalletBalance()
   const sufficientBalance = useMemo(() => {
-    if (!connected || chainId !== SupportedChainId.MAINNET) {
+    if (!connected || chainId !== SupportedChainId.AURORIA) {
       return undefined
     }
 
@@ -388,8 +388,8 @@ export const BagFooter = ({ setModalIsOpen, eventProperties }: BagFooterProps) =
     let buttonColor = theme.accentAction
     let buttonTextColor = theme.accentTextLightPrimary
 
-    if (connected && chainId !== SupportedChainId.MAINNET) {
-      handleClick = () => switchChain(connector, SupportedChainId.MAINNET)
+    if (connected && chainId !== SupportedChainId.AURORIA) {
+      handleClick = () => switchChain(connector, SupportedChainId.AURORIA)
       buttonText = <Trans>Switch networks</Trans>
       disabled = false
       warningText = <Trans>Wrong network</Trans>

@@ -1,6 +1,6 @@
 import { SupportedChainId } from 'constants/chains'
 
-const DEFAULT_NETWORKS = [SupportedChainId.MAINNET, SupportedChainId.GOERLI]
+const DEFAULT_NETWORKS: any[] = []
 
 export function constructSameAddressMap<T extends string>(
   address: T,

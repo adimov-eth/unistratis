@@ -17,7 +17,7 @@ import { AutoColumn } from '../../components/Column'
 import QuestionHelper from '../../components/QuestionHelper'
 import { AutoRow } from '../../components/Row'
 import { Dots } from '../../components/swap/styleds'
-import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
+// import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/connection/hooks'
 import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
 import { BackArrow, StyledInternalLink, ThemedText } from '../../theme'
@@ -54,7 +54,7 @@ export default function MigrateV2() {
   const theme = useTheme()
   const { account, chainId } = useWeb3React()
 
-  const v2FactoryAddress = chainId ? V2_FACTORY_ADDRESSES[chainId] : undefined
+  const v2FactoryAddress = undefined // chainId ? V2_FACTORY_ADDRESSES[chainId] : undefined
 
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()

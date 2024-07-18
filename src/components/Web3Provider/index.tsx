@@ -46,7 +46,7 @@ function Tracer() {
 function trace(event: any) {
   if (event.action !== 'request') return
   const { method, id, params } = event.request
-  console.groupCollapsed(method, id)
+  console.groupCollapsed(method, id, params)
   console.debug(params)
   console.groupEnd()
 }

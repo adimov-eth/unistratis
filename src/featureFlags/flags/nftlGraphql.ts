@@ -5,7 +5,7 @@ export function useNftGraphqlFlag(): BaseVariant {
 }
 
 export function useNftGraphqlEnabled(): boolean {
-  return useNftGraphqlFlag() === BaseVariant.Enabled
+  return false //useNftGraphqlFlag() === BaseVariant.Enabled
 }
 
 export { BaseVariant as NftGraphqlVariant }
