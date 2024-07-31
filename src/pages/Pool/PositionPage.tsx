@@ -394,6 +394,7 @@ function PositionPageContent() {
   const removed = liquidity?.eq(0)
 
   const metadata = usePositionTokenURI(parsedTokenId)
+  console.log('metadata', metadata, parsedTokenId);
 
   const token0 = useToken(token0Address)
   const token1 = useToken(token1Address)
@@ -711,6 +712,7 @@ function PositionPageContent() {
                   marginRight: '12px',
                 }}
               >
+                
                 {'result' in metadata ? (
                   <DarkCard
                     width="100%"
