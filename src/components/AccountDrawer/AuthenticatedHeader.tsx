@@ -1,15 +1,9 @@
-import { Trans } from '@lingui/macro'
 import { sendAnalyticsEvent, TraceEvent } from '@uniswap/analytics'
 import { BrowserEvent, InterfaceElementName, InterfaceEventName, SharedEventName } from '@uniswap/analytics-events'
-import { formatNumber, NumberType } from '@uniswap/conedison/format'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { ButtonEmphasis, ButtonSize, LoadingButtonSpinner, ThemeButton } from 'components/Button'
+import { LoadingButtonSpinner, ThemeButton } from 'components/Button'
 import Column from 'components/Column'
-import { AutoRow } from 'components/Row'
-import { LoadingBubble } from 'components/Tokens/loading'
-import { formatDelta } from 'components/Tokens/TokenDetails/PriceChart'
-import Tooltip from 'components/Tooltip'
 import { useGetConnection } from 'connection'
 import { usePortfolioBalancesQuery } from 'graphql/data/__generated__/types-and-hooks'
 import { useAtomValue } from 'jotai/utils'
@@ -17,7 +11,7 @@ import { useProfilePageState, useSellAsset, useWalletCollections } from 'nft/hoo
 import { useIsNftClaimAvailable } from 'nft/hooks/useIsNftClaimAvailable'
 import { ProfilePageStateType } from 'nft/types'
 import { useCallback, useState } from 'react'
-import { ArrowDownRight, ArrowUpRight, Copy, CreditCard, IconProps, Info, Power, Settings } from 'react-feather'
+import { ArrowDownRight, ArrowUpRight, Copy, IconProps, Info, Power, Settings } from 'react-feather'
 import { useNavigate } from 'react-router-dom'
 import { shouldDisableNFTRoutesAtom } from 'state/application/atoms'
 import { useAppDispatch } from 'state/hooks'
@@ -44,7 +38,7 @@ const AuthenticatedHeaderWrapper = styled.div`
 
 const HeaderButton = styled(ThemeButton)`
   border-color: transparent;
-  border-radius: 12px;
+  border-radius: 4px;
   border-style: solid;
   border-width: 1px;
   height: 40px;
@@ -52,7 +46,7 @@ const HeaderButton = styled(ThemeButton)`
 `
 
 const WalletButton = styled(ThemeButton)`
-  border-radius: 12px;
+  border-radius: 4px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 4px;
@@ -61,7 +55,7 @@ const WalletButton = styled(ThemeButton)`
 `
 
 const UNIButton = styled(WalletButton)`
-  border-radius: 12px;
+  border-radius: 4px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 4px;

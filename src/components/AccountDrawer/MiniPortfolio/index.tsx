@@ -11,10 +11,8 @@ import styled from 'styled-components/macro'
 import { ThemedText } from 'theme'
 
 import { ActivityTab } from './Activity'
-import NFTs from './NFTs'
 import Pools from './Pools'
 import { PortfolioRowWrapper } from './PortfolioRow'
-import Tokens from './Tokens'
 
 const Wrapper = styled(Column)`
   margin-top: 28px;
@@ -45,7 +43,7 @@ const NavItem = styled(ThemedText.SubHeader)<{ active?: boolean }>`
 `
 
 const PageWrapper = styled.div`
-  border-radius: 12px;
+  border-radius: 4px;
   margin-right: -16px;
   margin-left: -16px;
   width: calc(100% + 32px);

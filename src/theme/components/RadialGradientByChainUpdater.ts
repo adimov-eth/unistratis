@@ -69,13 +69,13 @@ export default function RadialGradientByChainUpdater(): null {
       // }
       // case SupportedChainId.POLYGON:
       // case SupportedChainId.POLYGON_MUMBAI: {
-      //   setBackground(backgroundResetStyles)
-      //   const polygonLightGradient =
-      //     'radial-gradient(100% 100% at 50% 0%, rgba(130, 71, 229, 0.2) 0%, rgba(200, 168, 255, 0.05) 52.6%, rgba(0, 0, 0, 0) 100%), #FFFFFF'
-      //   const polygonDarkGradient =
-      //     'radial-gradient(100% 100% at 50% 0%, rgba(130, 71, 229, 0.2) 0%, rgba(200, 168, 255, 0.05) 52.6%, rgba(0, 0, 0, 0) 100%), #0D0E0E'
-      //   backgroundRadialGradientElement.style.background = darkMode ? polygonDarkGradient : polygonLightGradient
-      //   break
+      // setBackground(backgroundResetStyles)
+      // const polygonLightGradient =
+      //   'radial-gradient(100% 100% at 50% 0%, rgba(130, 71, 229, 0.2) 0%, rgba(200, 168, 255, 0.05) 52.6%, rgba(0, 0, 0, 0) 100%), #FFFFFF'
+      // const polygonDarkGradient =
+      //   'radial-gradient(100% 100% at 50% 0%, rgba(130, 71, 229, 0.2) 0%, rgba(200, 168, 255, 0.05) 52.6%, rgba(0, 0, 0, 0) 100%), #0D0E0E'
+      // backgroundRadialGradientElement.style.background = darkMode ? polygonDarkGradient : polygonLightGradient
+      // break
       // }
       // case SupportedChainId.CELO:
       // case SupportedChainId.CELO_ALFAJORES: {
@@ -87,19 +87,19 @@ export default function RadialGradientByChainUpdater(): null {
       //   backgroundRadialGradientElement.style.background = darkMode ? celoDarkGradient : celoLightGradient
       //   break
       // }
-      // case SupportedChainId.BNB: {
-      //   setBackground(backgroundResetStyles)
-      //   const bscLightGradient =
-      //     'radial-gradient(100% 100% at 50% 0%, rgba(242 , 186, 8, 0.1) 0%, rgba(238, 182, 6, 0.08) 50%, rgba(140, 185, 11, 0) 100%), #FFFFFF'
-      //   const bscDarkGradient =
-      //     'radial-gradient(100% 100% at 50% 0%, rgba(169, 132, 17, 0.1) 0%, rgba(128, 100, 14, 0.08) 50%, rgba(140, 185, 11, 0) 100%), #0D0E0E'
-      //   backgroundRadialGradientElement.style.background = darkMode ? bscDarkGradient : bscLightGradient
-      //   break
-      // }
+      case SupportedChainId.AURORIA: {
+        setBackground(backgroundResetStyles)
+        const polygonLightGradient =
+          'radial-gradient(100% 100% at 50% 0%, rgba(10, 65, 160, 0.51) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
+        const polygonDarkGradient =
+          'radial-gradient(100% 100% at 50% 0%, rgba(10, 65, 160, 0.2) 0%, rgba(200, 168, 255, 0.05) 52.6%, rgba(0, 0, 0, 0) 100%), #000000'
+        backgroundRadialGradientElement.style.background = darkMode ? polygonDarkGradient : polygonLightGradient
+        break
+      }
       default: {
         setBackground(initialStyles)
         const defaultLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
+          'radial-gradient(100% 100% at 50% 0%, rgba(10, 65, 160, 0.51) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
         const defaultDarkGradient = 'linear-gradient(180deg, #202738 0%, #070816 100%)'
         backgroundRadialGradientElement.style.background = darkMode ? defaultDarkGradient : defaultLightGradient
       }
