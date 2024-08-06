@@ -17,7 +17,10 @@ export declare enum ChainId {
     CELO_ALFAJORES = 44787,
     GNOSIS = 100,
     MOONBEAM = 1284,
-    BSC = 56
+    BSC = 56,
+    STRATIS = 105105,
+    AURORIA = 205205
+
 }
 export declare const SUPPORTED_CHAINS: ChainId[];
 export declare const V2_SUPPORTED: ChainId[];
@@ -42,7 +45,8 @@ export declare enum ChainName {
     CELO_ALFAJORES = "celo-alfajores",
     GNOSIS = "gnosis-mainnet",
     MOONBEAM = "moonbeam-mainnet",
-    BSC = "bsc-mainnet"
+    BSC = "bsc-mainnet",
+    STRATIS = "stratis"
 }
 export declare enum NativeCurrencyName {
     ETHER = "ETH",
@@ -50,7 +54,9 @@ export declare enum NativeCurrencyName {
     CELO = "CELO",
     GNOSIS = "XDAI",
     MOONBEAM = "GLMR",
-    BNB = "BNB"
+    BNB = "BNB",
+    STRATIS = "STRAX",
+    AURORIA = "AURORA"
 }
 export declare const NATIVE_NAMES_BY_ID: {
     [chainId: number]: string[];

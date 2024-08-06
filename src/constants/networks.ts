@@ -23,6 +23,7 @@ export const FALLBACK_URLS = {
   // [SupportedChainId.SEPOLIA]: ['https://sepolia.infura.io/v3/2986b7c0f5354c25ae602774bc302ef0'],
 
   [SupportedChainId.AURORIA]: ['https://auroria.rpc.stratisevm.com'],
+  [SupportedChainId.STRATIS]: ['https://rpc.stratisevm.com'],
 
   // [SupportedChainId.MAINNET]: [
   //   // "Safe" URLs
@@ -101,6 +102,7 @@ export const FALLBACK_URLS = {
  */
 export const RPC_URLS = {
   [SupportedChainId.AURORIA]: [...FALLBACK_URLS[SupportedChainId.AURORIA]],
+  [SupportedChainId.STRATIS]: [...FALLBACK_URLS[SupportedChainId.STRATIS]],
   // [SupportedChainId.SEPOLIA]: [...FALLBACK_URLS[SupportedChainId.SEPOLIA]],
   // [SupportedChainId.MAINNET]: [
   //   `https://mainnet.infura.io/v3/${INFURA_KEY}`,

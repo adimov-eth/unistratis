@@ -37,8 +37,8 @@ import {
   // USDC_BSC,
   // USDC_MAINNET,
   // USDC_OPTIMISM,
-  // USDC_POLYGON,
-  // USDT,
+  USDC_STRATIS,
+  USDT,
   // USDT_ARBITRUM_ONE,
   // USDT_BSC,
   // USDT_OPTIMISM,
@@ -69,13 +69,11 @@ const WRAPPED_NATIVE_CURRENCIES_ONLY: ChainTokenList = Object.fromEntries(
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WRAPPED_NATIVE_CURRENCIES_ONLY,
-  // [SupportedChainId.MAINNET]: [
-  //   ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
-  //   DAI,
-  //   USDC_MAINNET,
-  //   USDT,
-  //   WBTC,
-  // ],
+  [SupportedChainId.STRATIS]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.STRATIS],
+    USDT,
+    USDC_STRATIS
+  ],
   // [SupportedChainId.OPTIMISM]: [
   //   ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM],
   //   DAI_OPTIMISM,
@@ -134,14 +132,12 @@ export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[
  * Shows up in the currency select for swap and add liquidity
  */
 export const COMMON_BASES: ChainCurrencyList = {
-  // [SupportedChainId.MAINNET]: [
-  //   nativeOnChain(SupportedChainId.MAINNET),
-  //   DAI,
-  //   USDC_MAINNET,
-  //   USDT,
-  //   WBTC,
-  //   WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
-  // ],
+  [SupportedChainId.STRATIS]: [
+    nativeOnChain(SupportedChainId.STRATIS),
+    USDC_STRATIS,
+    USDT,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.STRATIS] as Token,
+  ],
   // [SupportedChainId.GOERLI]: [
   //   nativeOnChain(SupportedChainId.GOERLI),
   //   WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
@@ -209,13 +205,11 @@ export const COMMON_BASES: ChainCurrencyList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WRAPPED_NATIVE_CURRENCIES_ONLY,
-  // [SupportedChainId.MAINNET]: [
-  //   ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
-  //   DAI,
-  //   USDC_MAINNET,
-  //   USDT,
-  //   WBTC,
-  // ],
+  [SupportedChainId.STRATIS]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.STRATIS],
+    USDC_STRATIS,
+    USDT,
+  ],
   // [SupportedChainId.BNB]: [
   //   ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.BNB],
   //   DAI_BSC,

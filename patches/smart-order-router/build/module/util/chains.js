@@ -3,6 +3,7 @@ export var ChainId;
 (function (ChainId) {
     ChainId[ChainId["MAINNET"] = 1] = "MAINNET";
     ChainId[ChainId["AURORIA"] = 205205] = "AURORIA";
+    ChainId[ChainId["STRATIS"] = 105105] = "STRATIS";
     ChainId[ChainId["ROPSTEN"] = 3] = "ROPSTEN";
     ChainId[ChainId["RINKEBY"] = 4] = "RINKEBY";
     ChainId[ChainId["G\u00D6RLI"] = 5] = "G\u00D6RLI";
@@ -20,11 +21,14 @@ export var ChainId;
     ChainId[ChainId["GNOSIS"] = 100] = "GNOSIS";
     ChainId[ChainId["MOONBEAM"] = 1284] = "MOONBEAM";
     ChainId[ChainId["BSC"] = 56] = "BSC";
+    ChainId[ChainId["STRATIS"] = 105105] = "STRATIS";
+    ChainId[ChainId["AURORIA"] = 205205] = "AURORIA";
 })(ChainId || (ChainId = {}));
 // WIP: Gnosis, Moonbeam
 export const SUPPORTED_CHAINS = [
     ChainId.MAINNET,
     ChainId.AURORIA,
+    ChainId.STRATIS,
     ChainId.RINKEBY,
     ChainId.ROPSTEN,
     ChainId.KOVAN,
@@ -40,6 +44,8 @@ export const SUPPORTED_CHAINS = [
     ChainId.CELO_ALFAJORES,
     ChainId.CELO,
     ChainId.BSC,
+    ChainId.STRATIS,
+    ChainId.AURORIA,
     // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 export const V2_SUPPORTED = [
@@ -76,6 +82,8 @@ export const ID_TO_CHAIN_ID = (id) => {
             return ChainId.MAINNET;
         case 205205:
             return ChainId.AURORIA;
+        case 105105: 
+            return ChainId.STRATIS;
         case 3:
             return ChainId.ROPSTEN;
         case 4:
@@ -118,6 +126,7 @@ export var ChainName;
 (function (ChainName) {
     ChainName["MAINNET"] = "mainnet";
     ChainName["AURORIA"] = "auroria";
+    ChainName["STRATIS"] = "stratis";
     ChainName["ROPSTEN"] = "ropsten";
     ChainName["RINKEBY"] = "rinkeby";
     ChainName["G\u00D6RLI"] = "goerli";
@@ -135,17 +144,22 @@ export var ChainName;
     ChainName["GNOSIS"] = "gnosis-mainnet";
     ChainName["MOONBEAM"] = "moonbeam-mainnet";
     ChainName["BSC"] = "bsc-mainnet";
+    ChainName["STRATIS"] = "stratis";
+    ChainName["AURORIA"] = "auroria";
 })(ChainName || (ChainName = {}));
 export var NativeCurrencyName;
 (function (NativeCurrencyName) {
     // Strings match input for CLI
     NativeCurrencyName["ETHER"] = "ETH";
     NativeCurrencyName["AURORIA"] = "tSTRAX";
+    NativeCurrencyName["STRATIS"] = "STRAX";
     NativeCurrencyName["MATIC"] = "MATIC";
     NativeCurrencyName["CELO"] = "CELO";
     NativeCurrencyName["GNOSIS"] = "XDAI";
     NativeCurrencyName["MOONBEAM"] = "GLMR";
     NativeCurrencyName["BNB"] = "BNB";
+    NativeCurrencyName["AURORIA"] = "tSTRAX";
+    NativeCurrencyName["STRATIS"] = "STRAX";
 })(NativeCurrencyName || (NativeCurrencyName = {}));
 export const NATIVE_NAMES_BY_ID = {
     [ChainId.MAINNET]: [
@@ -156,6 +170,11 @@ export const NATIVE_NAMES_BY_ID = {
     [ChainId.AURORIA]: [
         'tSTRAX',
         'tSTRAX',
+        '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    ],
+    [ChainId.STRATIS]: [
+        'STRAX',
+        'STRAX',
         '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
     ],
     [ChainId.RINKEBY]: [
@@ -228,6 +247,7 @@ export const NATIVE_NAMES_BY_ID = {
 export const NATIVE_CURRENCY = {
     [ChainId.MAINNET]: NativeCurrencyName.ETHER,
     [ChainId.AURORIA]: NativeCurrencyName.AURORIA,
+    [ChainId.STRATIS]: NativeCurrencyName.STRATIS,
     [ChainId.ROPSTEN]: NativeCurrencyName.ETHER,
     [ChainId.RINKEBY]: NativeCurrencyName.ETHER,
     [ChainId.GÖRLI]: NativeCurrencyName.ETHER,
@@ -252,6 +272,8 @@ export const ID_TO_NETWORK_NAME = (id) => {
             return ChainName.MAINNET;
         case 205205:
             return ChainName.AURORIA;
+        case 105105:
+            return ChainName.STRATIS;
         case 3:
             return ChainName.ROPSTEN;
         case 4:
@@ -297,6 +319,8 @@ export const ID_TO_PROVIDER = (id) => {
             return process.env.JSON_RPC_PROVIDER;
         case ChainId.AURORIA:
             return process.env.JSON_RPC_PROVIDER_AURORIA;
+        case ChainId.STRATIS:
+            return process.env.JSON_RPC_PROVIDER_STRATIS
         case ChainId.ROPSTEN:
             return process.env.JSON_RPC_PROVIDER_ROPSTEN;
         case ChainId.RINKEBY:
@@ -333,7 +357,8 @@ export const ID_TO_PROVIDER = (id) => {
 };
 export const WRAPPED_NATIVE_CURRENCY = {
     [ChainId.MAINNET]: new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'),
-    [ChainId.AURORIA]: new Token(205205, '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D', 18, 'tSTRAX', 'Wrapped STRAX'),
+    [ChainId.AURORIA]: new Token(205205, '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D', 18, 'WSTRAX', 'Wrapped STRAX'),
+    [ChainId.STRATIS]: new Token(105105, '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18', 18, 'WSTRAX', 'Wrapped STRAX'),
     [ChainId.ROPSTEN]: new Token(3, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.RINKEBY]: new Token(4, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.GÖRLI]: new Token(5, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapped Ether'),
@@ -353,6 +378,29 @@ export const WRAPPED_NATIVE_CURRENCY = {
     [ChainId.GNOSIS]: new Token(ChainId.GNOSIS, '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d', 18, 'WXDAI', 'Wrapped XDAI on Gnosis'),
     [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, '0xAcc15dC74880C9944775448304B263D191c6077F', 18, 'WGLMR', 'Wrapped GLMR'),
 };
+
+function isStratis(chainId){
+    return chainId === ChainId.STRATIS || chainId === ChainId.AURORIA
+}
+class StratisNativeCurrency extends NativeCurrency{
+    equals(other){
+        return other.isNative && other.chainId === this.chainId
+    }
+    constructor(chainId){
+        if (!isStratis(chainId))
+            throw new Error('Not stratis')
+        super(chainId, 18, 'STRAX', 'STRAX')
+    }
+    get wrapped(){
+        if(!isStratis(this.chainId))
+            throw new Error('Not stratis')
+        const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId]
+        if(nativeCurrency)
+            return nativeCurrency
+        throw new Error(`Does not support this chain ${this.chainId}`)
+    }
+}
+
 function isMatic(chainId) {
     return chainId === ChainId.POLYGON_MUMBAI || chainId === ChainId.POLYGON;
 }
@@ -477,9 +525,12 @@ export class ExtendedEther extends Ether {
 ExtendedEther._cachedExtendedEther = {};
 const cachedNativeCurrency = {};
 export function nativeOnChain(chainId) {
+    
     if (cachedNativeCurrency[chainId] != undefined)
         return cachedNativeCurrency[chainId];
-    if (isMatic(chainId))
+    if (isStratis(chainId))
+        cachedNativeCurrency[chainId] = new StratisNativeCurrency(chainId);
+    else if (isMatic(chainId))
         cachedNativeCurrency[chainId] = new MaticNativeCurrency(chainId);
     else if (isCelo(chainId))
         cachedNativeCurrency[chainId] = new CeloNativeCurrency(chainId);

@@ -100,6 +100,11 @@ exports.USDC_MOONBEAM = new sdk_core_1.Token(util_1.ChainId.MOONBEAM, '0x818ec0A
 exports.WGLMR_MOONBEAM = new sdk_core_1.Token(util_1.ChainId.MOONBEAM, '0xAcc15dC74880C9944775448304B263D191c6077F', 18, 'WGLMR', 'Wrapped GLMR');
 exports.DAI_MOONBEAM = new sdk_core_1.Token(util_1.ChainId.MOONBEAM, '0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b', 6, 'DAI', 'Dai on moonbeam bridged using Multichain');
 exports.WBTC_MOONBEAM = new sdk_core_1.Token(util_1.ChainId.MOONBEAM, '0x922D641a426DcFFaeF11680e5358F34d97d112E1', 8, 'WBTC', 'Wrapped BTC bridged using Multichain');
+
+exports.USDC_STRATIS = new sdk_core_1.Token(util_1.ChainId.STRATIS, '0xDD0C4bb4b46A1C10D36593E4FA5F76abdB583f7A', 6, 'USDC', 'USD//C');
+exports.USDT = new sdk_core_1.Token(util_1.ChainId.STRATIS, '0xe46f25Af64467c21a01c20Ae0edf94E2Ed934c5C', 18, 'USDT', 'Tether USD');
+exports.WSTRAX = new sdk_core_1.Token(util_1.ChainId.STRATIS, '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18', 18, 'WSTRAX', 'Wrapped STRATIS');
+
 class TokenProvider {
     constructor(chainId, multicall2Provider) {
         this.chainId = chainId;
@@ -198,6 +203,7 @@ const DAI_ON = (chainId) => {
             return exports.DAI_MOONBEAM;
         case util_1.ChainId.BSC:
             return exports.DAI_BSC;
+        
         default:
             throw new Error(`Chain id: ${chainId} not supported`);
     }
@@ -227,6 +233,8 @@ const USDT_ON = (chainId) => {
             return exports.USDT_ARBITRUM_RINKEBY;
         case util_1.ChainId.BSC:
             return exports.USDT_BSC;
+        case util_1.ChainId.STRATIS:
+            return exports.USDT;
         default:
             throw new Error(`Chain id: ${chainId} not supported`);
     }
@@ -266,6 +274,8 @@ const USDC_ON = (chainId) => {
             return exports.USDC_MOONBEAM;
         case util_1.ChainId.BSC:
             return exports.USDC_BSC;
+        case util_1.ChainId.STRATIS:
+            return exports.USDC_STRATIS;
         default:
             throw new Error(`Chain id: ${chainId} not supported`);
     }

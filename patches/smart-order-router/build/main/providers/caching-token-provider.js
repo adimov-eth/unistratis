@@ -98,6 +98,11 @@ exports.CACHE_SEED_TOKENS = {
         BTC: token_provider_1.BTC_BSC,
         WBNB: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.BSC],
     },
+    [util_1.ChainId.STRATIS]: {
+        WSTRAX: token_provider_1.WSTRAX,
+        USDC: token_provider_1.USDC_STRATIS,
+        USDT: token_provider_1.USDT,
+    },
     // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
 };
 /**

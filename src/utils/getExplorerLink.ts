@@ -12,6 +12,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   // [SupportedChainId.BNB]: 'https://bscscan.com',
   // [SupportedChainId.SEPOLIA]: 'https://sepolia.etherscan.io',
   [SupportedChainId.AURORIA]: 'https://auroria.explorer.stratisevm.com',
+  [SupportedChainId.STRATIS]: 'https://explorer.stratisevm.com',
 }
 
 export enum ExplorerDataType {

@@ -7,7 +7,7 @@ import JSBI from 'jsbi'
 import { useSingleCallResult } from 'lib/hooks/multicall'
 import { useMemo, useState } from 'react'
 
-// import { DAI, UNI, USDC_MAINNET } from '../constants/tokens'
+import { USDC_STRATIS } from '../constants/tokens'
 import { useEIP2612Contract } from './useContract'
 import useIsArgentWallet from './useIsArgentWallet'
 
@@ -32,11 +32,9 @@ const PERMITTABLE_TOKENS: {
     [checksummedTokenAddress: string]: PermitInfo
   }
 } = {
-  // [SupportedChainId.MAINNET]: {
-  //   [USDC_MAINNET.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
-  //   [DAI.address]: { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-  //   [UNI[SupportedChainId.MAINNET].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-  // },
+  [SupportedChainId.STRATIS]: {
+    [USDC_STRATIS.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
+  },
   // [SupportedChainId.GOERLI]: {
   //   [UNI[SupportedChainId.GOERLI].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
   // },

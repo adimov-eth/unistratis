@@ -15,6 +15,7 @@ const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 const SEPOLIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/1009067770841dc401a35f45d7103e54/raw/0a8418e4ae237c23b3c7a05537a14800b066ea76/sepoliatokenlist.json'
 
 const AURORIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/e3aadcd7328890a0898aa23dd5aec4c9/raw/76e70ff4b4747545267ed1337db9c0ca3eaea8ab/tokenlist.json'
+export const STRATIS_LIST = 'https://gist.githubusercontent.com/adimov-eth/ff27f2cad86f44fff90825475442d3eb/raw/44a7988092d56d65583851e2d64205172ee64335/maintokenlist.json'
 
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
@@ -24,7 +25,7 @@ export const PLASMA_BNB_LIST = 'https://raw.githubusercontent.com/plasmadlt/plas
 export const UNSUPPORTED_LIST_URLS: string[] = [] //[BA_LIST, UNI_UNSUPPORTED_LIST]
 
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [AURORIA_LIST]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [AURORIA_LIST, STRATIS_LIST]
 export const DEFAULT_INACTIVE_LIST_URLS: string[] = [
   // UNI_EXTENDED_LIST,
   // COMPOUND_LIST,

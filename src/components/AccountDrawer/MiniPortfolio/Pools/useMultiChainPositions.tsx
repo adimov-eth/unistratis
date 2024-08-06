@@ -42,6 +42,7 @@ type FeeAmounts = [BigNumber, BigNumber]
 const MAX_UINT128 = BigNumber.from(2).pow(128).sub(1)
 
 const DEFAULT_CHAINS = [
+  SupportedChainId.STRATIS,
   SupportedChainId.AURORIA,
   // SupportedChainId.MAINNET,
   // SupportedChainId.ARBITRUM_ONE,

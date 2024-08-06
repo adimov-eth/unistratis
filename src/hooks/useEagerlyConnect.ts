@@ -35,7 +35,6 @@ export default function useEagerlyConnect() {
   useEffect(() => {
     connect(gnosisSafeConnection.connector)
     connect(networkConnection.connector)
-
     if (selectedConnection) {
       connect(selectedConnection.connector)
     } // The dependency list is empty so this is only run once on mount

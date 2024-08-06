@@ -72,12 +72,15 @@ export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
   // [SupportedChainId.OPTIMISM_GOERLI]: Chain.Optimism,
   // [SupportedChainId.BNB]: Chain.Bnb,
   [SupportedChainId.AURORIA]: Chain.Auroria,
+  [SupportedChainId.STRATIS]: Chain.Stratis
+
+
 }
 
 export function chainIdToBackendName(chainId: number | undefined) {
   return chainId && CHAIN_ID_TO_BACKEND_NAME[chainId]
     ? CHAIN_ID_TO_BACKEND_NAME[chainId]
-    : CHAIN_ID_TO_BACKEND_NAME[SupportedChainId.AURORIA] // TODO: check
+    : CHAIN_ID_TO_BACKEND_NAME[SupportedChainId.STRATIS] // TODO: check
 }
 
 const GQL_CHAINS: number[] = [
@@ -87,6 +90,7 @@ const GQL_CHAINS: number[] = [
   // SupportedChainId.ARBITRUM_ONE,
   // SupportedChainId.CELO,
   SupportedChainId.AURORIA,
+  SupportedChainId.STRATIS,
 ]
 
 export function isGqlSupportedChain(chainId: number | undefined): chainId is SupportedChainId {
@@ -118,6 +122,7 @@ const URL_CHAIN_PARAM_TO_BACKEND: { [key: string]: Chain } = {
   optimism: Chain.Optimism,
   bnb: Chain.Bnb,
   auroria: Chain.Auroria,
+  stratis: Chain.Stratis,
 }
 
 export function validateUrlChainParam(chainName: string | undefined) {
@@ -127,15 +132,9 @@ export function validateUrlChainParam(chainName: string | undefined) {
 // TODO(cartcrom): refactor into safer lookup & replace usage
 // @ts-ignore
 export const CHAIN_NAME_TO_CHAIN_ID: { [key in Chain]: SupportedChainId } = {
-  // [Chain.Ethereum]: SupportedChainId.MAINNET,
-  // [Chain.EthereumGoerli]: SupportedChainId.GOERLI,
-  // [Chain.Polygon]: SupportedChainId.POLYGON,
-  // [Chain.Celo]: SupportedChainId.CELO,
-  // [Chain.Optimism]: SupportedChainId.OPTIMISM,
-  // [Chain.Arbitrum]: SupportedChainId.ARBITRUM_ONE,
-  // [Chain.UnknownChain]: SupportedChainId.MAINNET,
-  // [Chain.Bnb]: SupportedChainId.BNB,
+  
   [Chain.Auroria]: SupportedChainId.AURORIA,
+  [Chain.Stratis]: SupportedChainId.STRATIS,
 }
 
 export function fromGraphQLChain(chain: Chain): SupportedChainId {

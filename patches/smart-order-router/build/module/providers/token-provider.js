@@ -41,6 +41,10 @@ export const USDC_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xFF970A61A04b1cA1
 export const USDT_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', 6, 'USDT', 'Tether USD');
 export const WBTC_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, 'WBTC', 'Wrapped BTC');
 export const DAI_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai Stablecoin');
+export const USDC_STRATIS = new Token(ChainId.STRATIS, '0xDD0C4bb4b46A1C10D36593E4FA5F76abdB583f7A', 6, 'USDC', 'USD//C');
+export const USDT = new Token(ChainId.STRATIS, '0xe46f25Af64467c21a01c20Ae0edf94E2Ed934c5C', 18, 'USDT', 'Tether USD');
+export const WSTRAX = new Token(ChainId.STRATIS, '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18', 18, 'WSTRAX', 'Wrapped STRATIS');
+
 // export const DAI_ARBITRUM_RINKEBY = new Token(
 //   ChainId.ARBITRUM_RINKEBY,
 //   '0x2f3C1B6A51A469051A22986aA0dDF98466cc8D3c',
@@ -218,6 +222,8 @@ export const USDT_ON = (chainId) => {
             return USDT_ARBITRUM_RINKEBY;
         case ChainId.BSC:
             return USDT_BSC;
+        case ChainId.STRATIS:
+            return USDT;
         default:
             throw new Error(`Chain id: ${chainId} not supported`);
     }
@@ -256,6 +262,8 @@ export const USDC_ON = (chainId) => {
             return USDC_MOONBEAM;
         case ChainId.BSC:
             return USDC_BSC;
+        case ChainId.STRATIS:
+            return USDC_STRATIS;
         default:
             throw new Error(`Chain id: ${chainId} not supported`);
     }

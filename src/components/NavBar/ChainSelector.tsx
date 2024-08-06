@@ -23,6 +23,7 @@ import { NavDropdown } from './NavDropdown'
 const NETWORK_SELECTOR_CHAINS = [
   // SupportedChainId.MAINNET,
   // SupportedChainId.SEPOLIA,
+  SupportedChainId.STRATIS,
   SupportedChainId.AURORIA,
 ]
 

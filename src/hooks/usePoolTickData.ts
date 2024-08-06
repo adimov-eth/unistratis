@@ -17,7 +17,8 @@ import { useTickLens } from './useContract'
 import { PoolState, usePool } from './usePools'
 
 const PRICE_FIXED_DIGITS = 8
-const CHAIN_IDS_MISSING_SUBGRAPH_DATA = [SupportedChainId.AURORIA] //[SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_GOERLI]
+//TODO: FIX SUBGRAPH
+const CHAIN_IDS_MISSING_SUBGRAPH_DATA = [SupportedChainId.AURORIA, SupportedChainId.STRATIS] //[SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_GOERLI]
 
 // Tick with fields parsed to JSBIs, and active liquidity computed.
 export interface TickProcessed {

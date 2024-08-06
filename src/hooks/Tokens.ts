@@ -95,13 +95,13 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
       const bridgeInfo = tokenInfo.extensions?.bridgeInfo as unknown as BridgeInfo
       if (
         bridgeInfo &&
-        bridgeInfo[SupportedChainId.AURORIA] &&
-        bridgeInfo[SupportedChainId.AURORIA].tokenAddress &&
-        unsupportedSet.has(bridgeInfo[SupportedChainId.AURORIA].tokenAddress)
+        bridgeInfo[SupportedChainId.STRATIS] &&
+        bridgeInfo[SupportedChainId.STRATIS].tokenAddress &&
+        unsupportedSet.has(bridgeInfo[SupportedChainId.STRATIS].tokenAddress)
       ) {
-        const address = bridgeInfo[SupportedChainId.AURORIA].tokenAddress
+        const address = bridgeInfo[SupportedChainId.STRATIS].tokenAddress
         // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
-        return { ...acc, [address]: new Token(SupportedChainId.AURORIA, address, tokenInfo.decimals) }
+        return { ...acc, [address]: new Token(SupportedChainId.STRATIS, address, tokenInfo.decimals) }
       }
       return acc
     }, {})

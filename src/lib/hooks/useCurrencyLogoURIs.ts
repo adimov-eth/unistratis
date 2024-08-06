@@ -10,15 +10,15 @@ import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import { 
   // isCelo,
    NATIVE_CHAIN_ID, 
-  //  nativeOnChain 
+   nativeOnChain 
   } from '../../constants/tokens'
 
-type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon' | 'smartchain'
+type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon' | 'smartchain' | 'stratis'
 
 export function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
-    // case SupportedChainId.MAINNET:
-    //   return 'ethereum'
+    case SupportedChainId.STRATIS:
+      return 'stratis'
     // case SupportedChainId.ARBITRUM_ONE:
     //   return 'arbitrum'
     // case SupportedChainId.OPTIMISM:
@@ -26,22 +26,24 @@ export function chainIdToNetworkName(networkId: SupportedChainId): Network {
     // case SupportedChainId.POLYGON:
     //   return 'polygon'
     case SupportedChainId.AURORIA:
-      return 'ethereum'
+      return 'stratis'
     default:
       return 'ethereum'
   }
 }
 
-export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.AURORIA): string {
+export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.STRATIS): string {
   switch (chainId) {
     case 205205:
       return EthereumLogo
+    case 105105:
+      return EthereumLogo
     default:
       return EthereumLogo
   }
 }
-
-function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.AURORIA): string | void {
+//TODO: Check logos
+function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.STRATIS): string | void {
   // const networkName = chainIdToNetworkName(chainId)
   // const networksWithUrls = [
   //   SupportedChainId.ARBITRUM_ONE,

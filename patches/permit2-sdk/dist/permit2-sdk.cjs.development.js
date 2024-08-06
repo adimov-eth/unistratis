@@ -9,7 +9,7 @@ var hash = require('@ethersproject/hash');
 var bignumber = require('@ethersproject/bignumber');
 var contracts = require('@ethersproject/contracts');
 
-var PERMIT2_ADDRESS = '0xd6A77B342771c3fcc0CF40B441533B94D6596C7c';
+var PERMIT2_ADDRESS = '0x091826D697Eba3a84847669290Fe37acf333D14D';
 var MaxUint48 = /*#__PURE__*/bignumber.BigNumber.from('0xffffffffffff');
 var MaxUint160 = /*#__PURE__*/bignumber.BigNumber.from('0xffffffffffffffffffffffffffffffffffffffff');
 var MaxUint256 = /*#__PURE__*/bignumber.BigNumber.from('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');

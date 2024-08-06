@@ -8,15 +8,9 @@ const CHAIN_SUBGRAPH_URL: Record<number, string> = {
 
   [SupportedChainId.AURORIA]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 
-  // [SupportedChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+  [SupportedChainId.STRATIS]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 
-  // [SupportedChainId.OPTIMISM]: 'https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis',
 
-  // [SupportedChainId.POLYGON]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
-
-  // [SupportedChainId.CELO]: 'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo',
-
-  // [SupportedChainId.BNB]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-bsc',
 }
 
 const httpLink = new HttpLink({ uri: CHAIN_SUBGRAPH_URL[SupportedChainId.AURORIA] })
@@ -31,7 +25,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
     uri:
       chainId && CHAIN_SUBGRAPH_URL[chainId]
         ? CHAIN_SUBGRAPH_URL[chainId]
-        : CHAIN_SUBGRAPH_URL[SupportedChainId.AURORIA],
+        : CHAIN_SUBGRAPH_URL[SupportedChainId.STRATIS],
   }))
 
   return forward(operation)

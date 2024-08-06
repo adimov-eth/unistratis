@@ -57,7 +57,7 @@ export default function Pools({ account }: { account: string }) {
       const position = filteredPositions[i]
       if (position.closed) {
         closedPositions.push(position)
-      } else {
+      } else {  
         openPositions.push(position)
       }
     }
@@ -76,21 +76,23 @@ export default function Pools({ account }: { account: string }) {
 
   return (
     <PortfolioTabWrapper>
-      {openPositions.map((positionInfo) => (
-        <PositionListItem
-          key={positionInfo.details.tokenId.toString() + positionInfo.chainId}
-          positionInfo={positionInfo}
-        />
-      ))}
+      {openPositions.map((positionInfo, index) => {
+        return (
+          <PositionListItem
+            key={`${positionInfo.details.tokenId}-${positionInfo.chainId}-${index}`}
+            positionInfo={positionInfo}
+          />
+        );
+      })}
       <ExpandoRow
         title={t`Closed Positions`}
         isExpanded={showClosed}
         toggle={toggleShowClosed}
         numItems={closedPositions.length}
       >
-        {closedPositions.map((positionInfo) => (
+        {closedPositions.map((positionInfo, index) => (
           <PositionListItem
-            key={positionInfo.details.tokenId.toString() + positionInfo.chainId}
+            key={`${positionInfo.details.tokenId}-${positionInfo.chainId}-${positionInfo.closed}-${index}`}
             positionInfo={positionInfo}
           />
         ))}

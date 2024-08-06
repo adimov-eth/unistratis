@@ -140,9 +140,12 @@ var UNIVERSAL_ROUTER_ADDRESS = function UNIVERSAL_ROUTER_ADDRESS(chainId) {
     case 1:
       // mainnet
       return '0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B';
-		case 205205:
-			// aurolia
-			return '0xfcEeF4e799E4dC0FDa88cEdfE700d626f91D2da6';
+	case 205205:
+		// aurolia
+		return '0xfcEeF4e799E4dC0FDa88cEdfE700d626f91D2da6';
+	case 105105:
+		return '0xEE87B4bFfCAB73622834cdAf6EC96Ab6EFad6D8d';
+	
     case 5:
       // goerli
       return '0x4648a43B2C14Da09FdF82B161150d3F634f40491';
@@ -181,9 +184,11 @@ var WETH_ADDRESS = function WETH_ADDRESS(chainId) {
   switch (chainId) {
     case 1:
       //mainnet
-      return '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
-		case 205205: 
-			return '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D';
+	return '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
+	case 205205: 
+		return '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D';
+	case 105105:
+		return '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18'
     case 5:
       // goerli
       return '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6';
@@ -208,11 +213,12 @@ var WETH_ADDRESS = function WETH_ADDRESS(chainId) {
     case 56:
       // binance smart chain
       return '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c';
+	
     default:
       throw new Error("WETH9 or UniversalRouter not deployed on chain " + chainId);
   }
 };
-var PERMIT2_ADDRESS = '0xd6A77B342771c3fcc0CF40B441533B94D6596C7c';
+var PERMIT2_ADDRESS = '0x091826D697Eba3a84847669290Fe37acf333D14D';
 var CONTRACT_BALANCE = /*#__PURE__*/ethers.BigNumber.from(2).pow(255);
 var ETH_ADDRESS = '0x0000000000000000000000000000000000000000';
 var SENDER_AS_RECIPIENT = '0x0000000000000000000000000000000000000001';
