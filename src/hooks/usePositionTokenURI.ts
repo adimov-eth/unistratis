@@ -1,8 +1,8 @@
-//@ts-nocheck
 import { BigNumber } from '@ethersproject/bignumber'
 import JSBI from 'jsbi'
 import { NEVER_RELOAD, useSingleCallResult } from 'lib/hooks/multicall'
-import { useMemo } from 'react'
+import { CallStateResult } from 'lib/hooks/multicall'
+import { useEffect, useMemo, useState } from 'react'
 
 import { useV3NFTPositionManagerContract } from './useContract'
 
@@ -29,50 +29,54 @@ type UsePositionTokenURIResult =
       loading: true
     }
 
+type CallStateResultWithMeta = CallStateResult & {
+  valid: boolean;
+  loading: boolean;
+  error?: Error;
+};
+
 export function usePositionTokenURI(tokenId: TokenId | undefined): UsePositionTokenURIResult {
   const contract = useV3NFTPositionManagerContract()
-  const inputs = useMemo(
-    () => [tokenId instanceof BigNumber ? tokenId.toHexString() :  tokenId?.toString(16)],
-    [tokenId]
-  )
-  
 
-  const r = useSingleCallResult(contract, 'tokenURI', inputs, {
-    ...NEVER_RELOAD,
-    gasLimit: 12000000
-  })
+  const [result, setResult] = useState<{ tokenURI?: string, error?: Error } | null>(null)
 
-  const { result, error, loading, valid } = r
+  useEffect(() => {
+    if (!tokenId) {
+      setResult(null)
+      return
+    }
+
+    contract?.callStatic
+      .tokenURI(BigNumber.from(tokenId))
+      .then((tokenURI: string) => setResult({ tokenURI }))
+      .catch((error: Error) => setResult({ error }))
+  }, [contract, tokenId])
 
   return useMemo(() => {
-    if (error || !valid || !tokenId) {
-      return {
-        valid: false,
-        loading: false,
-      }
-    }
-    if (loading) {
+    if (!result) {
       return {
         valid: true,
         loading: true,
       }
     }
-    if (!result) {
+
+    if (result.error) {
       return {
         valid: false,
         loading: false,
       }
     }
-    const [tokenURI] = result as [string]
-    if (!tokenURI || !tokenURI.startsWith(STARTS_WITH))
+
+    const { tokenURI } = result
+    if (!tokenURI || !tokenURI.startsWith(STARTS_WITH)) {
       return {
         valid: false,
         loading: false,
       }
+    }
 
     try {
       const json = JSON.parse(atob(tokenURI.slice(STARTS_WITH.length)))
-
       return {
         valid: true,
         loading: false,
@@ -81,5 +85,5 @@ export function usePositionTokenURI(tokenId: TokenId | undefined): UsePositionTo
     } catch (error) {
       return { valid: false, loading: false }
     }
-  }, [error, loading, result, tokenId, valid])
+  }, [result])
 }

@@ -87,31 +87,31 @@ export default function FiatOnrampModal() {
     setLoading(true)
     setError(null)
     try {
-      const signedIframeUrlFetchEndpoint = process.env.REACT_APP_MOONPAY_LINK as string
-      const res = await fetch(signedIframeUrlFetchEndpoint, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          theme: isDarkMode ? 'dark' : 'light',
-          colorCode: theme.accentAction,
-          defaultCurrencyCode: 'eth',
-          redirectUrl: 'https://app.uniswap.org/#/swap',
-          walletAddresses: JSON.stringify(
-            MOONPAY_SUPPORTED_CURRENCY_CODES.reduce(
-              (acc, currencyCode) => ({
-                ...acc,
-                [currencyCode]: account,
-              }),
-              {}
-            )
-          ),
-        }),
-      })
-      const { url } = await res.json()
-      setSignedIframeUrl(url)
+      // const signedIframeUrlFetchEndpoint = process.env.REACT_APP_MOONPAY_LINK as string
+      // const res = await fetch(signedIframeUrlFetchEndpoint, {
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   },
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     theme: isDarkMode ? 'dark' : 'light',
+      //     colorCode: theme.accentAction,
+      //     defaultCurrencyCode: 'eth',
+      //     redirectUrl: 'https://app.uniswap.org/#/swap',
+      //     walletAddresses: JSON.stringify(
+      //       MOONPAY_SUPPORTED_CURRENCY_CODES.reduce(
+      //         (acc, currencyCode) => ({
+      //           ...acc,
+      //           [currencyCode]: account,
+      //         }),
+      //         {}
+      //       )
+      //     ),
+      //   }),
+      // })
+      // const { url } = await res.json()
+      // setSignedIframeUrl(url)
     } catch (e) {
       console.log('there was an error fetching the link', e)
       setError(e.toString())
