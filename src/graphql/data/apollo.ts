@@ -11,7 +11,7 @@ export const apolloClient = new ApolloClient({
   uri: GRAPHQL_URL,
   headers: {
     'Content-Type': 'application/json',
-    Origin: 'http://138.201.91.50:8000',
+    // Origin: 'http://127.0.0.1:8000',
   },
   cache: new InMemoryCache({
     typePolicies: {

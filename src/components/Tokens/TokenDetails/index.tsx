@@ -72,6 +72,8 @@ function useRelevantToken(
 ) {
   const { chainId: activeChainId } = useWeb3React()
   const queryToken = useMemo(() => {
+    console.log('queryToken address:', address) // Add this line to log the address
+    console.log('queryToken data:', tokenQueryData) // Add this line to log the tokenQueryData
     if (!address) return undefined
     if (address === NATIVE_CHAIN_ID) return nativeOnChain(pageChainId)
     if (tokenQueryData) return new QueryToken(address, tokenQueryData)
@@ -80,6 +82,7 @@ function useRelevantToken(
   // fetches on-chain token if query data is missing and page chain matches global chain (else fetch won't work)
   const skipOnChainFetch = Boolean(queryToken) || pageChainId !== activeChainId
   const onChainToken = useOnChainToken(address, skipOnChainFetch)
+  console.log('onChainToken:', onChainToken) // Add this line to log the onChainToken
 
   return useMemo(
     () => ({ token: queryToken ?? onChainToken, didFetchFromChain: !queryToken }),
@@ -107,13 +110,17 @@ export default function TokenDetails({
     throw new Error('Invalid token details route: tokenAddress param is undefined')
   }
   const address = useMemo(
-    () => (urlAddress === NATIVE_CHAIN_ID ? urlAddress : isAddress(urlAddress) || undefined),
+    () => {
+      console.log('urlAddress:', urlAddress) // Add this line to log the urlAddress
+      return urlAddress === NATIVE_CHAIN_ID ? urlAddress : isAddress(urlAddress) || undefined
+    },
     [urlAddress]
   )
 
   const pageChainId = CHAIN_NAME_TO_CHAIN_ID[chain]
 
   const tokenQueryData = tokenQuery.token
+  console.log('tokenQueryData:', tokenQueryData) // Add this line to log the tokenQueryData
   const crossChainMap = useMemo(
     () =>
       tokenQueryData?.project?.tokens.reduce((map, current) => {
@@ -124,6 +131,8 @@ export default function TokenDetails({
   )
 
   const { token: detailedToken, didFetchFromChain } = useRelevantToken(address, pageChainId, tokenQueryData)
+  console.log('detailedToken:', detailedToken) // Add this line to log the detailedToken
+  console.log('didFetchFromChain:', didFetchFromChain) // Add this line to log the didFetchFromChain
   const { token: inputToken } = useRelevantToken(inputTokenAddress, pageChainId, undefined)
 
   const tokenWarning = address ? checkWarning(address) : null
@@ -193,6 +202,7 @@ export default function TokenDetails({
     >
       <TokenDetailsLayout>
         {detailedToken && !isPending ? (
+          console.log(detailedToken),
           <LeftPanel>
             <BreadcrumbNavLink to={`/tokens/${chain.toLowerCase()}`}>
               <ArrowLeft data-testid="token-details-return-button" size={14} /> Tokens

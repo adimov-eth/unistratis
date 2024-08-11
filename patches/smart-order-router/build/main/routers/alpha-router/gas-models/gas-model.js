@@ -30,6 +30,7 @@ exports.usdGasTokensByChain = {
     [chains_1.ChainId.GNOSIS]: [token_provider_1.USDC_ETHEREUM_GNOSIS],
     [chains_1.ChainId.MOONBEAM]: [token_provider_1.USDC_MOONBEAM],
     [chains_1.ChainId.BSC]: [token_provider_1.USDT_BSC, token_provider_1.USDC_BSC, token_provider_1.DAI_BSC],
+    [chains_1.ChainId.STRATIS]: [token_provider_1.USDC_STRATIS, token_provider_1.USDT,
 };
 /**
  * Factory for building gas models that can be used with any route to generate

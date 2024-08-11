@@ -69,6 +69,7 @@ const baseTokensByChain = {
         token_provider_1.USDC_BSC,
         token_provider_1.USDT_BSC,
     ],
+    [util_1.ChainId.STRATIS]: [token_provider_1.USDC_STRATIS, token_provider_1.USDT],
 };
 async function getV3CandidatePools({ tokenIn, tokenOut, routeType, routingConfig, subgraphProvider, tokenProvider, poolProvider, blockedTokenListProvider, chainId, }) {
     var _a, _b, _c, _d, _e;

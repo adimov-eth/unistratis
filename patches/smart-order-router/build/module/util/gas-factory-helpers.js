@@ -55,6 +55,7 @@ export async function getHighestLiquidityV3NativePool(token, poolProvider) {
 }
 export async function getHighestLiquidityV3USDPool(chainId, poolProvider) {
     const usdTokens = usdGasTokensByChain[chainId];
+    console.log(usdTokens)
     const wrappedCurrency = WRAPPED_NATIVE_CURRENCY[chainId];
     if (!usdTokens) {
         throw new Error(`Could not find a USD token for computing gas costs on ${chainId}`);
