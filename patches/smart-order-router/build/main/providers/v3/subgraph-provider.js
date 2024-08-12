@@ -33,6 +33,7 @@ const SUBGRAPH_URL_BY_CHAIN = {
     [util_1.ChainId.CELO]: 'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo',
     [util_1.ChainId.GÖRLI]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-gorli',
     [util_1.ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain',
+    [util_1.ChainId.STRATIS]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 };
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.
 class V3SubgraphProvider {

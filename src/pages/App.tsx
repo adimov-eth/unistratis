@@ -16,7 +16,7 @@ import { SpinnerSVG } from 'theme/components'
 import { useIsDarkMode } from 'theme/components/ThemeToggle'
 import { flexRowNoWrap } from 'theme/styles'
 import { Z_INDEX } from 'theme/zIndex'
-import { STATSIG_DUMMY_KEY } from 'tracing'
+// import { STATSIG_DUMMY_KEY } from 'tracing'
 import { getEnvName } from 'utils/env'
 import { getCLS, getFCP, getFID, getLCP, Metric } from 'web-vitals'
 
@@ -206,7 +206,7 @@ export default function App() {
       <DarkModeQueryParamReader />
       <ApeModeQueryParamReader />
       <Trace page={currentPage}>
-        <StatsigProvider
+        {/* <StatsigProvider
           user={statsigUser}
           // TODO: replace with proxy and cycle key
           sdkKey={STATSIG_DUMMY_KEY}
@@ -215,7 +215,7 @@ export default function App() {
             environment: { tier: getEnvName() },
             api: process.env.REACT_APP_STATSIG_PROXY_URL,
           }}
-        >
+        > */}
           <HeaderWrapper transparent={isHeaderTransparent}>
             <NavBar blur={isHeaderTransparent} />
           </HeaderWrapper>
@@ -338,7 +338,7 @@ export default function App() {
           <MobileBottomBar>
             <PageTabs />
           </MobileBottomBar>
-        </StatsigProvider>
+        {/* </StatsigProvider> */}
       </Trace>
     </ErrorBoundary>
   )
