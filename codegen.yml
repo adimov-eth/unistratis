@@ -1,6 +1,6 @@
 overwrite: true
    schema: 
-     - "http://127.0.0.1:8000/subgraphs/name/ianlapham/uniswap-v3""
+     - "http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3"
      - "./src/graphql/data/schema.graphql"  # Include local schema extensions if necessary
    documents: "src/**/*.graphql"
    generates:

@@ -30,6 +30,8 @@ export const BASE_SWAP_COST = (id) => {
             return BigNumber.from(2000);
         case ChainId.MOONBEAM:
             return BigNumber.from(2000);
+        case ChainId.STRATIS:
+            return BigNumber.from(2000);
     }
 };
 export const COST_PER_INIT_TICK = (id) => {
@@ -59,6 +61,8 @@ export const COST_PER_INIT_TICK = (id) => {
             return BigNumber.from(31000);
         case ChainId.MOONBEAM:
             return BigNumber.from(31000);
+        case ChainId.STRATIS:
+            return BigNumber.from(31000);
     }
 };
 export const COST_PER_HOP = (id) => {
@@ -86,6 +90,8 @@ export const COST_PER_HOP = (id) => {
         case ChainId.GNOSIS:
             return BigNumber.from(80000);
         case ChainId.MOONBEAM:
+            return BigNumber.from(80000);
+        case ChainId.STRATIS:
             return BigNumber.from(80000);
     }
 };

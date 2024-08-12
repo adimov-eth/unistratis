@@ -33,6 +33,7 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
     [ChainId.GNOSIS]: [],
     [ChainId.MOONBEAM]: [],
     [ChainId.BSC]: [],
+    [ChainId.STRATIS]: [],
 };
 /**
  * Provider that does not get data from an external source and instead returns

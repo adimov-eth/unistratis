@@ -25,4 +25,4 @@ function fetchSchema(url, outputFile) {
 }
 
 fetchSchema(process.env.THE_GRAPH_SCHEMA_ENDPOINT, thegraphConfig.schema)
-// fetchSchema(process.env.REACT_APP_AWS_API_ENDPOINT, dataConfig.schema)
+fetchSchema(process.env.REACT_APP_AWS_API_ENDPOINT, dataConfig.schema)

@@ -44,6 +44,11 @@ const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
             token_provider_1.USDT_BSC,
             token_provider_1.BTC_BSC,
         ],
+        [chains_1.ChainId.STRATIS]: [
+            chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.STRATIS],
+            token_provider_1.USDC_STRATIS,
+            token_provider_1.USDT,
+        ],
     };
 };
 exports.BASES_TO_CHECK_TRADES_AGAINST = BASES_TO_CHECK_TRADES_AGAINST;

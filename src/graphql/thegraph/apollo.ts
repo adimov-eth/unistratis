@@ -8,7 +8,7 @@ const CHAIN_SUBGRAPH_URL: Record<number, string> = {
 
   // [SupportedChainId.AURORIA]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 
-  [SupportedChainId.STRATIS]: 'http://127.0.0.1:8000/subgraphs/name/ianlapham/uniswap-v3',
+  [SupportedChainId.STRATIS]: 'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
 
 
 }

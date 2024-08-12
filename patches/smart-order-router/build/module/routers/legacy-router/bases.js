@@ -1,4 +1,4 @@
-import { BTC_BSC, BUSD_BSC, DAI_BSC, DAI_MAINNET, USDC_BSC, USDC_MAINNET, USDT_BSC, USDT_MAINNET, WBTC_MAINNET, WMATIC_POLYGON, WMATIC_POLYGON_MUMBAI, } from '../../providers/token-provider';
+import { USDC_STRATIS, USDT, BTC_BSC, BUSD_BSC, DAI_BSC, DAI_MAINNET, USDC_BSC, USDC_MAINNET, USDT_BSC, USDT_MAINNET, WBTC_MAINNET, WMATIC_POLYGON, WMATIC_POLYGON_MUMBAI, } from '../../providers/token-provider';
 import { ChainId, WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
 export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
     return {
@@ -40,6 +40,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
             USDC_BSC,
             USDT_BSC,
             BTC_BSC,
+        ],
+        [ChainId.STRATIS]: [
+            WRAPPED_NATIVE_CURRENCY[ChainId.STRATIS],
+            USDC_STRATIS,
+            USDT
         ],
     };
 };
