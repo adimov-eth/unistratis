@@ -1,4 +1,3 @@
-import Badge from 'components/Badge'
 import { getChainInfo } from 'constants/chainInfo'
 import { BACKEND_CHAIN_NAMES, CHAIN_NAME_TO_CHAIN_ID, validateUrlChainParam } from 'graphql/data/util'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
@@ -97,13 +96,6 @@ const CheckContainer = styled.div`
 const NetworkFilterOption = styled(FilterOption)`
   min-width: 156px;
 `
-const Tag = styled(Badge)`
-  background-color: ${({ theme }) => theme.backgroundModule};
-  color: ${({ theme }) => theme.textSecondary};
-  font-size: 10px;
-  opacity: 1;
-  padding: 4px 6px;
-`
 
 export default function NetworkFilter() {
   const theme = useTheme()
@@ -117,7 +109,6 @@ export default function NetworkFilter() {
   const currentChainName = validateUrlChainParam(chainName)
 
   const chainInfo = getChainInfo(CHAIN_NAME_TO_CHAIN_ID[currentChainName])
-  const BNBChainInfo = getChainInfo(CHAIN_NAME_TO_CHAIN_ID.BNB)
 
   return (
     <StyledMenu ref={node}>

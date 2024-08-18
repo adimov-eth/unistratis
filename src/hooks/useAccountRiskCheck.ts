@@ -1,7 +1,4 @@
-import { sendEvent } from 'components/analytics'
-import ms from 'ms.macro'
 import { useEffect } from 'react'
-import { ApplicationModal, setOpenModal } from 'state/application/reducer'
 import { useAppDispatch } from 'state/hooks'
 
 export default function useAccountRiskCheck(account: string | null | undefined) {
@@ -9,8 +6,8 @@ export default function useAccountRiskCheck(account: string | null | undefined) 
 
   useEffect(() => {
     if (account) {
-      const riskCheckLocalStorageKey = `risk-check-${account}`
-      const now = Date.now()
+      // const riskCheckLocalStorageKey = `risk-check-${account}`
+      // const now = Date.now()
       // try {
       //   const storedTime = localStorage.getItem(riskCheckLocalStorageKey)
       //   const checkExpirationTime = storedTime ? parseInt(storedTime) : now - 1

@@ -1,5 +1,5 @@
-import { Token } from '@uniswap/sdk-core';
-import { FeeAmount } from '../constants';
+import { Token } from '@uniswap/sdk-core'
+import { FeeAmount } from '../constants'
 /**
  * Computes a pool address
  * @param factoryAddress The Uniswap V3 factory address
@@ -9,10 +9,16 @@ import { FeeAmount } from '../constants';
  * @param initCodeHashManualOverride Override the init code hash used to compute the pool address if necessary
  * @returns The pool address
  */
-export declare function computePoolAddress({ factoryAddress, tokenA, tokenB, fee, initCodeHashManualOverride }: {
-    factoryAddress: string;
-    tokenA: Token;
-    tokenB: Token;
-    fee: FeeAmount;
-    initCodeHashManualOverride?: string;
-}): string;
+export declare function computePoolAddress({
+  factoryAddress,
+  tokenA,
+  tokenB,
+  fee,
+  initCodeHashManualOverride,
+}: {
+  factoryAddress: string
+  tokenA: Token
+  tokenB: Token
+  fee: FeeAmount
+  initCodeHashManualOverride?: string
+}): string

@@ -1,1 +1,1 @@
-export * from './AllowanceProvider';
+export * from './AllowanceProvider'

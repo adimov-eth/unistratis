@@ -1,7 +1,5 @@
 import type { TokenList } from '@uniswap/token-lists'
 import { validateTokenList } from '@uniswap/widgets'
-import contenthashToUri from 'lib/utils/contenthashToUri'
-import parseENSAddress from 'lib/utils/parseENSAddress'
 import uriToHttp from 'lib/utils/uriToHttp'
 
 // export const DEFAULT_TOKEN_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
@@ -23,10 +21,7 @@ export default async function fetchTokenList(
     return cached
   }
 
-  let urls: string[]
-  
-  urls = uriToHttp(listUrl)
-  
+  const urls = uriToHttp(listUrl)
 
   if (urls.length === 0) {
     throw new Error('Unrecognized list URL protocol.')

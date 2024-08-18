@@ -1,3 +1,4 @@
+import { JsonRpcProvider } from '@ethersproject/providers'
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { Protocol } from '@uniswap/router-sdk'
 import { AlphaRouter, ChainId } from '@uniswap/smart-order-router'
@@ -79,6 +80,28 @@ interface GetQuoteArgs {
   type: 'exactIn' | 'exactOut'
 }
 
+getClientSideQuote(
+  {
+    amount: '100000000000000000',
+    tokenInAddress: '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18',
+    tokenInChainId: 105105,
+    tokenInDecimals: 18,
+    tokenInSymbol: 'WSTRAX',
+    tokenOutAddress: '0xe46f25Af64467c21a01c20Ae0edf94E2Ed934c5C',
+    tokenOutChainId: 105105,
+    tokenOutDecimals: 6,
+    tokenOutSymbol: 'USDT',
+    type: 'exactOut',
+  },
+  new AlphaRouter({
+    chainId: 105105,
+    provider: new JsonRpcProvider('https://rpc.stratisevm.com'),
+  }),
+  CLIENT_PARAMS
+).then((r) => {
+  console.log('q:', r)
+})
+
 export const routingApi = createApi({
   reducerPath: 'routingApi',
   baseQuery: fetchBaseQuery({
@@ -143,7 +166,13 @@ export const routingApi = createApi({
         } catch (error) {
           // TODO: fall back to client-side quoter when auto router fails.
           // deprecate 'legacy' v2/v3 routers first.
-          return { error: { status: 'CUSTOM_ERROR', error: error.toString(), data: error } }
+          return {
+            error: {
+              status: 'CUSTOM_ERROR',
+              error: error.toString(),
+              data: error,
+            },
+          }
         }
       },
       keepUnusedDataFor: ms`10s`,

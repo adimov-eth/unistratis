@@ -17,7 +17,10 @@ const store = configureStore({
     getDefaultMiddleware({ thunk: true })
       .concat(routingApi.middleware)
       .concat(save({ states: PERSISTED_KEYS, debounce: 1000 })),
-  preloadedState: load({ states: PERSISTED_KEYS, disableWarnings: isTestEnv() }),
+  preloadedState: load({
+    states: PERSISTED_KEYS,
+    disableWarnings: isTestEnv(),
+  }),
 })
 
 store.dispatch(updateVersion())

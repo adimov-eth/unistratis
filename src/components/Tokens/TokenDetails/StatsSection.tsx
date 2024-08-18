@@ -1,11 +1,10 @@
 import { Trans } from '@lingui/macro'
 import { formatNumber, NumberType } from '@uniswap/conedison/format'
 import { MouseoverTooltip } from 'components/Tooltip'
-import { getChainInfo } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { ReactNode } from 'react'
 import styled from 'styled-components/macro'
-import { ExternalLink, ThemedText } from 'theme'
+import { ThemedText } from 'theme'
 import { textFadeIn } from 'theme/styles'
 
 // import { UNSUPPORTED_METADATA_CHAINS } from '../constants'
@@ -76,8 +75,7 @@ type StatsSectionProps = {
   volume24H?: NumericStat
 }
 export default function StatsSection(props: StatsSectionProps) {
-  const { chainId, address, priceLow52W, priceHigh52W, TVL, volume24H } = props
-  const { label, infoLink } = getChainInfo(chainId)
+  const { priceLow52W, priceHigh52W, TVL, volume24H } = props
 
   if (TVL || volume24H || priceLow52W || priceHigh52W) {
     return (
@@ -112,7 +110,7 @@ export default function StatsSection(props: StatsSectionProps) {
       </StatsWrapper>
     )
   } else {
-    // return 
+    // return
     // UNSUPPORTED_METADATA_CHAINS.includes(chainId) ? (
     //   <>
     //     <Header>
@@ -128,8 +126,6 @@ export default function StatsSection(props: StatsSectionProps) {
     //     </ThemedText.BodySecondary>
     //   </>
     // ) :
-     return (
-      <NoData>No stats available</NoData>
-    )
+    return <NoData>No stats available</NoData>
   }
 }

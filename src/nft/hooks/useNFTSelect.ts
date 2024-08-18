@@ -26,7 +26,9 @@ export const useNFTSelect = create<SelectNFTState>()(
         set(({ selectedNFTs }) => {
           if (selectedNFTs.length === 0) return { selectedNFTs: [nft] }
           else if (selectedNFTs.some((x) => x.id === nft.id))
-            return { selectedNFTs: selectedNFTs.filter((n) => n.id !== nft.id) }
+            return {
+              selectedNFTs: selectedNFTs.filter((n) => n.id !== nft.id),
+            }
           else return { selectedNFTs: [...selectedNFTs, nft] }
         }),
       reset: () => set(() => ({ selectedNFTs: [] })),

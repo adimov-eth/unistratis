@@ -17,11 +17,11 @@ export default function TokenDetailsPage() {
     tokenAddress: string
     chainName?: string
   }>()
-  console.log("chainName", chainName)
+  console.log('chainName', chainName)
   const chain = validateUrlChainParam(chainName)
   console.log(chain)
   const isNative = tokenAddress === NATIVE_CHAIN_ID
-  console.log("isNative", isNative, tokenAddress, NATIVE_CHAIN_ID)
+  console.log('isNative', isNative, tokenAddress, NATIVE_CHAIN_ID)
   const [timePeriod, setTimePeriod] = useAtom(pageTimePeriodAtom)
   const [detailedTokenAddress, duration] = useMemo(
     /* tokenAddress will always be defined in the path for for this page to render, but useParams will always
@@ -29,14 +29,14 @@ export default function TokenDetailsPage() {
     () => [isNative ? getNativeTokenDBAddress(chain) : tokenAddress ?? '', toHistoryDuration(timePeriod)],
     [chain, isNative, timePeriod, tokenAddress]
   )
-  console.log("detailedTokenAddress", detailedTokenAddress, duration)
+  console.log('detailedTokenAddress', detailedTokenAddress, duration)
   const parsedQs = useParsedQueryString()
 
   const parsedInputTokenAddress: string | undefined = useMemo(() => {
     return typeof parsedQs.inputCurrency === 'string' ? (parsedQs.inputCurrency as string) : undefined
   }, [parsedQs])
 
-   const result = useTokenQuery({
+  const result = useTokenQuery({
     variables: {
       address: detailedTokenAddress,
       chain,
@@ -44,7 +44,7 @@ export default function TokenDetailsPage() {
     errorPolicy: 'all',
   })
   const { data: tokenQuery } = result
-  console.log("tokenQuery", tokenQuery, result);
+  console.log('tokenQuery', tokenQuery, result)
   const { data: tokenPriceQuery } = useTokenPriceQuery({
     variables: {
       address: detailedTokenAddress,
@@ -53,7 +53,7 @@ export default function TokenDetailsPage() {
     },
     errorPolicy: 'all',
   })
-  console.log("tokenPriceQuery", tokenPriceQuery)
+  console.log('tokenPriceQuery', tokenPriceQuery)
 
   // Saves already-loaded chart data into state to display while tokenPriceQuery is undefined timePeriod input changes
   const [currentPriceQuery, setCurrentPriceQuery] = useState(tokenPriceQuery)

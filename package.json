@@ -29,7 +29,8 @@
     "test:size": "node scripts/test-size.js",
     "cypress:open": "cypress open --browser chrome --e2e",
     "cypress:run": "cypress run --browser chrome --e2e",
-    "deduplicate": "yarn-deduplicate --strategy=highest"
+    "deduplicate": "yarn-deduplicate --strategy=highest",
+    "prettier:fix": "prettier --write '**/*.ts' && prettier --write '**/*.tsx' && prettier --write '**/*.json'"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -106,6 +107,7 @@
     "cypress-hardhat": "^1.0.0",
     "env-cmd": "^10.1.0",
     "eslint": "^7.11.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.27",
     "hardhat": "^2.14.0",
     "jest-fetch-mock": "^3.0.3",
@@ -260,12 +262,13 @@
     "@web3-react/network": "^8.2.0",
     "@web3-react/types": "^8.2.0",
     "@web3-react/url": "^8.2.0",
-    "@web3-react/walletconnect": "^8.2.0"
+    "@web3-react/walletconnect": "^8.2.0",
+    "@walletconnect/core": "^1.8.0"
   },
   "engines": {
     "npm": "please-use-yarn",
-    "node": "14",
+    "node": "16",
     "yarn": ">=1.22"
   },
-  "packageManager": "yarn@4.3.0"
+  "packageManager": "yarn@1.22.22"
 }

@@ -109,13 +109,10 @@ export default function TokenDetails({
   if (!urlAddress) {
     throw new Error('Invalid token details route: tokenAddress param is undefined')
   }
-  const address = useMemo(
-    () => {
-      console.log('urlAddress:', urlAddress) // Add this line to log the urlAddress
-      return urlAddress === NATIVE_CHAIN_ID ? urlAddress : isAddress(urlAddress) || undefined
-    },
-    [urlAddress]
-  )
+  const address = useMemo(() => {
+    console.log('urlAddress:', urlAddress) // Add this line to log the urlAddress
+    return urlAddress === NATIVE_CHAIN_ID ? urlAddress : isAddress(urlAddress) || undefined
+  }, [urlAddress])
 
   const pageChainId = CHAIN_NAME_TO_CHAIN_ID[chain]
 
@@ -202,42 +199,44 @@ export default function TokenDetails({
     >
       <TokenDetailsLayout>
         {detailedToken && !isPending ? (
-          console.log(detailedToken),
-          <LeftPanel>
-            <BreadcrumbNavLink to={`/tokens/${chain.toLowerCase()}`}>
-              <ArrowLeft data-testid="token-details-return-button" size={14} /> Tokens
-            </BreadcrumbNavLink>
-            <TokenInfoContainer data-testid="token-info-container">
-              <TokenNameCell>
-                <CurrencyLogo currency={detailedToken} size="32px" hideL2Icon={false} />
+          (console.log(detailedToken),
+          (
+            <LeftPanel>
+              <BreadcrumbNavLink to={`/tokens/${chain.toLowerCase()}`}>
+                <ArrowLeft data-testid="token-details-return-button" size={14} /> Tokens
+              </BreadcrumbNavLink>
+              <TokenInfoContainer data-testid="token-info-container">
+                <TokenNameCell>
+                  <CurrencyLogo currency={detailedToken} size="32px" hideL2Icon={false} />
 
-                {detailedToken.name ?? <Trans>Name not found</Trans>}
-                <TokenSymbol>{detailedToken.symbol ?? <Trans>Symbol not found</Trans>}</TokenSymbol>
-              </TokenNameCell>
-              <TokenActions>
-                <ShareButton currency={detailedToken} />
-              </TokenActions>
-            </TokenInfoContainer>
-            <ChartSection tokenPriceQuery={tokenPriceQuery} onChangeTimePeriod={onChangeTimePeriod} />
+                  {detailedToken.name ?? <Trans>Name not found</Trans>}
+                  <TokenSymbol>{detailedToken.symbol ?? <Trans>Symbol not found</Trans>}</TokenSymbol>
+                </TokenNameCell>
+                <TokenActions>
+                  <ShareButton currency={detailedToken} />
+                </TokenActions>
+              </TokenInfoContainer>
+              <ChartSection tokenPriceQuery={tokenPriceQuery} onChangeTimePeriod={onChangeTimePeriod} />
 
-            <StatsSection
-              chainId={pageChainId}
-              address={address}
-              TVL={tokenQueryData?.market?.totalValueLocked?.value}
-              volume24H={tokenQueryData?.market?.volume24H?.value}
-              priceHigh52W={tokenQueryData?.market?.priceHigh52W?.value}
-              priceLow52W={tokenQueryData?.market?.priceLow52W?.value}
-            />
-            <Hr />
-            <AboutSection
-              address={address}
-              chainId={pageChainId}
-              description={tokenQueryData?.project?.description}
-              homepageUrl={tokenQueryData?.project?.homepageUrl}
-              twitterName={tokenQueryData?.project?.twitterName}
-            />
-            {!detailedToken.isNative && <AddressSection address={address} />}
-          </LeftPanel>
+              <StatsSection
+                chainId={pageChainId}
+                address={address}
+                TVL={tokenQueryData?.market?.totalValueLocked?.value}
+                volume24H={tokenQueryData?.market?.volume24H?.value}
+                priceHigh52W={tokenQueryData?.market?.priceHigh52W?.value}
+                priceLow52W={tokenQueryData?.market?.priceLow52W?.value}
+              />
+              <Hr />
+              <AboutSection
+                address={address}
+                chainId={pageChainId}
+                description={tokenQueryData?.project?.description}
+                homepageUrl={tokenQueryData?.project?.homepageUrl}
+                twitterName={tokenQueryData?.project?.twitterName}
+              />
+              {!detailedToken.isNative && <AddressSection address={address} />}
+            </LeftPanel>
+          ))
         ) : (
           <TokenDetailsSkeleton />
         )}

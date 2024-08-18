@@ -9,9 +9,7 @@ import JSBI from 'jsbi'
 import { NEVER_RELOAD, useMultipleContractSingleData } from 'lib/hooks/multicall'
 import { useMemo } from 'react'
 
-import { 
-  USDC_STRATIS, USDT,
-  WRAPPED_NATIVE_CURRENCY } from '../../constants/tokens'
+import { USDC_STRATIS, USDT, WRAPPED_NATIVE_CURRENCY } from '../../constants/tokens'
 
 const STAKING_REWARDS_INTERFACE = new Interface(STAKING_REWARDS_ABI)
 

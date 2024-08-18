@@ -25,8 +25,18 @@ async function getQuote(
     amount: amountRaw,
   }: {
     type: 'exactIn' | 'exactOut'
-    tokenIn: { address: string; chainId: number; decimals: number; symbol?: string }
-    tokenOut: { address: string; chainId: number; decimals: number; symbol?: string }
+    tokenIn: {
+      address: string
+      chainId: number
+      decimals: number
+      symbol?: string
+    }
+    tokenOut: {
+      address: string
+      chainId: number
+      decimals: number
+      symbol?: string
+    }
     amount: BigintIsh
   },
   router: AlphaRouter,
@@ -46,7 +56,7 @@ async function getQuote(
     /*swapConfig=*/ undefined,
     config
   )
-
+  console.log(amount, quoteCurrency, swapRoute)
   if (!swapRoute) throw new Error('Failed to generate client side quote')
 
   return { data: transformSwapRouteToGetQuoteResult(type, amount, swapRoute) }

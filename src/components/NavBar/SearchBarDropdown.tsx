@@ -3,7 +3,6 @@ import { useTrace } from '@uniswap/analytics'
 import { InterfaceSectionName, NavBarSearchTypes } from '@uniswap/analytics-events'
 import { useWeb3React } from '@web3-react/core'
 import Badge from 'components/Badge'
-import { SupportedChainId } from 'constants/chains'
 import { useNftGraphqlEnabled } from 'featureFlags/flags/nftlGraphql'
 import { HistoryDuration, SafetyLevel } from 'graphql/data/__generated__/types-and-hooks'
 import { useTrendingCollections } from 'graphql/data/nft/TrendingCollections'
@@ -147,7 +146,6 @@ export const SearchBarDropdown = ({
   const shortenedHistory = useMemo(() => searchHistory?.slice(0, 2) ?? [...Array<SearchToken>(2)], [searchHistory])
 
   const { pathname } = useLocation()
-  const { chainId } = useWeb3React()
   const isNFTPage = useIsNftPage()
   const isNftGraphqlEnabled = useNftGraphqlEnabled()
   const isTokenPage = pathname.includes('/tokens')

@@ -33,7 +33,11 @@ const PERMITTABLE_TOKENS: {
   }
 } = {
   [SupportedChainId.STRATIS]: {
-    [USDC_STRATIS.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
+    [USDC_STRATIS.address]: {
+      type: PermitType.AMOUNT,
+      name: 'USD Coin',
+      version: '2',
+    },
   },
   // [SupportedChainId.GOERLI]: {
   //   [UNI[SupportedChainId.GOERLI].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },

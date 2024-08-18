@@ -14,8 +14,8 @@ import { IV3SubgraphProvider, V3SubgraphPool } from './subgraph-provider';
  * @class StaticV3SubgraphProvider
  */
 export declare class StaticV3SubgraphProvider implements IV3SubgraphProvider {
-    private chainId;
-    private poolProvider;
-    constructor(chainId: ChainId, poolProvider: IV3PoolProvider);
-    getPools(tokenIn?: Token, tokenOut?: Token): Promise<V3SubgraphPool[]>;
+  private chainId;
+  private poolProvider;
+  constructor(chainId: ChainId, poolProvider: IV3PoolProvider);
+  getPools(tokenIn?: Token, tokenOut?: Token): Promise<V3SubgraphPool[]>;
 }

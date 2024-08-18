@@ -11,7 +11,6 @@ export const NATIVE_CHAIN_ID = 'NATIVE'
 // https://docs.openzeppelin.com/contracts/3.x/erc20
 export const DEFAULT_ERC20_DECIMALS = 18
 
-
 export const USDC_STRATIS = new Token(
   SupportedChainId.STRATIS,
   '0xDD0C4bb4b46A1C10D36593E4FA5F76abdB583f7A',
@@ -28,8 +27,7 @@ export const USDT = new Token(
   'Tether USD'
 )
 
-export const UNI: { [chainId: number]: Token } = {
-}
+export const UNI: { [chainId: number]: Token } = {}
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
   ...(WETH9 as Record<SupportedChainId, Token>),
@@ -72,7 +70,6 @@ class StraxNativeCurrency extends NativeCurrency {
   }
 }
 
-
 class ExtendedEther extends Ether {
   public get wrapped(): Token {
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
@@ -105,7 +102,9 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
   return (cachedNativeCurrency[chainId] = nativeCurrency)
 }
 
-export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {
+export const TOKEN_SHORTHANDS: {
+  [shorthand: string]: { [chainId in SupportedChainId]?: string }
+} = {
   USDC: {
     [SupportedChainId.STRATIS]: USDC_STRATIS.address,
   },

@@ -3,7 +3,7 @@ import { useWeb3React } from '@web3-react/core'
 import { useCallback, useEffect, useState } from 'react'
 import { useCloseModal, useModalIsOpen } from 'state/application/hooks'
 import { ApplicationModal } from 'state/application/reducer'
-import styled, { useTheme } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 import { CustomLightSpinner, ThemedText } from 'theme'
 import { useIsDarkMode } from 'theme/components/ThemeToggle'
 
@@ -54,28 +54,13 @@ const StyledSpinner = styled(CustomLightSpinner)`
   top: 0;
 `
 
-const MOONPAY_SUPPORTED_CURRENCY_CODES = [
-  'eth',
-  'eth_arbitrum',
-  'eth_optimism',
-  'eth_polygon',
-  'weth',
-  'wbtc',
-  'matic_polygon',
-  'polygon',
-  'usdc_arbitrum',
-  'usdc_optimism',
-  'usdc_polygon',
-]
-
 export default function FiatOnrampModal() {
   const { account } = useWeb3React()
-  const theme = useTheme()
   const isDarkMode = useIsDarkMode()
   const closeModal = useCloseModal()
   const fiatOnrampModalOpen = useModalIsOpen(ApplicationModal.FIAT_ONRAMP)
 
-  const [signedIframeUrl, setSignedIframeUrl] = useState<string | null>(null)
+  const [signedIframeUrl] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -118,7 +103,7 @@ export default function FiatOnrampModal() {
     } finally {
       setLoading(false)
     }
-  }, [account, isDarkMode, theme.accentAction])
+  }, [account])
 
   useEffect(() => {
     fetchSignedIframeUrl()
