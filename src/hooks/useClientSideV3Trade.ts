@@ -1,7 +1,6 @@
 import { Currency, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
 import { Route, SwapQuoter } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
-import { SupportedChainId } from 'constants/chains'
 import JSBI from 'jsbi'
 import { useSingleContractWithCallData } from 'lib/hooks/multicall'
 import { useMemo } from 'react'
@@ -11,16 +10,16 @@ import { InterfaceTrade, TradeState } from 'state/routing/types'
 import { useAllV3Routes } from './useAllV3Routes'
 import { useQuoter } from './useContract'
 
-const QUOTE_GAS_OVERRIDES: { [chainId: number]: number } = {
-  // [SupportedChainId.ARBITRUM_ONE]: 25_000_000,
-  // [SupportedChainId.ARBITRUM_GOERLI]: 25_000_000,
-  // [SupportedChainId.CELO]: 50_000_000,
-  // [SupportedChainId.CELO_ALFAJORES]: 50_000_000,
-  // [SupportedChainId.POLYGON]: 40_000_000,
-  // [SupportedChainId.POLYGON_MUMBAI]: 40_000_000,
-  // [SupportedChainId.BNB]: 50_000_000,
-  // TODO: Check if Stratis needs override
-}
+// const QUOTE_GAS_OVERRIDES: { [chainId: number]: number } = {
+//   // [SupportedChainId.ARBITRUM_ONE]: 25_000_000,
+//   // [SupportedChainId.ARBITRUM_GOERLI]: 25_000_000,
+//   // [SupportedChainId.CELO]: 50_000_000,
+//   // [SupportedChainId.CELO_ALFAJORES]: 50_000_000,
+//   // [SupportedChainId.POLYGON]: 40_000_000,
+//   // [SupportedChainId.POLYGON_MUMBAI]: 40_000_000,
+//   // [SupportedChainId.BNB]: 50_000_000,
+//   // TODO: Check if Stratis needs override
+// }
 
 const DEFAULT_GAS_QUOTE = 2_000_000
 
@@ -34,7 +33,10 @@ export function useClientSideV3Trade<TTradeType extends TradeType>(
   tradeType: TTradeType,
   amountSpecified?: CurrencyAmount<Currency>,
   otherCurrency?: Currency
-): { state: TradeState; trade: InterfaceTrade<Currency, Currency, TTradeType> | undefined } {
+): {
+  state: TradeState
+  trade: InterfaceTrade<Currency, Currency, TTradeType> | undefined
+} {
   const [currencyIn, currencyOut] =
     tradeType === TradeType.EXACT_INPUT
       ? [amountSpecified?.currency, otherCurrency]
@@ -56,7 +58,7 @@ export function useClientSideV3Trade<TTradeType extends TradeType>(
   )
 
   const quotesResults = useSingleContractWithCallData(quoter, callData, {
-    gasRequired: DEFAULT_GAS_QUOTE //chainId ? QUOTE_GAS_OVERRIDES[chainId] ?? DEFAULT_GAS_QUOTE : undefined,
+    gasRequired: DEFAULT_GAS_QUOTE, //chainId ? QUOTE_GAS_OVERRIDES[chainId] ?? DEFAULT_GAS_QUOTE : undefined,
   })
 
   const currenciesAreTheSame = useMemo(

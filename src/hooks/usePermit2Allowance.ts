@@ -106,12 +106,26 @@ export default function usePermit2Allowance(amount?: CurrencyAmount<Token>, spen
       if (!tokenAllowance || !permitAllowance) {
         return { state: AllowanceState.LOADING }
       } else if (!(isPermitted || isSigned)) {
-        return { token, state: AllowanceState.REQUIRED, isApprovalLoading: false, approveAndPermit }
+        return {
+          token,
+          state: AllowanceState.REQUIRED,
+          isApprovalLoading: false,
+          approveAndPermit,
+        }
       } else if (!isApproved) {
-        return { token, state: AllowanceState.REQUIRED, isApprovalLoading, approveAndPermit }
+        return {
+          token,
+          state: AllowanceState.REQUIRED,
+          isApprovalLoading,
+          approveAndPermit,
+        }
       }
     }
-    return { token, state: AllowanceState.ALLOWED, permitSignature: !isPermitted && isSigned ? signature : undefined }
+    return {
+      token,
+      state: AllowanceState.ALLOWED,
+      permitSignature: !isPermitted && isSigned ? signature : undefined,
+    }
   }, [
     approveAndPermit,
     isApprovalLoading,

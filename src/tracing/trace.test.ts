@@ -168,7 +168,10 @@ describe('trace', () => {
   describe('traceChild', () => {
     it('starts a span under a transaction', async () => {
       await trace('test', ({ traceChild }) => {
-        traceChild('child', () => Promise.resolve(), { data: { e: 'e' }, tags: { is_widget: true } })
+        traceChild('child', () => Promise.resolve(), {
+          data: { e: 'e' },
+          tags: { is_widget: true },
+        })
         return Promise.resolve()
       })
       const transaction = getTransaction()

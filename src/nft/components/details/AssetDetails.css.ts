@@ -54,7 +54,13 @@ export const marketplace = sprinkles({ borderRadius: '4' })
 
 export const tab = style([
   subhead,
-  sprinkles({ color: 'textSecondary', border: 'none', padding: '0', background: 'transparent', cursor: 'pointer' }),
+  sprinkles({
+    color: 'textSecondary',
+    border: 'none',
+    padding: '0',
+    background: 'transparent',
+    cursor: 'pointer',
+  }),
   {
     selectors: {
       '&[data-active="true"]': {

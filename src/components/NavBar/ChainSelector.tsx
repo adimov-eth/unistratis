@@ -1,8 +1,6 @@
 import { t } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
 import { MouseoverTooltip } from 'components/Tooltip'
-import { ConnectionType } from 'connection'
-import { useGetConnection } from 'connection'
 import { getChainInfo } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
@@ -32,7 +30,7 @@ interface ChainSelectorProps {
 }
 
 export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
-  const { chainId, connector } = useWeb3React()
+  const { chainId } = useWeb3React()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isMobile = useIsMobile()
 
@@ -58,10 +56,6 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
     },
     [selectChain, setIsOpen]
   )
-
-  const getConnection = useGetConnection()
-  const connectionType = getConnection(connector).type
-  const isUniWallet = connectionType === ConnectionType.UNIWALLET
 
   if (!chainId) {
     return null

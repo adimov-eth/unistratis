@@ -8,8 +8,14 @@ import { IV3SubgraphProvider, V3SubgraphPool } from './subgraph-provider';
  * @export
  * @class V3SubgraphProviderWithFallBacks
  */
-export declare class V3SubgraphProviderWithFallBacks implements IV3SubgraphProvider {
-    private fallbacks;
-    constructor(fallbacks: IV3SubgraphProvider[]);
-    getPools(tokenIn?: Token, tokenOut?: Token, providerConfig?: ProviderConfig): Promise<V3SubgraphPool[]>;
+export declare class V3SubgraphProviderWithFallBacks
+  implements IV3SubgraphProvider
+{
+  private fallbacks;
+  constructor(fallbacks: IV3SubgraphProvider[]);
+  getPools(
+    tokenIn?: Token,
+    tokenOut?: Token,
+    providerConfig?: ProviderConfig
+  ): Promise<V3SubgraphPool[]>;
 }

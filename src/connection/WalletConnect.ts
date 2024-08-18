@@ -21,7 +21,11 @@ export class WalletConnectPopup extends WalletConnect {
     onError,
     qrcode = true,
   }: Omit<WalletConnectConstructorArgs, 'options'> & { qrcode?: boolean }) {
-    super({ actions, options: { qrcode, rpc: RPC_URLS_WITHOUT_FALLBACKS }, onError })
+    super({
+      actions,
+      options: { qrcode, rpc: RPC_URLS_WITHOUT_FALLBACKS },
+      onError,
+    })
   }
 
   activate(chainId?: number) {

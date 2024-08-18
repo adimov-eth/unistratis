@@ -1,6 +1,10 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { V2RouteWithValidQuote } from '../../entities/route-with-valid-quote';
-import { BuildV2GasModelFactoryType, IGasModel, IV2GasModelFactory } from '../gas-model';
+import {
+  BuildV2GasModelFactoryType,
+  IGasModel,
+  IV2GasModelFactory,
+} from '../gas-model';
 export declare const BASE_SWAP_COST: BigNumber;
 export declare const COST_PER_EXTRA_HOP: BigNumber;
 /**
@@ -21,9 +25,14 @@ export declare const COST_PER_EXTRA_HOP: BigNumber;
  * @class V2HeuristicGasModelFactory
  */
 export declare class V2HeuristicGasModelFactory extends IV2GasModelFactory {
-    constructor();
-    buildGasModel({ chainId, gasPriceWei, poolProvider, token, }: BuildV2GasModelFactoryType): Promise<IGasModel<V2RouteWithValidQuote>>;
-    private estimateGas;
-    private getEthPool;
-    private getHighestLiquidityUSDPool;
+  constructor();
+  buildGasModel({
+    chainId,
+    gasPriceWei,
+    poolProvider,
+    token,
+  }: BuildV2GasModelFactoryType): Promise<IGasModel<V2RouteWithValidQuote>>;
+  private estimateGas;
+  private getEthPool;
+  private getHighestLiquidityUSDPool;
 }

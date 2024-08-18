@@ -29,7 +29,9 @@ export type PositionInfo = {
 const POSITION_CACHE_EXPIRY = ms`1m` // 1 minute is arbitrary here
 // Allows reusing recently fetched positions between component mounts
 type CachedPositionsEntry = { result: PositionInfo[]; stale: boolean }
-const cachedPositionsAtom = atom<{ [address: string]: CachedPositionsEntry | undefined }>({})
+const cachedPositionsAtom = atom<{
+  [address: string]: CachedPositionsEntry | undefined
+}>({})
 type UseCachedPositionsReturnType = [CachedPositionsEntry | undefined, (positions: PositionInfo[]) => void]
 /**
  * Caches positions to allow reusing between component mounts
@@ -40,13 +42,19 @@ export function useCachedPositions(account: string): UseCachedPositionsReturnTyp
   const [cachedPositions, setCachedPositions] = useAtom(cachedPositionsAtom)
   const setPositionsAndStaleTimeout = useCallback(
     (positions: PositionInfo[]) => {
-      setCachedPositions((cache) => ({ ...cache, [account]: { result: positions, stale: false } }))
+      setCachedPositions((cache) => ({
+        ...cache,
+        [account]: { result: positions, stale: false },
+      }))
       setTimeout(
         () =>
           setCachedPositions((cache) => {
             // sets stale to true if the positions haven't been updated since the timeout
             if (positions === cache[account]?.result) {
-              return { ...cache, [account]: { result: positions, stale: true } }
+              return {
+                ...cache,
+                [account]: { result: positions, stale: true },
+              }
             } else {
               return cache
             }
@@ -76,14 +84,19 @@ export function usePoolAddressCache() {
   )
   const set = useCallback(
     (details: PositionDetails, chainId: SupportedChainId, address: string) =>
-      updateCache((c) => ({ ...c, [poolAddressKey(details, chainId)]: address })),
+      updateCache((c) => ({
+        ...c,
+        [poolAddressKey(details, chainId)]: address,
+      })),
     [updateCache]
   )
   return { get, set }
 }
 
 // These values are static, so we can persist them across sessions using `WithStorage`
-const tokenCacheAtom = atomWithStorage<{ [key: string]: SerializedToken | undefined }>('cachedAsyncTokens', {})
+const tokenCacheAtom = atomWithStorage<{
+  [key: string]: SerializedToken | undefined
+}>('cachedAsyncTokens', {})
 function useTokenCache() {
   const [cache, setCache] = useAtom(tokenCacheAtom)
   const get = useCallback(
@@ -96,7 +109,10 @@ function useTokenCache() {
   const set = useCallback(
     (token?: Token) => {
       if (token) {
-        setCache((cache) => ({ ...cache, [currencyKey(token)]: serializeToken(token) }))
+        setCache((cache) => ({
+          ...cache,
+          [currencyKey(token)]: serializeToken(token),
+        }))
       }
     },
     [setCache]

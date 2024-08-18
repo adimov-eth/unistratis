@@ -192,7 +192,6 @@ const AirdropModal = () => {
   // const isOpen = useModalIsOpen(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
   // const usdcAirdropToggle = useToggleModal(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
   // const contract = undefined //useContract(UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS, uniswapNftAirdropClaim)
-
   // const displayError = () => {
   //   setIsSubmitting(false)
   //   setError(true)
@@ -200,18 +199,14 @@ const AirdropModal = () => {
   //     setError(false)
   //   }, 5000)
   // }
-
   // useEffect(() => {
   //   if (account && provider && contract) {
   //     ;(async () => {
   //       try {
   //         const { data } = await CollectionRewardsFetcher(account)
   //         const claim = data.find((claim) => claim?.rewardType === Airdrop.GENIE_UNISWAP_USDC_AIRDROP)
-
   //         if (!claim) return
-
   //         const [isClaimed] = await contract.connect(provider).functions.isClaimed(claim?.index)
-
   //         if (claim && isClaimed === false) {
   //           const usdAmount = BigNumber.from(claim.amount).div(10 ** 6)
   //           setClaim(claim)
@@ -224,18 +219,14 @@ const AirdropModal = () => {
   //     })()
   //   }
   // }, [account, contract, provider, setIsClaimAvailable])
-
   // const makeClaim = async () => {
   //   try {
   //     if (contract && claim && claim.amount && claim.merkleProof && provider) {
   //       setIsSubmitting(true)
-
   //       const response: TransactionResponse = await contract
   //         .connect(provider?.getSigner())
   //         .functions.claim(claim.index, account, claim?.amount, claim?.merkleProof)
-
   //       await response.wait()
-
   //       setHash(response.hash)
   //       setIsSubmitting(false)
   //       setIsClaimed(true)
@@ -246,7 +237,6 @@ const AirdropModal = () => {
   //     displayError()
   //   }
   // }
-
   // return (
   //   <>
   //     <Modal hideBorder isOpen={isOpen} onDismiss={usdcAirdropToggle} maxHeight={90} maxWidth={400}>
@@ -265,7 +255,6 @@ const AirdropModal = () => {
   //                 </EtherscanLinkWrap>
   //               </ThemedText.Link>
   //             </EtherscanLink>
-
   //             <CloseButton size={ButtonSize.medium} emphasis={ButtonEmphasis.medium} onClick={usdcAirdropToggle}>
   //               Close
   //             </CloseButton>
@@ -306,14 +295,12 @@ const AirdropModal = () => {
   //                   <ThemedText.Link>Read more about Uniswap NFT.</ThemedText.Link>
   //                 </LinkWrap>
   //               </ReactLinkWrap>
-
   //               {error && (
   //                 <Error>
   //                   <AlertTriangle />
   //                   Claim USDC failed. Please try again later
   //                 </Error>
   //               )}
-
   //               <ClaimButton
   //                 onClick={makeClaim}
   //                 size={ButtonSize.medium}

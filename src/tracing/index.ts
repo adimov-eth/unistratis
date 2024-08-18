@@ -1,14 +1,5 @@
 import 'components/analytics'
 
-import * as Sentry from '@sentry/react'
-import { BrowserTracing } from '@sentry/tracing'
-import { initializeAnalytics, OriginApplication } from '@uniswap/analytics'
-import { SharedEventName } from '@uniswap/analytics-events'
-import { isSentryEnabled } from 'utils/env'
-import { getEnvName, isProductionEnv } from 'utils/env'
-
-import { beforeSend } from './errors'
-
 export { trace } from './trace'
 
 // Dump some metadata into the window to allow client verification.

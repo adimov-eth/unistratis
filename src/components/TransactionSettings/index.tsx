@@ -1,7 +1,5 @@
 import { Trans } from '@lingui/macro'
 import { Percent } from '@uniswap/sdk-core'
-import { useWeb3React } from '@web3-react/core'
-import { L2_CHAIN_IDS } from 'constants/chains'
 import { DEFAULT_DEADLINE_FROM_NOW } from 'constants/misc'
 import ms from 'ms.macro'
 import { darken } from 'polished'
@@ -106,7 +104,6 @@ interface TransactionSettingsProps {
 const THREE_DAYS_IN_SECONDS = ms`3 days` / 1000
 
 export default function TransactionSettings({ placeholderSlippage }: TransactionSettingsProps) {
-  const { chainId } = useWeb3React()
   const theme = useTheme()
 
   const [userSlippageTolerance, setUserSlippageTolerance] = useUserSlippageTolerance()

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unused-modules */
+//@ts-nocheck
 import { useWeb3React } from '@web3-react/core'
 import { useEffect } from 'react'
 import { UaEventOptions } from 'react-ga4/types/ga4'

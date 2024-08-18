@@ -1,5 +1,9 @@
 import { V3RouteWithValidQuote } from '../../entities/route-with-valid-quote';
-import { BuildOnChainGasModelFactoryType, IGasModel, IOnChainGasModelFactory } from '../gas-model';
+import {
+  BuildOnChainGasModelFactoryType,
+  IGasModel,
+  IOnChainGasModelFactory,
+} from '../gas-model';
 /**
  * Computes a gas estimate for a V3 swap using heuristics.
  * Considers number of hops in the route, number of ticks crossed
@@ -19,13 +23,22 @@ import { BuildOnChainGasModelFactoryType, IGasModel, IOnChainGasModelFactory } f
  * @class V3HeuristicGasModelFactory
  */
 export declare class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
-    constructor();
-    buildGasModel({ chainId, gasPriceWei, v3poolProvider: poolProvider, amountToken, quoteToken, l2GasDataProvider, }: BuildOnChainGasModelFactoryType): Promise<IGasModel<V3RouteWithValidQuote>>;
-    private estimateGas;
-    /**
-     * To avoid having a call to optimism's L1 security fee contract for every route and amount combination,
-     * we replicate the gas cost accounting here.
-     */
-    private calculateOptimismToL1SecurityFee;
-    private calculateArbitrumToL1SecurityFee;
+  constructor();
+  buildGasModel({
+    chainId,
+    gasPriceWei,
+    v3poolProvider: poolProvider,
+    amountToken,
+    quoteToken,
+    l2GasDataProvider,
+  }: BuildOnChainGasModelFactoryType): Promise<
+    IGasModel<V3RouteWithValidQuote>
+  >;
+  private estimateGas;
+  /**
+   * To avoid having a call to optimism's L1 security fee contract for every route and amount combination,
+   * we replicate the gas cost accounting here.
+   */
+  private calculateOptimismToL1SecurityFee;
+  private calculateArbitrumToL1SecurityFee;
 }

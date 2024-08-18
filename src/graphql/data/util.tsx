@@ -10,7 +10,6 @@ import { Chain, ContractInput, HistoryDuration, TokenStandard } from './__genera
 
 //TODO: check how this works
 
-
 export enum PollingInterval {
   Slow = ms`5m`,
   Normal = ms`1m`,
@@ -72,9 +71,7 @@ export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
   // [SupportedChainId.OPTIMISM_GOERLI]: Chain.Optimism,
   // [SupportedChainId.BNB]: Chain.Bnb,
   [SupportedChainId.AURORIA]: Chain.Auroria,
-  [SupportedChainId.STRATIS]: Chain.Stratis
-
-
+  [SupportedChainId.STRATIS]: Chain.Stratis,
 }
 
 export function chainIdToBackendName(chainId: number | undefined) {
@@ -132,7 +129,6 @@ export function validateUrlChainParam(chainName: string | undefined) {
 // TODO(cartcrom): refactor into safer lookup & replace usage
 // @ts-ignore
 export const CHAIN_NAME_TO_CHAIN_ID: { [key in Chain]: SupportedChainId } = {
-  
   [Chain.Auroria]: SupportedChainId.AURORIA,
   [Chain.Stratis]: SupportedChainId.STRATIS,
 }

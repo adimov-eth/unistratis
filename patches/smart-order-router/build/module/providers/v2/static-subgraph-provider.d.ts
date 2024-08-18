@@ -14,7 +14,7 @@ import { IV2SubgraphProvider, V2SubgraphPool } from './subgraph-provider';
  * @class StaticV2SubgraphProvider
  */
 export declare class StaticV2SubgraphProvider implements IV2SubgraphProvider {
-    private chainId;
-    constructor(chainId: ChainId);
-    getPools(tokenIn?: Token, tokenOut?: Token): Promise<V2SubgraphPool[]>;
+  private chainId;
+  constructor(chainId: ChainId);
+  getPools(tokenIn?: Token, tokenOut?: Token): Promise<V2SubgraphPool[]>;
 }

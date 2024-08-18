@@ -14,38 +14,43 @@ import { IGasModel } from '../gas-models/gas-model';
  * @interface IRouteWithValidQuote
  * @template Route
  */
-export interface IRouteWithValidQuote<Route extends V3Route | V2Route | MixedRoute> {
-    amount: CurrencyAmount;
-    percent: number;
-    quoteAdjustedForGas: CurrencyAmount;
-    quote: CurrencyAmount;
-    route: Route;
-    gasEstimate: BigNumber;
-    gasCostInToken: CurrencyAmount;
-    gasCostInUSD: CurrencyAmount;
-    tradeType: TradeType;
-    poolAddresses: string[];
-    tokenPath: Token[];
+export interface IRouteWithValidQuote<
+  Route extends V3Route | V2Route | MixedRoute
+> {
+  amount: CurrencyAmount;
+  percent: number;
+  quoteAdjustedForGas: CurrencyAmount;
+  quote: CurrencyAmount;
+  route: Route;
+  gasEstimate: BigNumber;
+  gasCostInToken: CurrencyAmount;
+  gasCostInUSD: CurrencyAmount;
+  tradeType: TradeType;
+  poolAddresses: string[];
+  tokenPath: Token[];
 }
 export declare type IV2RouteWithValidQuote = {
-    protocol: Protocol.V2;
+  protocol: Protocol.V2;
 } & IRouteWithValidQuote<V2Route>;
 export declare type IV3RouteWithValidQuote = {
-    protocol: Protocol.V3;
+  protocol: Protocol.V3;
 } & IRouteWithValidQuote<V3Route>;
 export declare type IMixedRouteWithValidQuote = {
-    protocol: Protocol.MIXED;
+  protocol: Protocol.MIXED;
 } & IRouteWithValidQuote<MixedRoute>;
-export declare type RouteWithValidQuote = V2RouteWithValidQuote | V3RouteWithValidQuote | MixedRouteWithValidQuote;
+export declare type RouteWithValidQuote =
+  | V2RouteWithValidQuote
+  | V3RouteWithValidQuote
+  | MixedRouteWithValidQuote;
 export declare type V2RouteWithValidQuoteParams = {
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    percent: number;
-    route: V2Route;
-    gasModel: IGasModel<V2RouteWithValidQuote>;
-    quoteToken: Token;
-    tradeType: TradeType;
-    v2PoolProvider: IV2PoolProvider;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  percent: number;
+  route: V2Route;
+  gasModel: IGasModel<V2RouteWithValidQuote>;
+  quoteToken: Token;
+  tradeType: TradeType;
+  v2PoolProvider: IV2PoolProvider;
 };
 /**
  * Represents a quote for swapping on a V2 only route. Contains all information
@@ -56,36 +61,45 @@ export declare type V2RouteWithValidQuoteParams = {
  * @class V2RouteWithValidQuote
  */
 export declare class V2RouteWithValidQuote implements IV2RouteWithValidQuote {
-    readonly protocol = Protocol.V2;
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    quote: CurrencyAmount;
-    quoteAdjustedForGas: CurrencyAmount;
-    percent: number;
-    route: V2Route;
-    quoteToken: Token;
-    gasModel: IGasModel<V2RouteWithValidQuote>;
-    gasEstimate: BigNumber;
-    gasCostInToken: CurrencyAmount;
-    gasCostInUSD: CurrencyAmount;
-    tradeType: TradeType;
-    poolAddresses: string[];
-    tokenPath: Token[];
-    toString(): string;
-    constructor({ amount, rawQuote, percent, route, gasModel, quoteToken, tradeType, v2PoolProvider, }: V2RouteWithValidQuoteParams);
+  readonly protocol = Protocol.V2;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  quote: CurrencyAmount;
+  quoteAdjustedForGas: CurrencyAmount;
+  percent: number;
+  route: V2Route;
+  quoteToken: Token;
+  gasModel: IGasModel<V2RouteWithValidQuote>;
+  gasEstimate: BigNumber;
+  gasCostInToken: CurrencyAmount;
+  gasCostInUSD: CurrencyAmount;
+  tradeType: TradeType;
+  poolAddresses: string[];
+  tokenPath: Token[];
+  toString(): string;
+  constructor({
+    amount,
+    rawQuote,
+    percent,
+    route,
+    gasModel,
+    quoteToken,
+    tradeType,
+    v2PoolProvider,
+  }: V2RouteWithValidQuoteParams);
 }
 export declare type V3RouteWithValidQuoteParams = {
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    sqrtPriceX96AfterList: BigNumber[];
-    initializedTicksCrossedList: number[];
-    quoterGasEstimate: BigNumber;
-    percent: number;
-    route: V3Route;
-    gasModel: IGasModel<V3RouteWithValidQuote>;
-    quoteToken: Token;
-    tradeType: TradeType;
-    v3PoolProvider: IV3PoolProvider;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  sqrtPriceX96AfterList: BigNumber[];
+  initializedTicksCrossedList: number[];
+  quoterGasEstimate: BigNumber;
+  percent: number;
+  route: V3Route;
+  gasModel: IGasModel<V3RouteWithValidQuote>;
+  quoteToken: Token;
+  tradeType: TradeType;
+  v3PoolProvider: IV3PoolProvider;
 };
 /**
  * Represents a quote for swapping on a V3 only route. Contains all information
@@ -96,40 +110,52 @@ export declare type V3RouteWithValidQuoteParams = {
  * @class V3RouteWithValidQuote
  */
 export declare class V3RouteWithValidQuote implements IV3RouteWithValidQuote {
-    readonly protocol = Protocol.V3;
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    quote: CurrencyAmount;
-    quoteAdjustedForGas: CurrencyAmount;
-    sqrtPriceX96AfterList: BigNumber[];
-    initializedTicksCrossedList: number[];
-    quoterGasEstimate: BigNumber;
-    percent: number;
-    route: V3Route;
-    quoteToken: Token;
-    gasModel: IGasModel<V3RouteWithValidQuote>;
-    gasEstimate: BigNumber;
-    gasCostInToken: CurrencyAmount;
-    gasCostInUSD: CurrencyAmount;
-    tradeType: TradeType;
-    poolAddresses: string[];
-    tokenPath: Token[];
-    toString(): string;
-    constructor({ amount, rawQuote, sqrtPriceX96AfterList, initializedTicksCrossedList, quoterGasEstimate, percent, route, gasModel, quoteToken, tradeType, v3PoolProvider, }: V3RouteWithValidQuoteParams);
+  readonly protocol = Protocol.V3;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  quote: CurrencyAmount;
+  quoteAdjustedForGas: CurrencyAmount;
+  sqrtPriceX96AfterList: BigNumber[];
+  initializedTicksCrossedList: number[];
+  quoterGasEstimate: BigNumber;
+  percent: number;
+  route: V3Route;
+  quoteToken: Token;
+  gasModel: IGasModel<V3RouteWithValidQuote>;
+  gasEstimate: BigNumber;
+  gasCostInToken: CurrencyAmount;
+  gasCostInUSD: CurrencyAmount;
+  tradeType: TradeType;
+  poolAddresses: string[];
+  tokenPath: Token[];
+  toString(): string;
+  constructor({
+    amount,
+    rawQuote,
+    sqrtPriceX96AfterList,
+    initializedTicksCrossedList,
+    quoterGasEstimate,
+    percent,
+    route,
+    gasModel,
+    quoteToken,
+    tradeType,
+    v3PoolProvider,
+  }: V3RouteWithValidQuoteParams);
 }
 export declare type MixedRouteWithValidQuoteParams = {
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    sqrtPriceX96AfterList: BigNumber[];
-    initializedTicksCrossedList: number[];
-    quoterGasEstimate: BigNumber;
-    percent: number;
-    route: MixedRoute;
-    mixedRouteGasModel: IGasModel<MixedRouteWithValidQuote>;
-    quoteToken: Token;
-    tradeType: TradeType;
-    v3PoolProvider: IV3PoolProvider;
-    v2PoolProvider: IV2PoolProvider;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  sqrtPriceX96AfterList: BigNumber[];
+  initializedTicksCrossedList: number[];
+  quoterGasEstimate: BigNumber;
+  percent: number;
+  route: MixedRoute;
+  mixedRouteGasModel: IGasModel<MixedRouteWithValidQuote>;
+  quoteToken: Token;
+  tradeType: TradeType;
+  v3PoolProvider: IV3PoolProvider;
+  v2PoolProvider: IV2PoolProvider;
 };
 /**
  * Represents a quote for swapping on a Mixed Route. Contains all information
@@ -139,25 +165,40 @@ export declare type MixedRouteWithValidQuoteParams = {
  * @export
  * @class MixedRouteWithValidQuote
  */
-export declare class MixedRouteWithValidQuote implements IMixedRouteWithValidQuote {
-    readonly protocol = Protocol.MIXED;
-    amount: CurrencyAmount;
-    rawQuote: BigNumber;
-    quote: CurrencyAmount;
-    quoteAdjustedForGas: CurrencyAmount;
-    sqrtPriceX96AfterList: BigNumber[];
-    initializedTicksCrossedList: number[];
-    quoterGasEstimate: BigNumber;
-    percent: number;
-    route: MixedRoute;
-    quoteToken: Token;
-    gasModel: IGasModel<MixedRouteWithValidQuote>;
-    gasEstimate: BigNumber;
-    gasCostInToken: CurrencyAmount;
-    gasCostInUSD: CurrencyAmount;
-    tradeType: TradeType;
-    poolAddresses: string[];
-    tokenPath: Token[];
-    toString(): string;
-    constructor({ amount, rawQuote, sqrtPriceX96AfterList, initializedTicksCrossedList, quoterGasEstimate, percent, route, mixedRouteGasModel, quoteToken, tradeType, v3PoolProvider, v2PoolProvider, }: MixedRouteWithValidQuoteParams);
+export declare class MixedRouteWithValidQuote
+  implements IMixedRouteWithValidQuote
+{
+  readonly protocol = Protocol.MIXED;
+  amount: CurrencyAmount;
+  rawQuote: BigNumber;
+  quote: CurrencyAmount;
+  quoteAdjustedForGas: CurrencyAmount;
+  sqrtPriceX96AfterList: BigNumber[];
+  initializedTicksCrossedList: number[];
+  quoterGasEstimate: BigNumber;
+  percent: number;
+  route: MixedRoute;
+  quoteToken: Token;
+  gasModel: IGasModel<MixedRouteWithValidQuote>;
+  gasEstimate: BigNumber;
+  gasCostInToken: CurrencyAmount;
+  gasCostInUSD: CurrencyAmount;
+  tradeType: TradeType;
+  poolAddresses: string[];
+  tokenPath: Token[];
+  toString(): string;
+  constructor({
+    amount,
+    rawQuote,
+    sqrtPriceX96AfterList,
+    initializedTicksCrossedList,
+    quoterGasEstimate,
+    percent,
+    route,
+    mixedRouteGasModel,
+    quoteToken,
+    tradeType,
+    v3PoolProvider,
+    v2PoolProvider,
+  }: MixedRouteWithValidQuoteParams);
 }

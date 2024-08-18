@@ -57,7 +57,7 @@ export default function Pools({ account }: { account: string }) {
       const position = filteredPositions[i]
       if (position.closed) {
         closedPositions.push(position)
-      } else {  
+      } else {
         openPositions.push(position)
       }
     }
@@ -82,7 +82,7 @@ export default function Pools({ account }: { account: string }) {
             key={`${positionInfo.details.tokenId}-${positionInfo.chainId}-${index}`}
             positionInfo={positionInfo}
           />
-        );
+        )
       })}
       <ExpandoRow
         title={t`Closed Positions`}

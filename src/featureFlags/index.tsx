@@ -1,6 +1,5 @@
 import { atomWithStorage, useAtomValue, useUpdateAtom } from 'jotai/utils'
 import { createContext, ReactNode, useCallback, useContext } from 'react'
-import { useGate } from 'statsig-react'
 export { FeatureFlag } from './flags/featureFlags'
 
 interface FeatureFlagsContextType {

@@ -66,7 +66,9 @@ export const formatDollar = ({
     if (num >= 0.1 && num < (lessPreciseStablecoinValues ? 0.9995 : 1.05)) {
       return `$${num.toFixed(3)}`
     }
-    return `$${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 2 })}`
+    return `$${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, {
+      minimumFractionDigits: 2,
+    })}`
   }
   // For volume dollar amounts, like market cap, total value locked, etc.
   else {
@@ -123,12 +125,16 @@ export const formatTransactionAmount = (num: number | undefined | null, maxDigit
     })}`
   }
   if (num >= 10000 && num < 1000000) {
-    return `${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 2 })}`
+    return `${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, {
+      minimumFractionDigits: 2,
+    })}`
   }
   // For very large numbers, switch to scientific notation and show as much precision
   // as permissible by maxDigits param.
   if (num >= Math.pow(10, maxDigits - 1)) {
     return `${num.toExponential(maxDigits - 3)}`
   }
-  return `${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 2 })}`
+  return `${Number(num.toFixed(2)).toLocaleString(DEFAULT_LOCALE, {
+    minimumFractionDigits: 2,
+  })}`
 }

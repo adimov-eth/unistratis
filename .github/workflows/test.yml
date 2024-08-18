@@ -25,7 +25,7 @@ jobs:
           key: ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}
           restore-keys: ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-
       - run: yarn lint
-  
+
   typecheck:
     runs-on: ubuntu-latest
     steps:
@@ -99,7 +99,7 @@ jobs:
       - run: yarn prepare
       - run: yarn build:e2e
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
       - uses: actions/upload-artifact@v2
         with:
           name: build-e2e
@@ -117,7 +117,6 @@ jobs:
           name: build
           path: build
       - run: yarn test:size
-
 
   cypress-test-matrix:
     needs: [build-e2e]

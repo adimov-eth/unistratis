@@ -43,7 +43,10 @@ function useETHValue(currencyAmount?: CurrencyAmount<Currency>): {
   }
 
   if (!trade || !currencyAmount?.currency || !isGqlSupportedChain(chainId)) {
-    return { data: undefined, isLoading: state === TradeState.LOADING || state === TradeState.SYNCING }
+    return {
+      data: undefined,
+      isLoading: state === TradeState.LOADING || state === TradeState.SYNCING,
+    }
   }
 
   const { numerator, denominator } = trade.routes[0].midPrice
@@ -60,7 +63,10 @@ export function useUSDPrice(currencyAmount?: CurrencyAmount<Currency>): {
   const { data: ethValue, isLoading: isEthValueLoading } = useETHValue(currencyAmount)
 
   const { data, networkStatus } = useTokenSpotPriceQuery({
-    variables: { chain: chain ?? Chain.Ethereum, address: getNativeTokenDBAddress(chain ?? Chain.Ethereum) },
+    variables: {
+      chain: chain ?? Chain.Ethereum,
+      address: getNativeTokenDBAddress(chain ?? Chain.Ethereum),
+    },
     skip: !chain || !isGqlSupportedChain(currency?.chainId),
     pollInterval: PollingInterval.Normal,
     notifyOnNetworkStatusChange: true,
@@ -70,7 +76,10 @@ export function useUSDPrice(currencyAmount?: CurrencyAmount<Currency>): {
   // Use USDC price for chains not supported by backend yet
   const stablecoinPrice = useStablecoinPrice(!isGqlSupportedChain(currency?.chainId) ? currency : undefined)
   if (!isGqlSupportedChain(currency?.chainId) && currencyAmount && stablecoinPrice) {
-    return { data: parseFloat(stablecoinPrice.quote(currencyAmount).toSignificant()), isLoading: false }
+    return {
+      data: parseFloat(stablecoinPrice.quote(currencyAmount).toSignificant()),
+      isLoading: false,
+    }
   }
 
   const isFirstLoad = networkStatus === NetworkStatus.loading
@@ -79,5 +88,8 @@ export function useUSDPrice(currencyAmount?: CurrencyAmount<Currency>): {
   const ethUSDPrice = data?.token?.project?.markets?.[0]?.price?.value
   if (!ethUSDPrice || !ethValue) return { data: undefined, isLoading: isEthValueLoading || isFirstLoad }
 
-  return { data: parseFloat(ethValue.toExact()) * ethUSDPrice, isLoading: false }
+  return {
+    data: parseFloat(ethValue.toExact()) * ethUSDPrice,
+    isLoading: false,
+  }
 }

@@ -1,26 +1,7 @@
-export const UNI_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
-export const UNI_EXTENDED_LIST = 'https://gateway.ipfs.io/ipns/extendedtokens.uniswap.org'
-const UNI_UNSUPPORTED_LIST = 'https://gateway.ipfs.io/ipns/unsupportedtokens.uniswap.org'
-const AAVE_LIST = 'tokenlist.aave.eth'
-const BA_LIST = 'https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json'
-const CMC_ALL_LIST = 'https://s3.coinmarketcap.com/generated/dex/tokens/eth-tokens-all.json'
-const COINGECKO_LIST = 'https://tokens.coingecko.com/uniswap/all.json'
-const COINGECKO_BNB_LIST = 'https://tokens.coingecko.com/binance-smart-chain/all.json'
-const COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
-const GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json'
-const KLEROS_LIST = 't2crtokens.eth'
-const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
-const WRAPPED_LIST = 'wrapped.tokensoft.eth'
-
-const SEPOLIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/1009067770841dc401a35f45d7103e54/raw/0a8418e4ae237c23b3c7a05537a14800b066ea76/sepoliatokenlist.json'
-
-const AURORIA_LIST = 'https://gist.githubusercontent.com/adimov-eth/e3aadcd7328890a0898aa23dd5aec4c9/raw/76e70ff4b4747545267ed1337db9c0ca3eaea8ab/tokenlist.json'
-export const STRATIS_LIST = 'https://gist.githubusercontent.com/adimov-eth/ff27f2cad86f44fff90825475442d3eb/raw/de53e6627712b2fab1fa42283043d30cb8cb2557/maintokenlist.json'
-
-export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
-export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
-export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
-export const PLASMA_BNB_LIST = 'https://raw.githubusercontent.com/plasmadlt/plasma-finance-token-list/master/bnb.json'
+const AURORIA_LIST =
+  'https://gist.githubusercontent.com/adimov-eth/e3aadcd7328890a0898aa23dd5aec4c9/raw/76e70ff4b4747545267ed1337db9c0ca3eaea8ab/tokenlist.json'
+export const STRATIS_LIST =
+  'https://gist.githubusercontent.com/adimov-eth/ff27f2cad86f44fff90825475442d3eb/raw/de53e6627712b2fab1fa42283043d30cb8cb2557/maintokenlist.json'
 
 export const UNSUPPORTED_LIST_URLS: string[] = [] //[BA_LIST, UNI_UNSUPPORTED_LIST]
 

@@ -6,7 +6,7 @@ import { useMemo, useRef } from 'react'
 import { RouterPreference } from 'state/routing/slice'
 import { useRoutingAPITrade } from 'state/routing/useRoutingAPITrade'
 
-import {  USDC_STRATIS, USDT} from '../constants/tokens'
+import { USDT } from '../constants/tokens'
 
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.

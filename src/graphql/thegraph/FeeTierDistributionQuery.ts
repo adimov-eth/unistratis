@@ -37,7 +37,11 @@ export default function useFeeTierDistributionQuery(
   token0: string | undefined,
   token1: string | undefined,
   interval: number
-): { error: ApolloError | undefined; isLoading: boolean; data: FeeTierDistributionQuery } {
+): {
+  error: ApolloError | undefined
+  isLoading: boolean
+  data: FeeTierDistributionQuery
+} {
   const {
     data,
     loading: isLoading,

@@ -46,7 +46,9 @@ function fetchClaimMapping(): Promise<ClaimAddressMapping> {
   )
 }
 
-const FETCH_CLAIM_FILE_PROMISES: { [startingAddress: string]: Promise<{ [address: string]: UserClaimData }> } = {}
+const FETCH_CLAIM_FILE_PROMISES: {
+  [startingAddress: string]: Promise<{ [address: string]: UserClaimData }>
+} = {}
 function fetchClaimFile(key: string): Promise<{ [address: string]: UserClaimData }> {
   return (
     FETCH_CLAIM_FILE_PROMISES[key] ??
@@ -102,7 +104,9 @@ function fetchClaim(account: string): Promise<UserClaimData> {
 function useUserClaimData(account: string | null | undefined): UserClaimData | null {
   const { chainId } = useWeb3React()
 
-  const [claimInfo, setClaimInfo] = useState<{ [account: string]: UserClaimData | null }>({})
+  const [claimInfo, setClaimInfo] = useState<{
+    [account: string]: UserClaimData | null
+  }>({})
 
   useEffect(() => {
     if (!account || chainId !== 1) return
@@ -170,7 +174,10 @@ export function useClaimCallback(account: string | null | undefined): {
 
     return distributorContract.estimateGas['claim'](...args, {}).then((estimatedGasLimit) => {
       return distributorContract
-        .claim(...args, { value: null, gasLimit: calculateGasMargin(estimatedGasLimit) })
+        .claim(...args, {
+          value: null,
+          gasLimit: calculateGasMargin(estimatedGasLimit),
+        })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
             type: TransactionType.CLAIM,

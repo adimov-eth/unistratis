@@ -5,7 +5,9 @@ import { TransactionType } from 'state/transactions/types'
 // use even number because rows are in groups of 2
 export const DEFAULT_NFT_QUERY_AMOUNT = 26
 
-const TransactionTitleTable: { [key in TransactionType]: { [state in TransactionStatus]: string } } = {
+const TransactionTitleTable: {
+  [key in TransactionType]: { [state in TransactionStatus]: string }
+} = {
   [TransactionType.SWAP]: {
     [TransactionStatus.Pending]: t`Swapping`,
     [TransactionStatus.Confirmed]: t`Swapped`,
@@ -138,7 +140,9 @@ const TransactionTitleTable: { [key in TransactionType]: { [state in Transaction
   },
 }
 
-const AlternateTransactionTitleTable: { [key in TransactionType]?: { [state in TransactionStatus]: string } } = {
+const AlternateTransactionTitleTable: {
+  [key in TransactionType]?: { [state in TransactionStatus]: string }
+} = {
   [TransactionType.WRAP]: {
     [TransactionStatus.Pending]: t`Unwrapping`,
     [TransactionStatus.Confirmed]: t`Unwrapped`,

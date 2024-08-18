@@ -62,7 +62,13 @@ function traceSpan(span?: Span) {
 
   return async function boundTrace<T>(callback: TraceCallback<T>): Promise<T> {
     try {
-      return await callback({ traceChild, setTraceData, setTraceTag, setTraceStatus, setTraceError })
+      return await callback({
+        traceChild,
+        setTraceData,
+        setTraceTag,
+        setTraceStatus,
+        setTraceError,
+      })
     } catch (error) {
       // Do not overwrite any custom status or error data that was already set.
       if (!span?.status) span?.setStatus('internal_error')
@@ -84,6 +90,10 @@ function traceSpan(span?: Span) {
  * @param metadata - Any data or tags to include in the trace.
  */
 export async function trace<T>(name: string, callback: TraceCallback<T>, metadata?: TraceMetadata): Promise<T> {
-  const transaction = Sentry.startTransaction({ name, data: metadata?.data, tags: metadata?.tags })
+  const transaction = Sentry.startTransaction({
+    name,
+    data: metadata?.data,
+    tags: metadata?.tags,
+  })
   return traceSpan(transaction)(callback)
 }

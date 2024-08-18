@@ -1,7 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import JSBI from 'jsbi'
-import { NEVER_RELOAD, useSingleCallResult } from 'lib/hooks/multicall'
-import { CallStateResult } from 'lib/hooks/multicall'
+// import { CallStateResult } from 'lib/hooks/multicall'
 import { useEffect, useMemo, useState } from 'react'
 
 import { useV3NFTPositionManagerContract } from './useContract'
@@ -29,16 +28,19 @@ type UsePositionTokenURIResult =
       loading: true
     }
 
-type CallStateResultWithMeta = CallStateResult & {
-  valid: boolean;
-  loading: boolean;
-  error?: Error;
-};
+// type CallStateResultWithMeta = CallStateResult & {
+//   valid: boolean
+//   loading: boolean
+//   error?: Error
+// }
 
 export function usePositionTokenURI(tokenId: TokenId | undefined): UsePositionTokenURIResult {
   const contract = useV3NFTPositionManagerContract()
 
-  const [result, setResult] = useState<{ tokenURI?: string, error?: Error } | null>(null)
+  const [result, setResult] = useState<{
+    tokenURI?: string
+    error?: Error
+  } | null>(null)
 
   useEffect(() => {
     if (!tokenId) {
