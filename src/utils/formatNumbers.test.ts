@@ -118,7 +118,13 @@ describe('formatDollar for a price', () => {
     expect(formatDollar({ num: 0.9995, isPrice, lessPreciseStablecoinValues: true })).toEqual('$1.00')
   })
   it('lessPreciseStablecoinValues number greater than 1', () => {
-    expect(formatDollar({ num: 1.0000001, isPrice, lessPreciseStablecoinValues: true })).toEqual('$1.00')
+    expect(
+      formatDollar({
+        num: 1.0000001,
+        isPrice,
+        lessPreciseStablecoinValues: true,
+      })
+    ).toEqual('$1.00')
   })
   it('number is greater than 1 million', () => {
     expect(formatDollar({ num: 11192312.408, isPrice })).toEqual('$1.12e+7')

@@ -62,7 +62,6 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   // SupportedChainId.BNB,
   // SupportedChainId.SEPOLIA,
   SupportedChainId.AURORIA,
-
 ] as const
 
 /**
@@ -74,7 +73,7 @@ export const UNSUPPORTED_V2POOL_CHAIN_IDS = [
   // SupportedChainId.ARBITRUM_ONE,
   // SupportedChainId.BNB,
   // SupportedChainId.ARBITRUM_GOERLI,
-  SupportedChainId.AURORIA
+  SupportedChainId.AURORIA,
 ] as const
 
 export const TESTNET_CHAIN_IDS = [

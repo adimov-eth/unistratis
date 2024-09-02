@@ -41,7 +41,9 @@ export const floorFormatter = (n: number): string => {
   if (n >= 1e15) {
     return `${n.toExponential(3).replace(/(\.[0-9]*[1-9])0*|(\.0*)/, '$1')}`
   }
-  return `${Number(n.toFixed(2)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 2 })}`
+  return `${Number(n.toFixed(2)).toLocaleString(DEFAULT_LOCALE, {
+    minimumFractionDigits: 2,
+  })}`
 }
 
 export const volumeFormatter = (n: number): string => {
@@ -71,7 +73,9 @@ export const volumeFormatter = (n: number): string => {
       })
       .toUpperCase()
   }
-  return `${Number(n.toFixed(1)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 1 })}`
+  return `${Number(n.toFixed(1)).toLocaleString(DEFAULT_LOCALE, {
+    minimumFractionDigits: 1,
+  })}`
 }
 
 export const quantityFormatter = (n: number): string => {
@@ -96,7 +100,9 @@ export const quantityFormatter = (n: number): string => {
       })
       .toUpperCase()
   }
-  return `${Number(n.toFixed(2)).toLocaleString(DEFAULT_LOCALE, { minimumFractionDigits: 2 })}`
+  return `${Number(n.toFixed(2)).toLocaleString(DEFAULT_LOCALE, {
+    minimumFractionDigits: 2,
+  })}`
 }
 
 export const roundWholePercentage = (n: number): string => {

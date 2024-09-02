@@ -1,5 +1,9 @@
 import { MixedRouteWithValidQuote } from '../../entities/route-with-valid-quote';
-import { BuildOnChainGasModelFactoryType, IGasModel, IOnChainGasModelFactory } from '../gas-model';
+import {
+  BuildOnChainGasModelFactoryType,
+  IGasModel,
+  IOnChainGasModelFactory,
+} from '../gas-model';
 /**
  * Computes a gas estimate for a mixed route swap using heuristics.
  * Considers number of hops in the route, number of ticks crossed
@@ -19,7 +23,15 @@ import { BuildOnChainGasModelFactoryType, IGasModel, IOnChainGasModelFactory } f
  * @class MixedRouteHeuristicGasModelFactory
  */
 export declare class MixedRouteHeuristicGasModelFactory extends IOnChainGasModelFactory {
-    constructor();
-    buildGasModel({ chainId, gasPriceWei, v3poolProvider: V3poolProvider, quoteToken, v2poolProvider: V2poolProvider, }: BuildOnChainGasModelFactoryType): Promise<IGasModel<MixedRouteWithValidQuote>>;
-    private estimateGas;
+  constructor();
+  buildGasModel({
+    chainId,
+    gasPriceWei,
+    v3poolProvider: V3poolProvider,
+    quoteToken,
+    v2poolProvider: V2poolProvider,
+  }: BuildOnChainGasModelFactoryType): Promise<
+    IGasModel<MixedRouteWithValidQuote>
+  >;
+  private estimateGas;
 }

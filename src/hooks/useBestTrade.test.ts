@@ -58,7 +58,10 @@ describe('#useBestV3Trade ExactIn', () => {
 
     expect(useRoutingAPITrade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, undefined, DAI, RouterPreference.CLIENT)
     expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, USDCAmount, DAI)
-    expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+    expect(result.current).toEqual({
+      state: TradeState.VALID,
+      trade: undefined,
+    })
   })
 
   it('does not compute routing api trade when window is not focused', async () => {
@@ -69,7 +72,10 @@ describe('#useBestV3Trade ExactIn', () => {
     const { result } = renderHook(() => useBestTrade(TradeType.EXACT_INPUT, USDCAmount, DAI))
 
     expect(useRoutingAPITrade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, undefined, DAI, RouterPreference.CLIENT)
-    expect(result.current).toEqual({ state: TradeState.NO_ROUTE_FOUND, trade: undefined })
+    expect(result.current).toEqual({
+      state: TradeState.NO_ROUTE_FOUND,
+      trade: undefined,
+    })
   })
 
   describe('when routing api is in non-error state', () => {
@@ -79,7 +85,10 @@ describe('#useBestV3Trade ExactIn', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_INPUT, USDCAmount, DAI))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.LOADING, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.LOADING,
+        trade: undefined,
+      })
     })
 
     it('does not compute client side v3 trade if routing api is VALID', () => {
@@ -88,7 +97,10 @@ describe('#useBestV3Trade ExactIn', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_INPUT, USDCAmount, DAI))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.VALID,
+        trade: undefined,
+      })
     })
 
     it('does not compute client side v3 trade if routing api is SYNCING', () => {
@@ -97,7 +109,10 @@ describe('#useBestV3Trade ExactIn', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_INPUT, USDCAmount, DAI))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.SYNCING, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.SYNCING,
+        trade: undefined,
+      })
     })
   })
 
@@ -118,7 +133,10 @@ describe('#useBestV3Trade ExactIn', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_INPUT, USDCAmount, DAI))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_INPUT, USDCAmount, DAI)
-      expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.VALID,
+        trade: undefined,
+      })
     })
   })
 })
@@ -138,7 +156,10 @@ describe('#useBestV3Trade ExactOut', () => {
       RouterPreference.CLIENT
     )
     expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET)
-    expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+    expect(result.current).toEqual({
+      state: TradeState.VALID,
+      trade: undefined,
+    })
   })
 
   it('does not compute routing api trade when window is not focused', () => {
@@ -154,7 +175,10 @@ describe('#useBestV3Trade ExactOut', () => {
       USDC_MAINNET,
       RouterPreference.CLIENT
     )
-    expect(result.current).toEqual({ state: TradeState.NO_ROUTE_FOUND, trade: undefined })
+    expect(result.current).toEqual({
+      state: TradeState.NO_ROUTE_FOUND,
+      trade: undefined,
+    })
   })
   describe('when routing api is in non-error state', () => {
     it('does not compute client side v3 trade if routing api is LOADING', () => {
@@ -163,7 +187,10 @@ describe('#useBestV3Trade ExactOut', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_OUTPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.LOADING, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.LOADING,
+        trade: undefined,
+      })
     })
 
     it('does not compute client side v3 trade if routing api is VALID', () => {
@@ -172,7 +199,10 @@ describe('#useBestV3Trade ExactOut', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_OUTPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.VALID,
+        trade: undefined,
+      })
     })
 
     it('does not compute client side v3 trade if routing api is SYNCING', () => {
@@ -181,7 +211,10 @@ describe('#useBestV3Trade ExactOut', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_OUTPUT, undefined, undefined)
-      expect(result.current).toEqual({ state: TradeState.SYNCING, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.SYNCING,
+        trade: undefined,
+      })
     })
   })
 
@@ -202,7 +235,10 @@ describe('#useBestV3Trade ExactOut', () => {
       const { result } = renderHook(() => useBestTrade(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET))
 
       expect(useClientSideV3Trade).toHaveBeenCalledWith(TradeType.EXACT_OUTPUT, DAIAmount, USDC_MAINNET)
-      expect(result.current).toEqual({ state: TradeState.VALID, trade: undefined })
+      expect(result.current).toEqual({
+        state: TradeState.VALID,
+        trade: undefined,
+      })
     })
   })
 })

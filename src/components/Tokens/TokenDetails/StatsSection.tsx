@@ -112,7 +112,7 @@ export default function StatsSection(props: StatsSectionProps) {
       </StatsWrapper>
     )
   } else {
-    // return 
+    // return
     // UNSUPPORTED_METADATA_CHAINS.includes(chainId) ? (
     //   <>
     //     <Header>
@@ -128,8 +128,6 @@ export default function StatsSection(props: StatsSectionProps) {
     //     </ThemedText.BodySecondary>
     //   </>
     // ) :
-     return (
-      <NoData>No stats available</NoData>
-    )
+    return <NoData>No stats available</NoData>
   }
 }

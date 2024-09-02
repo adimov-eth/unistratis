@@ -24,9 +24,8 @@ export default async function fetchTokenList(
   }
 
   let urls: string[]
-  
+
   urls = uriToHttp(listUrl)
-  
 
   if (urls.length === 0) {
     throw new Error('Unrecognized list URL protocol.')

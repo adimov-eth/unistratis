@@ -13,7 +13,6 @@ type AddressMap = { [chainId: number]: string }
 // export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS)
 // export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 
-
 // auroria addresses
 const AURORIA_V3_CORE_FACTORY_ADDRESSES = '0x4B500Cd5f5ACAf613989E813791Ae14A3Da3081e'
 const AURORIA_V3_MIGRATOR_ADDRESSES = '0x6BB4d22E37Bf669adD454A562e43c42B9e7B77Ff'

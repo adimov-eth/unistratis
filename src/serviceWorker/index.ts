@@ -21,7 +21,10 @@ registerRoute(new DocumentRoute())
 
 // Splits entries into assets, which are loaded on-demand; and entries, which are precached.
 // Effectively, this precaches the document, and caches all other assets on-demand.
-const { assets, entries } = self.__WB_MANIFEST.reduce<{ assets: string[]; entries: PrecacheEntry[] }>(
+const { assets, entries } = self.__WB_MANIFEST.reduce<{
+  assets: string[]
+  entries: PrecacheEntry[]
+}>(
   ({ assets, entries }, entry) => {
     if (typeof entry === 'string') {
       return { entries, assets: [...assets, entry] }

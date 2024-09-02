@@ -525,12 +525,14 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
   // } else if (isBsc(chainId)) {
   //   nativeCurrency = new BscNativeCurrency(chainId)
   // } else {
-    nativeCurrency = ExtendedEther.onChain(chainId)
+  nativeCurrency = ExtendedEther.onChain(chainId)
   // }
   return (cachedNativeCurrency[chainId] = nativeCurrency)
 }
 
-export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {
+export const TOKEN_SHORTHANDS: {
+  [shorthand: string]: { [chainId in SupportedChainId]?: string }
+} = {
   USDC: {
     // [SupportedChainId.MAINNET]: USDC_MAINNET.address,
     // [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM.address,

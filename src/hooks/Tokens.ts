@@ -14,13 +14,17 @@ import { useUserAddedTokens, useUserAddedTokensOnChain } from '../state/user/hoo
 import { TokenAddressMap, useUnsupportedTokenList } from './../state/lists/hooks'
 
 // reduce token map into standard address <-> Token mapping, optionally include user added tokens
-function useTokensFromMap(tokenMap: TokenAddressMap): { [address: string]: Token } {
+function useTokensFromMap(tokenMap: TokenAddressMap): {
+  [address: string]: Token
+} {
   const { chainId } = useWeb3React()
   return useMemo(() => {
     if (!chainId) return {}
 
     // reduce to just tokens
-    return Object.keys(tokenMap[chainId] ?? {}).reduce<{ [address: string]: Token }>((newMap, address) => {
+    return Object.keys(tokenMap[chainId] ?? {}).reduce<{
+      [address: string]: Token
+    }>((newMap, address) => {
       newMap[address] = tokenMap[chainId][address].token
       return newMap
     }, {})
@@ -82,7 +86,7 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
 
     if (!listUrl) {
       return {}
-    }    
+    }
 
     const { current: list } = listsByUrl[listUrl]
     if (!list) {
@@ -101,7 +105,10 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
       ) {
         const address = bridgeInfo[SupportedChainId.AURORIA].tokenAddress
         // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
-        return { ...acc, [address]: new Token(SupportedChainId.AURORIA, address, tokenInfo.decimals) }
+        return {
+          ...acc,
+          [address]: new Token(SupportedChainId.AURORIA, address, tokenInfo.decimals),
+        }
       }
       return acc
     }, {})

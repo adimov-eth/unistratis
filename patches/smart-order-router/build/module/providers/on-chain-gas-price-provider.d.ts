@@ -10,10 +10,15 @@ import { LegacyGasPriceProvider } from './legacy-gas-price-provider';
  * @class OnChainGasPriceProvider
  */
 export declare class OnChainGasPriceProvider extends IGasPriceProvider {
-    protected chainId: ChainId;
-    protected eip1559GasPriceProvider: EIP1559GasPriceProvider;
-    protected legacyGasPriceProvider: LegacyGasPriceProvider;
-    protected eipChains: ChainId[];
-    constructor(chainId: ChainId, eip1559GasPriceProvider: EIP1559GasPriceProvider, legacyGasPriceProvider: LegacyGasPriceProvider, eipChains?: ChainId[]);
-    getGasPrice(): Promise<GasPrice>;
+  protected chainId: ChainId;
+  protected eip1559GasPriceProvider: EIP1559GasPriceProvider;
+  protected legacyGasPriceProvider: LegacyGasPriceProvider;
+  protected eipChains: ChainId[];
+  constructor(
+    chainId: ChainId,
+    eip1559GasPriceProvider: EIP1559GasPriceProvider,
+    legacyGasPriceProvider: LegacyGasPriceProvider,
+    eipChains?: ChainId[]
+  );
+  getGasPrice(): Promise<GasPrice>;
 }

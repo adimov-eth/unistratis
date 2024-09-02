@@ -7,11 +7,11 @@ import EthereumLogo from '../../assets/images/ethereum-logo.png'
 // import BnbLogo from '../../assets/svg/bnb-logo.svg'
 // import CeloLogo from '../../assets/svg/celo_logo.svg'
 // import MaticLogo from '../../assets/svg/matic-token-icon.svg'
-import { 
+import {
   // isCelo,
-   NATIVE_CHAIN_ID, 
-  //  nativeOnChain 
-  } from '../../constants/tokens'
+  NATIVE_CHAIN_ID,
+  //  nativeOnChain
+} from '../../constants/tokens'
 
 type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon' | 'smartchain'
 
@@ -52,7 +52,6 @@ function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedC
   // if (networksWithUrls.includes(chainId)) {
   //   return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
   // }
-
   // // Celo logo logo is hosted elsewhere.
   // if (isCelo(chainId)) {
   //   if (address === nativeOnChain(chainId).wrapped.address) {

@@ -33,7 +33,10 @@ export function useClientSideV3Trade<TTradeType extends TradeType>(
   tradeType: TTradeType,
   amountSpecified?: CurrencyAmount<Currency>,
   otherCurrency?: Currency
-): { state: TradeState; trade: InterfaceTrade<Currency, Currency, TTradeType> | undefined } {
+): {
+  state: TradeState
+  trade: InterfaceTrade<Currency, Currency, TTradeType> | undefined
+} {
   const [currencyIn, currencyOut] =
     tradeType === TradeType.EXACT_INPUT
       ? [amountSpecified?.currency, otherCurrency]
@@ -55,7 +58,7 @@ export function useClientSideV3Trade<TTradeType extends TradeType>(
   )
 
   const quotesResults = useSingleContractWithCallData(quoter, callData, {
-    gasRequired: DEFAULT_GAS_QUOTE //chainId ? QUOTE_GAS_OVERRIDES[chainId] ?? DEFAULT_GAS_QUOTE : undefined,
+    gasRequired: DEFAULT_GAS_QUOTE, //chainId ? QUOTE_GAS_OVERRIDES[chainId] ?? DEFAULT_GAS_QUOTE : undefined,
   })
 
   const currenciesAreTheSame = useMemo(

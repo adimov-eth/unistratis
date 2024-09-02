@@ -1,16 +1,31 @@
-import { Result } from "@ethersproject/abi";
-import { Event, EventFilter } from "ethers";
-export interface TypedEventFilter<_EventArgsArray, _EventArgsObject> extends EventFilter {
-}
+import { Result } from '@ethersproject/abi';
+import { Event, EventFilter } from 'ethers';
+export interface TypedEventFilter<_EventArgsArray, _EventArgsObject>
+  extends EventFilter {}
 export interface TypedEvent<EventArgs extends Result> extends Event {
-    args: EventArgs;
+  args: EventArgs;
 }
-export declare type TypedListener<EventArgsArray extends Array<any>, EventArgsObject> = (...listenerArg: [
+export declare type TypedListener<
+  EventArgsArray extends Array<any>,
+  EventArgsObject
+> = (
+  ...listenerArg: [
     ...EventArgsArray,
     TypedEvent<EventArgsArray & EventArgsObject>
-]) => void;
+  ]
+) => void;
 export declare type MinEthersFactory<C, ARGS> = {
-    deploy(...a: ARGS[]): Promise<C>;
+  deploy(...a: ARGS[]): Promise<C>;
 };
-export declare type GetContractTypeFromFactory<F> = F extends MinEthersFactory<infer C, any> ? C : never;
-export declare type GetARGsTypeFromFactory<F> = F extends MinEthersFactory<any, any> ? Parameters<F["deploy"]> : never;
+export declare type GetContractTypeFromFactory<F> = F extends MinEthersFactory<
+  infer C,
+  any
+>
+  ? C
+  : never;
+export declare type GetARGsTypeFromFactory<F> = F extends MinEthersFactory<
+  any,
+  any
+>
+  ? Parameters<F['deploy']>
+  : never;

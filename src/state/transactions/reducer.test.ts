@@ -100,7 +100,11 @@ describe('transaction reducer', () => {
         addTransaction({
           hash: '0x0',
           chainId: 4,
-          info: { type: TransactionType.APPROVAL, spender: '0x0', tokenAddress: '0x0' },
+          info: {
+            type: TransactionType.APPROVAL,
+            spender: '0x0',
+            tokenAddress: '0x0',
+          },
           from: '0x0',
         })
       )
@@ -152,7 +156,11 @@ describe('transaction reducer', () => {
         addTransaction({
           hash: '0x0',
           chainId: 4,
-          info: { type: TransactionType.APPROVAL, spender: '0x0', tokenAddress: '0x0' },
+          info: {
+            type: TransactionType.APPROVAL,
+            spender: '0x0',
+            tokenAddress: '0x0',
+          },
           from: '0x0',
         })
       )
@@ -171,7 +179,11 @@ describe('transaction reducer', () => {
         addTransaction({
           hash: '0x0',
           chainId: 4,
-          info: { type: TransactionType.APPROVAL, spender: '0x0', tokenAddress: '0x0' },
+          info: {
+            type: TransactionType.APPROVAL,
+            spender: '0x0',
+            tokenAddress: '0x0',
+          },
           from: '0x0',
         })
       )
@@ -200,7 +212,11 @@ describe('transaction reducer', () => {
         addTransaction({
           chainId: 1,
           hash: '0x0',
-          info: { type: TransactionType.APPROVAL, spender: 'abc', tokenAddress: 'def' },
+          info: {
+            type: TransactionType.APPROVAL,
+            spender: 'abc',
+            tokenAddress: 'def',
+          },
           from: 'abc',
         })
       )
@@ -208,7 +224,11 @@ describe('transaction reducer', () => {
         addTransaction({
           chainId: 4,
           hash: '0x1',
-          info: { type: TransactionType.APPROVAL, spender: 'abc', tokenAddress: 'def' },
+          info: {
+            type: TransactionType.APPROVAL,
+            spender: 'abc',
+            tokenAddress: 'def',
+          },
           from: 'abc',
         })
       )

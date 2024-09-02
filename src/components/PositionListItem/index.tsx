@@ -18,9 +18,10 @@ import { HideSmall, MEDIA_WIDTHS, SmallOnly, ThemedText } from 'theme'
 import { formatTickPrice } from 'utils/formatTickPrice'
 import { unwrappedToken } from 'utils/unwrappedToken'
 
-import { 
+import {
   // DAI, USDC_MAINNET, USDT, WBTC,
-   WRAPPED_NATIVE_CURRENCY } from '../../constants/tokens'
+  WRAPPED_NATIVE_CURRENCY,
+} from '../../constants/tokens'
 
 const LinkRow = styled(Link)`
   align-items: center;
@@ -135,9 +136,10 @@ export function getPriceOrderingFromPositionForUI(position?: Position): {
   }
 
   // if token1 is an ETH-/BTC-stable asset, set it as the base token
-  const bases = [...Object.values(WRAPPED_NATIVE_CURRENCY)
+  const bases = [
+    ...Object.values(WRAPPED_NATIVE_CURRENCY),
     // , WBTC
-    ]
+  ]
   if (bases.some((base) => base && base.equals(token1))) {
     return {
       priceLower: position.token0PriceUpper.invert(),

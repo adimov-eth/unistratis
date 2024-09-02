@@ -1,13 +1,13 @@
-import { RoutePlanner } from '../utils/routerCommands';
+import { RoutePlanner } from '../utils/routerCommands'
 export declare type TradeConfig = {
-    allowRevert: boolean;
-};
+  allowRevert: boolean
+}
 export declare enum RouterTradeType {
-    UniswapTrade = "UniswapTrade",
-    NFTTrade = "NFTTrade",
-    UnwrapWETH = "UnwrapWETH"
+  UniswapTrade = 'UniswapTrade',
+  NFTTrade = 'NFTTrade',
+  UnwrapWETH = 'UnwrapWETH',
 }
 export interface Command {
-    tradeType: RouterTradeType;
-    encode(planner: RoutePlanner, config: TradeConfig): void;
+  tradeType: RouterTradeType
+  encode(planner: RoutePlanner, config: TradeConfig): void
 }

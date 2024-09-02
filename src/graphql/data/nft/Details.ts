@@ -156,7 +156,10 @@ export function useNftAssetDetails(
           },
           metadataUrl: asset?.metadataUrl ?? '',
           traits: asset?.traits?.map((trait) => {
-            return { trait_type: trait.name ?? '', trait_value: trait.value ?? '' }
+            return {
+              trait_type: trait.name ?? '',
+              trait_value: trait.value ?? '',
+            }
           }),
         },
         {

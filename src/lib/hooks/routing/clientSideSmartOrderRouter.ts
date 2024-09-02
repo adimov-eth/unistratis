@@ -25,8 +25,18 @@ async function getQuote(
     amount: amountRaw,
   }: {
     type: 'exactIn' | 'exactOut'
-    tokenIn: { address: string; chainId: number; decimals: number; symbol?: string }
-    tokenOut: { address: string; chainId: number; decimals: number; symbol?: string }
+    tokenIn: {
+      address: string
+      chainId: number
+      decimals: number
+      symbol?: string
+    }
+    tokenOut: {
+      address: string
+      chainId: number
+      decimals: number
+      symbol?: string
+    }
     amount: BigintIsh
   },
   router: AlphaRouter,

@@ -3,4 +3,4 @@
  * @param tick the target tick
  * @param tickSpacing the spacing of the pool
  */
-export declare function nearestUsableTick(tick: number, tickSpacing: number): number;
+export declare function nearestUsableTick(tick: number, tickSpacing: number): number

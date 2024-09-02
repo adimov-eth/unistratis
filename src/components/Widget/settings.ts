@@ -55,7 +55,12 @@ export function useSyncWidgetSettings() {
     }
   }, [appSlippage, widgetSlippage, widgetTtl, routerPreference])
   const settingsHandlers: SwapEventHandlers = useMemo(
-    () => ({ onSettingsReset, onSlippageChange, onTransactionDeadlineChange, onRouterPreferenceChange }),
+    () => ({
+      onSettingsReset,
+      onSlippageChange,
+      onTransactionDeadlineChange,
+      onRouterPreferenceChange,
+    }),
     [onSettingsReset, onSlippageChange, onTransactionDeadlineChange, onRouterPreferenceChange]
   )
 

@@ -26,7 +26,6 @@ const TextHeader = styled.div`
 `
 
 export default function SwapHeader({ allowedSlippage }: { allowedSlippage: Percent }) {
-
   return (
     <StyledSwapHeader>
       <RowBetween>

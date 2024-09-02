@@ -32,14 +32,13 @@ type UsePositionTokenURIResult =
 export function usePositionTokenURI(tokenId: TokenId | undefined): UsePositionTokenURIResult {
   const contract = useV3NFTPositionManagerContract()
   const inputs = useMemo(
-    () => [tokenId instanceof BigNumber ? tokenId.toHexString() :  tokenId?.toString(16)],
+    () => [tokenId instanceof BigNumber ? tokenId.toHexString() : tokenId?.toString(16)],
     [tokenId]
   )
-  
 
   const r = useSingleCallResult(contract, 'tokenURI', inputs, {
     ...NEVER_RELOAD,
-    gasLimit: 12000000
+    gasLimit: 12000000,
   })
 
   const { result, error, loading, valid } = r

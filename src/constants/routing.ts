@@ -107,7 +107,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   // ],
   // [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
 }
-export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
+export const ADDITIONAL_BASES: {
+  [chainId: number]: { [tokenAddress: string]: Token[] }
+} = {
   // [SupportedChainId.MAINNET]: {
   //   '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI],
   //   [rETH2.address]: [sETH2],
@@ -124,7 +126,9 @@ export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: To
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
  * tokens.
  */
-export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
+export const CUSTOM_BASES: {
+  [chainId: number]: { [tokenAddress: string]: Token[] }
+} = {
   // [SupportedChainId.MAINNET]: {
   //   [AMPL.address]: [DAI, WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token],
   // },
@@ -180,7 +184,6 @@ export const COMMON_BASES: ChainCurrencyList = {
   //   WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI] as Token,
   //   WETH_POLYGON_MUMBAI,
   // ],
-
   // [SupportedChainId.CELO]: [
   //   nativeOnChain(SupportedChainId.CELO),
   //   CEUR_CELO,
@@ -194,7 +197,6 @@ export const COMMON_BASES: ChainCurrencyList = {
   //   CUSD_CELO_ALFAJORES,
   //   CEUR_CELO_ALFAJORES,
   // ],
-
   // [SupportedChainId.BNB]: [
   //   nativeOnChain(SupportedChainId.BNB),
   //   DAI_BSC,

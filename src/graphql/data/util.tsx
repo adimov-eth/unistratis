@@ -10,7 +10,6 @@ import { Chain, ContractInput, HistoryDuration, TokenStandard } from './__genera
 
 //TODO: check how this works
 
-
 export enum PollingInterval {
   Slow = ms`5m`,
   Normal = ms`1m`,
