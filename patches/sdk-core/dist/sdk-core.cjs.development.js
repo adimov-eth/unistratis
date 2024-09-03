@@ -27,12 +27,10 @@ var address = require('@ethersproject/address')
   SupportedChainId[(SupportedChainId['BNB'] = 56)] = 'BNB'
   SupportedChainId[(SupportedChainId['STRATIS'] = 105)] = 'STRATIS'
 })(exports.SupportedChainId || (exports.SupportedChainId = {}))
-
 ;(function (TradeType) {
   TradeType[(TradeType['EXACT_INPUT'] = 0)] = 'EXACT_INPUT'
   TradeType[(TradeType['EXACT_OUTPUT'] = 1)] = 'EXACT_OUTPUT'
 })(exports.TradeType || (exports.TradeType = {}))
-
 ;(function (Rounding) {
   Rounding[(Rounding['ROUND_DOWN'] = 0)] = 'ROUND_DOWN'
   Rounding[(Rounding['ROUND_HALF_UP'] = 1)] = 'ROUND_HALF_UP'
