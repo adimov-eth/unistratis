@@ -2991,6 +2991,8 @@ var SupportedChainId
   SupportedChainId[(SupportedChainId['OPTIMISM'] = 10)] = 'OPTIMISM'
   SupportedChainId[(SupportedChainId['OPTIMISM_GOERLI'] = 420)] = 'OPTIMISM_GOERLI'
   SupportedChainId[(SupportedChainId['POLYGON'] = 137)] = 'POLYGON'
+  SupportedChainId[(SupportedChainId['AURORIA'] = 205205)] = 'AURORIA'
+  SupportedChainId[(SupportedChainId['STRATIS'] = 105105)] = 'STRATIS'
   SupportedChainId[(SupportedChainId['POLYGON_MUMBAI'] = 80001)] = 'POLYGON_MUMBAI'
   SupportedChainId[(SupportedChainId['CELO'] = 42220)] = 'CELO'
   SupportedChainId[(SupportedChainId['CELO_ALFAJORES'] = 44787)] = 'CELO_ALFAJORES'
@@ -3009,6 +3011,8 @@ var ChainName
   ChainName['ARBITRUM_ONE'] = 'arbitrum-mainnet'
   ChainName['ARBITRUM_RINKEBY'] = 'arbitrum-rinkeby'
   ChainName['POLYGON'] = 'polygon-mainnet'
+  ChainName['AURORIA'] = 'auroria'
+  ChainName['STRATIS'] = 'stratis'
   ChainName['POLYGON_MUMBAI'] = 'polygon-mumbai'
   ChainName['CELO'] = 'celo'
   ChainName['CELO_ALFAJORES'] = 'celo-alfajores'
@@ -3021,6 +3025,8 @@ var ChainName
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.GOERLI, SupportedChainId.GOERLI),
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.KOVAN, SupportedChainId.KOVAN),
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.POLYGON, SupportedChainId.POLYGON),
+  _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.AURORIA, SupportedChainId.AURORIA),
+  _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.STRATIS, SupportedChainId.STRATIS),
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.POLYGON_MUMBAI, SupportedChainId.POLYGON_MUMBAI),
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.ARBITRUM_ONE, SupportedChainId.ARBITRUM_ONE),
   _defineProperty(_CHAIN_NAMES_TO_IDS, ChainName.ARBITRUM_RINKEBY, SupportedChainId.ARBITRUM_RINKEBY),
@@ -3056,6 +3062,8 @@ var SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
   SupportedChainId.POLYGON,
+  SupportedChainId.AURORIA,
+  SupportedChainId.STRATIS,
   SupportedChainId.POLYGON_MUMBAI,
   SupportedChainId.CELO,
   SupportedChainId.CELO_ALFAJORES,
@@ -3074,10 +3082,15 @@ var L2_CHAIN_IDS = [
 function isPolygonChain(chainId) {
   return chainId === SupportedChainId.POLYGON || chainId === SupportedChainId.POLYGON_MUMBAI
 }
+function isStratisChain(chainId) {
+  return chainId === SupportedChainId.STRATIS || chainId === SupportedChainId.AURORIA
+}
 
 var DEFAULT_NETWORKS = [
   SupportedChainId.MAINNET,
   SupportedChainId.ROPSTEN,
+  SupportedChainId.AURORIA,
+  SupportedChainId.STRATIS,
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
@@ -3121,6 +3134,7 @@ function _objectSpread$j(target) {
   return target
 }
 var UNI_ADDRESS = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
+//TODO CHECK THIS
 var MULTICALL_ADDRESS = _objectSpread$j(
   _objectSpread$j(
     {},
@@ -3285,6 +3299,13 @@ var USDC_POLYGON = new Token(
   'USDC',
   'USD//C'
 )
+var USDC_AURORIA = new Token(
+  SupportedChainId.AURORIA,
+  '0x673E35439E5dE07e0d9C43632FBd9096F2eb372D',
+  6,
+  'USDC',
+  'USD//C'
+)
 var USDC_POLYGON_MUMBAI = new Token(
   SupportedChainId.POLYGON_MUMBAI,
   '0xe11a86849d99f524cac3e7a0ec1241828e332c62',
@@ -3330,6 +3351,7 @@ var USDC_BNB_CHAIN = new Token(SupportedChainId.BNB, '0x8AC76a51cc950d9822D68b83
   _defineProperty(_USDC, SupportedChainId.ARBITRUM_RINKEBY, USDC_ARBITRUM_RINKEBY),
   _defineProperty(_USDC, SupportedChainId.OPTIMISM_GOERLI, USDC_OPTIMISM_GOERLI),
   _defineProperty(_USDC, SupportedChainId.POLYGON, USDC_POLYGON),
+  _defineProperty(_USDC, SupportedChainId.AURORIA, USDC_AURORIA),
   _defineProperty(_USDC, SupportedChainId.POLYGON_MUMBAI, USDC_POLYGON_MUMBAI),
   _defineProperty(_USDC, SupportedChainId.CELO, PORTAL_USDC_CELO),
   _defineProperty(_USDC, SupportedChainId.CELO_ALFAJORES, USDC_CELO_ALFAJORES),
@@ -3582,6 +3604,11 @@ var WRAPPED_NATIVE_CURRENCY = _objectSpread$i(
   ),
   _defineProperty(
     _objectSpread2$1,
+    SupportedChainId.AURORIA,
+    new Token(SupportedChainId.AURORIA, '0x6f39A32C3E7A54164e1C6E201979aec276B0Da8E', 18, 'WSTRAX', 'Wrapped STRAX')
+  ),
+  _defineProperty(
+    _objectSpread2$1,
     SupportedChainId.POLYGON_MUMBAI,
     new Token(
       SupportedChainId.POLYGON_MUMBAI,
@@ -3652,6 +3679,43 @@ var MaticNativeCurrency = /*#__PURE__*/ (function (_NativeCurrency2) {
   return MaticNativeCurrency
 })(NativeCurrency)
 
+function isStrax(chainId) {
+  return chainId === SupportedChainId.AURORIA || chainId === SupportedChainId.STRATIS
+}
+
+var StraxNativeCurrency = /*#__PURE__*/ (function (_NativeCurrency2) {
+  _inherits(StraxNativeCurrency, _NativeCurrency2)
+
+  var _super2 = _createSuper$8(StraxNativeCurrency)
+
+  function StraxNativeCurrency(chainId) {
+    _classCallCheck(this, StraxNativeCurrency)
+
+    if (!isStrax(chainId)) throw new Error('Not strax')
+    return _super2.call(this, chainId, 18, 'STRAX', 'Stratis STRAX')
+  }
+
+  _createClass(StraxNativeCurrency, [
+    {
+      key: 'equals',
+      value: function equals(other) {
+        return other.isNative && other.chainId === this.chainId
+      },
+    },
+    {
+      key: 'wrapped',
+      get: function get() {
+        if (!isStrax(this.chainId)) throw new Error('Not strax')
+        var wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+        invariant(wrapped instanceof Token)
+        return wrapped
+      },
+    },
+  ])
+
+  return StraxNativeCurrency
+})(NativeCurrency)
+
 var ExtendedEther = /*#__PURE__*/ (function (_Ether) {
   _inherits(ExtendedEther, _Ether)
 
@@ -3702,6 +3766,8 @@ function nativeOnChain(chainId) {
 
   if (isMatic(chainId)) {
     nativeCurrency = new MaticNativeCurrency(chainId)
+  } else if (isStrax(chainId)) {
+    nativeCurrency = new StraxNativeCurrency(chainId)
   } else if (isCelo(chainId)) {
     nativeCurrency = getCeloNativeCurrency(chainId)
   } else if (isBnbChain(chainId)) {
@@ -3721,6 +3787,7 @@ function nativeOnChain(chainId) {
     _defineProperty(_USDC2, SupportedChainId.ARBITRUM_RINKEBY, USDC_ARBITRUM_RINKEBY.address),
     _defineProperty(_USDC2, SupportedChainId.OPTIMISM_GOERLI, USDC_OPTIMISM_GOERLI.address),
     _defineProperty(_USDC2, SupportedChainId.POLYGON, USDC_POLYGON.address),
+    _defineProperty(_USDC2, SupportedChainId.AURORIA, USDC_AURORIA.address),
     _defineProperty(_USDC2, SupportedChainId.POLYGON_MUMBAI, USDC_POLYGON_MUMBAI.address),
     _defineProperty(_USDC2, SupportedChainId.GOERLI, USDC_GOERLI.address),
     _defineProperty(_USDC2, SupportedChainId.RINKEBY, USDC_RINKEBY.address),
@@ -3776,6 +3843,7 @@ var STABLECOIN_AMOUNT_OUT =
     CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10000e18)
   ),
   _defineProperty(_STABLECOIN_AMOUNT_OU, SupportedChainId.POLYGON, CurrencyAmount.fromRawAmount(USDC_POLYGON, 10000e6)),
+  _defineProperty(_STABLECOIN_AMOUNT_OU, SupportedChainId.AURORIA, CurrencyAmount.fromRawAmount(USDC_AURORIA, 10000e6)),
   _defineProperty(_STABLECOIN_AMOUNT_OU, SupportedChainId.CELO, CurrencyAmount.fromRawAmount(CUSD_CELO, 10000e18)),
   _STABLECOIN_AMOUNT_OU)
 /**
@@ -4102,6 +4170,10 @@ function isVersionedRoute(type, route) {
 function currencyAddressForSwapQuote(currency) {
   if (currency.isNative) {
     return isPolygonChain(currency.chainId) ? SwapRouterNativeAssets.MATIC : SwapRouterNativeAssets.ETH
+  }
+  //TODO check this
+  if (currency.isNative) {
+    return isStratisChain(currency.chainId) ? SwapRouterNativeAssets.STRAX : SwapRouterNativeAssets.ETH
   }
 
   return currency.address
@@ -11006,6 +11078,8 @@ var optimismLogoUrl =
 
 var polygonMaticLogo =
   'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20viewBox%3D%220%200%2038.4%2033.5%22%20style%3D%22enable-background%3Anew%200%200%2038.4%2033.5%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%238247E5%3B%7D%3C%2Fstyle%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M29%2C10.2c-0.7-0.4-1.6-0.4-2.4%2C0L21%2C13.5l-3.8%2C2.1l-5.5%2C3.3c-0.7%2C0.4-1.6%2C0.4-2.4%2C0L5%2C16.3%20%20c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8%2C0.4-1.6%2C1.2-2.1l4.3-2.5c0.7-0.4%2C1.6-0.4%2C2.4%2C0L16%2C7.2c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v3.3l3.8-2.2V7%20%20c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4%2C0L1.2%2C5C0.4%2C5.4%2C0%2C6.2%2C0%2C7v9.4c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4%2C1.6-0.4%2C2.4%2C0l4.3%2C2.5c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v5c0%2C0.8-0.4%2C1.6-1.2%2C2.1%20%20L29%2C28.8c-0.7%2C0.4-1.6%2C0.4-2.4%2C0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8%2C2.2v3.3c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l8.1-4.7c0.7-0.4%2C1.2-1.2%2C1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29%2C10.2z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'
+var stratisStraxLogo =
+  'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwMCAxODU4LjI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iMCIgeDI9IjIwMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgICA8c3RvcCBzdG9wQ29sb3I9IiNmZmYiIC8+CiAgICAgICAgPHN0b3Agc3RvcENvbG9yPSIjMjFiYmMwIiAvPgogICAgICAgIDxzdG9wIG9mZnNldD0iLjM0IiBzdG9wQ29sb3I9IiMyMGI5YzAiIC8+CiAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wQ29sb3I9IiMxMzg3YzkiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cGF0aAogICAgICBkPSJNMTM1LjgzLDc0MC4zMmw4NzUuMDYsNTUxLjRhMS42NywxLjY3LDAsMCwwLDEuOTEsMGw4OTIuNy01NjMuODlhMS42OCwxLjY4LDAsMCwwLC41LTIuNDIsMS4yMSwxLjIxLDAsMCwwLS41LTAuNUwxMDIxLDE2MS4yMWExLjY3LDEuNjcsMCwwLDAtMS45MSwwTDEzNS44Myw3MzcuM2ExLjgxLDEuODEsMCwwLDAtLjMsMi42MkExLjM5LDEuMzksMCwwLDAsMTM1LjgzLDc0MC4zMlpNMTAxMC45LDE5MzguMjRhNjAuMTEsNjAuMTEsMCwwLDEtMzIuNzUtOS42N0w0MSwxMzI1LjA3YTEuODQsMS44NCwwLDAsMSwwLTIuNDJsMzkuOS02Mi4wN2ExLjg0LDEuODQsMCwwLDEsMi40MiwwbDkyNy4xNiw1OTcuMTVhMS42NywxLjY3LDAsMCwwLDEuOTEsMGw4NzguNjktNTY0LjZhNjkuODEsNjkuODEsMCwwLDAsMzIuMjUtNTl2LTEzOWExLjg4LDEuODgsMCwwLDAtMS45MS0xLjcxLDIuMzcsMi4zNywwLDAsMC0uODEuMmwtODg3LjQ2LDU2NS4yYTYwLjYyLDYwLjYyLDAsMCwxLTY1LDBMNzEuMzQsMTA4OC4yN0ExNTIsMTUyLDAsMCwxLDAsOTU5LjM5Vjc2NC45MWE2MC4zMSw2MC4zMSwwLDAsMSwxNy00Mi4xMmwzLTIuNDIsMTcuMjMtMTEuNzksOTUxLjM0LTYyMCwxLS42YTYwLjUsNjAuNSwwLDAsMSw2Mi40OCwxLjUxbDkxOS43LDU4NS44NmE2MC42OCw2MC42OCwwLDAsMSwwLDEwMi40OGwtOTI3LjU2LDU4NS42NmE2MSw2MSwwLDAsMS02NC40OSwwTDc5LjkxLDc5N2ExLjc5LDEuNzksMCwwLDAtMi40Mi42LDEuNSwxLjUsMCwwLDAtLjIuOTFWOTU5LjI5QTc1LjEzLDc1LjEzLDAsMCwwLDExMi4xNSwxMDIzbDg4Ny42Niw1NjQuMmExLjY3LDEuNjcsMCwwLDAsMS45MSwwbDkwNS4zOS01NzcuNmE2MC4zNyw2MC4zNywwLDAsMSw3Myw2LDYyLjc1LDYyLjc1LDAsMCwxLDE5LjQ1LDQ3LjI2djE3MC42YTE0Ny4xOSwxNDcuMTksMCwwLDEtNjcuNzIsMTI0LjM1bC04ODguNjcsNTcxYTYxLjkxLDYxLjkxLDAsMCwxLTMyLjI1LDkuMzdoMFoiCiAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAtODApIgogICAgICBmaWxsPSJ1cmwoIzApIgogICAgLz4KICA8L3N2Zz4=)'
 
 var _CHAIN_INFO
 var STANDARD_L1_BLOCK_TIME = 12000
@@ -11180,6 +11254,27 @@ var CHAIN_INFO =
     nativeCurrency: {
       name: 'Polygon Matic',
       symbol: 'MATIC',
+      decimals: 18,
+    },
+    color: '#A457FF',
+    backgroundColor: '#a457ff29',
+  }),
+  //TODO CHECK
+  _defineProperty(_CHAIN_INFO, SupportedChainId.AURORIA, {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: 600000,
+    bridge: 'https://statisplatform.com',
+    docs: 'https://statisplatform.com',
+    explorer: 'https://auroria.explorer.stratisevm.com/',
+    infoLink: 'https://statisplatform.com',
+    safe: {
+      label: 'Stratis Testnet',
+    },
+    label: 'Auroria',
+    logoUrl: stratisStraxLogo,
+    nativeCurrency: {
+      name: 'Auroria Strax',
+      symbol: 'STRAX',
       decimals: 18,
     },
     color: '#A457FF',
@@ -16142,6 +16237,9 @@ function chainIdToNetworkName(networkId) {
     case SupportedChainId.POLYGON:
       return 'polygon'
 
+    case SupportedChainId.AURORIA:
+      return 'auroria'
+
     case SupportedChainId.CELO:
       return 'celo'
 
@@ -16172,6 +16270,9 @@ function getNativeLogoURI() {
     case SupportedChainId.POLYGON:
     case SupportedChainId.POLYGON_MUMBAI:
       return MaticLogo
+
+    case SupportedChainId.AURORIA:
+      return stratisStraxLogo
 
     case SupportedChainId.CELO:
     case SupportedChainId.CELO_ALFAJORES:
@@ -19602,65 +19703,49 @@ var WRAPPED_NATIVE_CURRENCIES_ONLY = Object.fromEntries(
     .filter(Boolean)
 ) // used to construct intermediary pairs for trading
 
-var BASES_TO_CHECK_TRADES_AGAINST = _objectSpread$7(
-  _objectSpread$7({}, WRAPPED_NATIVE_CURRENCIES_ONLY),
-  {},
-  ((_objectSpread2 = {}),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.MAINNET,
-    [nativeOnChain(SupportedChainId.MAINNET), DAI, USDC_MAINNET, USDT, WBTC].concat(
-      _toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET])
-    )
-  ),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.OPTIMISM,
-    [].concat(_toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM]), [
-      DAI_OPTIMISM,
-      USDT_OPTIMISM,
-      WBTC_OPTIMISM,
-    ])
-  ),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.ARBITRUM_ONE,
-    [].concat(_toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE]), [
-      DAI_ARBITRUM_ONE,
-      USDT_ARBITRUM_ONE,
-      WBTC_ARBITRUM_ONE,
-    ])
-  ),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.POLYGON,
-    [].concat(_toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]), [
-      DAI_POLYGON,
-      USDC_POLYGON,
-      USDT_POLYGON,
-      WETH_POLYGON,
-    ])
-  ),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.CELO,
-    [].concat(_toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.CELO]), [
-      CUSD_CELO,
-      CEUR_CELO,
-      CMC02_CELO,
-      PORTAL_USDC_CELO,
-      PORTAL_ETH_CELO,
-    ])
-  ),
-  _defineProperty(
-    _objectSpread2,
-    SupportedChainId.BNB,
-    [nativeOnChain(SupportedChainId.BNB), USDC_BNB_CHAIN, USDT_BNB_CHAIN].concat(
-      _toConsumableArray(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.BNB])
-    )
-  ),
-  _objectSpread2)
-)
+const BASES_TO_CHECK_TRADES_AGAINST = {
+  ...WRAPPED_NATIVE_CURRENCIES_ONLY,
+  [SupportedChainId.MAINNET]: [
+    nativeOnChain(SupportedChainId.MAINNET),
+    DAI,
+    USDC_MAINNET,
+    USDT,
+    WBTC,
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
+  ],
+  [SupportedChainId.OPTIMISM]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM],
+    DAI_OPTIMISM,
+    USDT_OPTIMISM,
+    WBTC_OPTIMISM,
+  ],
+  [SupportedChainId.ARBITRUM_ONE]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE],
+    DAI_ARBITRUM_ONE,
+    USDT_ARBITRUM_ONE,
+    WBTC_ARBITRUM_ONE,
+  ],
+  [SupportedChainId.POLYGON]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]],
+  [SupportedChainId.AURORIA]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.AURORIA],
+    USDC_AURORIA,
+    WSTRAX_AURORIA,
+  ],
+  [SupportedChainId.CELO]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.CELO],
+    CUSD_CELO,
+    CEUR_CELO,
+    CMC02_CELO,
+    PORTAL_USDC_CELO,
+    PORTAL_ETH_CELO,
+  ],
+  [SupportedChainId.BNB]: [
+    nativeOnChain(SupportedChainId.BNB),
+    USDC_BNB_CHAIN,
+    USDT_BNB_CHAIN,
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.BNB],
+  ],
+}
 _defineProperty(
   {},
   SupportedChainId.MAINNET,

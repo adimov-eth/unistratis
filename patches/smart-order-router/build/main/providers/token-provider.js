@@ -429,6 +429,13 @@ exports.USDC_POLYGON = new sdk_core_1.Token(
   'USDC',
   'USD//C'
 );
+exports.USDC_AURORIA = new sdk_core_1.Token(
+  util_1.ChainId.AURORIA,
+  '0x673E35439E5dE07e0d9C43632FBd9096F2eb372D',
+  6,
+  'USDC',
+  'USD//C'
+);
 exports.DAI_POLYGON = new sdk_core_1.Token(
   util_1.ChainId.POLYGON,
   '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
@@ -806,6 +813,8 @@ const USDC_ON = (chainId) => {
       return exports.USDC_POLYGON;
     case util_1.ChainId.POLYGON_MUMBAI:
       return exports.USDC_POLYGON_MUMBAI;
+    case util_1.ChainId.AURORIA:
+      return exports.USDC_AURORIA;
     case util_1.ChainId.GNOSIS:
       return exports.USDC_ETHEREUM_GNOSIS;
     case util_1.ChainId.MOONBEAM:

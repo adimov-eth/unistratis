@@ -1,6 +1,6 @@
 import { sendAnalyticsEvent, useTrace } from '@uniswap/analytics'
 import { InterfacePageName, NFTEventName } from '@uniswap/analytics-events'
-import { ChainId } from '@uniswap/smart-order-router'
+import { ChainId } from '@uniswap/sdk-core'
 import { MouseoverTooltip } from 'components/Tooltip'
 import { useNftGraphqlEnabled } from 'featureFlags/flags/nftlGraphql'
 import { NftActivityType, OrderStatus } from 'graphql/data/__generated__/types-and-hooks'
@@ -101,7 +101,7 @@ export const BuyCell = ({
     [event, collectionName, ethPriceInUSD, isNftGraphqlEnabled]
   )
   const isSelected = useMemo(() => {
-    return itemsInBag.some((item) => asset.tokenId === item.asset.tokenId && asset.address === item.asset.address)
+    return itemsInBag.some(item => asset.tokenId === item.asset.tokenId && asset.address === item.asset.address)
   }, [asset, itemsInBag])
 
   const trace = useTrace({ page: InterfacePageName.NFT_COLLECTION_PAGE })
@@ -156,7 +156,7 @@ export const AddressCell = ({ address, desktopLBreakpoint, chainId }: AddressCel
         href={getExplorerLink(chainId ?? ChainId.MAINNET, address ?? '', ExplorerDataType.ADDRESS)}
         style={{ textDecoration: 'none' }}
       >
-        <Box onClick={(e) => e.stopPropagation()}>{address ? shortenAddress(address, 2, 4) : '-'}</Box>
+        <Box onClick={e => e.stopPropagation()}>{address ? shortenAddress(address, 2, 4) : '-'}</Box>
       </AddressLink>
     </Column>
   )

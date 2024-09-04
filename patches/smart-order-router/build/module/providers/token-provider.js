@@ -342,6 +342,13 @@ export const USDC_POLYGON = new Token(
   'USDC',
   'USD//C'
 );
+export const USDC_AURORIA = new Token(
+  ChainId.AURORIA,
+  '0x673E35439E5dE07e0d9C43632FBd9096F2eb372D',
+  6,
+  'USDC',
+  'USD//C'
+);
 export const DAI_POLYGON = new Token(
   ChainId.POLYGON,
   '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
@@ -712,6 +719,8 @@ export const USDC_ON = (chainId) => {
       return USDC_ARBITRUM_GOERLI;
     case ChainId.POLYGON:
       return USDC_POLYGON;
+    case ChainId.AURORIA:
+      return USDC_AURORIA;
     case ChainId.POLYGON_MUMBAI:
       return USDC_POLYGON_MUMBAI;
     case ChainId.GNOSIS:
