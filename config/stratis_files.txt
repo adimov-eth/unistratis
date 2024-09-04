@@ -18,7 +18,7 @@
 ./patches/smart-order-router/build/module/util/addresses.js
 ./patches/smart-order-router/build/module/providers/token-provider.d.ts
 ./patches/smart-order-router/build/module/providers/v2/static-subgraph-provider.js
-./patches/smart-order-router/build/module/providers/on-chain-gas-price-provider.js
++++ ./patches/smart-order-router/build/module/providers/on-chain-gas-price-provider.js
 ./patches/smart-order-router/build/module/providers/v3/subgraph-provider.js
 ./patches/smart-order-router/build/module/providers/v3/static-subgraph-provider.js
 ./patches/smart-order-router/build/module/providers/token-provider.js

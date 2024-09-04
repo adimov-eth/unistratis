@@ -18,7 +18,7 @@
     "i18n:pseudo": "lingui extract --locale pseudo && lingui compile",
     "prepare": "yarn contracts:compile && yarn graphql:fetch && yarn graphql:generate && yarn i18n:compile",
     "postinstall": "patch-package",
-    "start": "craco start",
+    "start": "node --max-old-space-size=8192 ./node_modules/@craco/craco/bin/craco.js start",
     "build": "craco build",
     "build:e2e": "REACT_APP_CSP_ALLOW_UNSAFE_EVAL=true REACT_APP_ADD_COVERAGE_INSTRUMENTATION=true craco build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -68,6 +68,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/preset-env": "^7.25.4",
     "@craco/craco": "6.4.3",
     "@ethersproject/experimental": "^5.4.0",
     "@lingui/cli": "^3.9.0",
@@ -102,6 +105,7 @@
     "@uniswap/eslint-config": "^1.1.1",
     "@vanilla-extract/babel-plugin": "^1.1.7",
     "@vanilla-extract/webpack-plugin": "^2.1.11",
+    "babel-loader": "8.1.0",
     "babel-plugin-istanbul": "^6.1.1",
     "cypress": "10.3.1",
     "cypress-hardhat": "^1.0.0",
@@ -170,7 +174,7 @@
     "@uniswap/v3-periphery": "^1.1.1",
     "@uniswap/v3-sdk": "^3.9.0",
     "@uniswap/widgets": "^2.49.0",
-    "@vanilla-extract/css": "^1.7.2",
+    "@vanilla-extract/css": "1.7.2",
     "@vanilla-extract/css-utils": "^0.1.2",
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/sprinkles": "^1.4.1",
@@ -195,6 +199,7 @@
     "array.prototype.flat": "^1.2.4",
     "array.prototype.flatmap": "^1.2.4",
     "cids": "^1.0.0",
+    "clipboardy": "^3.0.0",
     "clsx": "^1.1.1",
     "copy-to-clipboard": "^3.2.0",
     "d3": "^7.6.1",
@@ -250,8 +255,7 @@
     "workbox-navigation-preload": "^6.1.0",
     "workbox-precaching": "^6.1.0",
     "workbox-routing": "^6.1.0",
-    "zustand": "^4.3.6",
-    "clipboardy": "^3.0.0"
+    "zustand": "^4.3.6"
   },
   "resolutions": {
     "@web3-react/coinbase-wallet": "^8.2.0",
@@ -271,8 +275,8 @@
   },
   "engines": {
     "npm": "please-use-yarn",
-    "node": "16",
+    "node": "14",
     "yarn": ">=1.22"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@4.4.1"
 }
