@@ -1,5 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
-
+diff_files.txt
+diff_output.txt
+patch_file.patch
 
 # generated contract types
 /src/types/v3

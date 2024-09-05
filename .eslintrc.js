@@ -3,11 +3,10 @@
 require('@uniswap/eslint-config/load')
 
 module.exports = {
-  extends: '@uniswap/eslint-config/react',
+  extends: ['@uniswap/eslint-config/react', 'prettier'],
+  plugins: ['prettier'],
   overrides: [
     {
-      // Configuration/typings typically export objects/definitions that are used outside of the transpiled package
-      // (eg not captured by the tsconfig). Because it's typical and not exceptional, this is turned off entirely.
       files: ['**/*.config.*', '**/*.d.ts'],
       rules: {
         'import/no-unused-modules': 'off',
@@ -33,7 +32,6 @@ module.exports = {
             paths: [
               {
                 name: 'moment',
-                // tree-shaking for moment is not configured because it degrades performance - see craco.config.cjs.
                 message: 'moment is not configured for tree-shaking. If you use it, update the Webpack configuration.',
               },
               {
@@ -44,7 +42,11 @@ module.exports = {
             ],
           },
         ],
+        'prettier/prettier': 'error',
       },
     },
   ],
+  rules: {
+    'prettier/prettier': 'error',
+  },
 }

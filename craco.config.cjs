@@ -16,6 +16,7 @@ module.exports = {
   babel: {
     plugins: [
       '@vanilla-extract/babel-plugin',
+      '@babel/plugin-proposal-optional-chaining',
       ...(process.env.REACT_APP_ADD_COVERAGE_INSTRUMENTATION
         ? [
             [
@@ -37,6 +38,16 @@ module.exports = {
             ],
           ]
         : []),
+    ],
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            node: 'current',
+          },
+        },
+      ],
     ],
   },
   eslint: {
@@ -66,9 +77,9 @@ module.exports = {
   },
   webpack: {
     plugins: [new VanillaExtractPlugin({ identifiers: 'short' })],
-    configure: (webpackConfig) => {
+    configure: webpackConfig => {
       webpackConfig.plugins = webpackConfig.plugins
-        .map((plugin) => {
+        .map(plugin => {
           // Extend process.env with dynamic values (eg commit hash).
           // This will make dynamic values available to JavaScript only, not to interpolated HTML (ie index.html).
           if (plugin instanceof DefinePlugin) {
@@ -85,7 +96,7 @@ module.exports = {
 
           return plugin
         })
-        .filter((plugin) => {
+        .filter(plugin => {
           // Case sensitive paths are enforced by TypeScript.
           // See https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames.
           if (plugin instanceof CaseSensitivePathsPlugin) return false
@@ -96,10 +107,29 @@ module.exports = {
           return true
         })
 
+      webpackConfig.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      })
+
       // We're currently on Webpack 4.x which doesn't support the `exports` field in package.json.
       // Instead, we need to manually map the import path to the correct exports path (eg dist or build folder).
       // See https://github.com/webpack/webpack/issues/9509.
       webpackConfig.resolve.alias['@uniswap/conedison'] = '@uniswap/conedison/dist'
+
+      // Add rule for .js files in node_modules
+      webpackConfig.module.rules.push({
+        test: /\.js$/,
+        include: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-optional-chaining'],
+          },
+        },
+      })
 
       return webpackConfig
     },
